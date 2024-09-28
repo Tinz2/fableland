@@ -1,61 +1,53 @@
 import 'package:flutter/material.dart';
-import 'menu.dart';
 import 'package:lottie/lottie.dart';
-
-//Method หลักทีRun
+import 'menu.dart';
+import 'home.dart';
+import 'fable1.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-//Class state less สั่งแสดงผลหน้าจอ
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-// This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '....',
       theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(239, 245, 188, 2)),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(239, 245, 188, 2)),
         useMaterial3: true,
       ),
-      home: wait(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => WaitScreen(),
+        '/menu': (context) => menu(),
+        '/home': (context) => home(),
+        '/fable1': (context) => fable01(),
+      },
     );
   }
 }
 
-//Class stateful เรียกใช้การท างานแบบโต้ตอบ (เรียกใช้ State)
-class wait extends StatefulWidget {
+class WaitScreen extends StatefulWidget {
   @override
-  State<wait> createState() => _MyHomePageState();
+  State<WaitScreen> createState() => _WaitScreenState();
 }
 
-//class state เขียน Code ภาษา dart เพอื่ รับค่าจากหน้าจอมาคา นวณและส่งคา่ กลับไปแสดงผล
-class _MyHomePageState extends State<wait> {
-  void _startAnimation() async {
-// ทําการหน่วงเวลาเป็นระยะเวลา 7 วินาที
-    await Future.delayed(Duration(seconds: 1));
-// หลังจากการหน่วงเวลาเสร็จแล้วจะทําการเปลี่ยนไปยังหน้าหลัก
-    Navigator.pushReplacement(
-      context,
-//home หมายถึงหน้าจอ ที่จะให้ไปแสดงผลหลังจากแสดง animate เสร็จ
-      MaterialPageRoute(builder: (context) => menu()),
-    );
-  }
-
+class _WaitScreenState extends State<WaitScreen> {
+  @override
   void initState() {
     super.initState();
     _startAnimation();
   }
 
-  void _intialstate() {
-    setState(() {});
+  void _startAnimation() async {
+    await Future.delayed(Duration(seconds: 1));
+    Navigator.pushReplacementNamed(context, '/menu');
   }
 
   @override
-//ส่วนออกแบบหน้าจอ
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
@@ -64,16 +56,16 @@ class _MyHomePageState extends State<wait> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Lottie.asset(
-              'assets/lottie/title.json', // เปลี่ยนชื่อไฟล์ตามที่ดาวน์โหลดมา
+              'assets/lottie/title.json',
               width: 200,
               height: 200,
               fit: BoxFit.cover,
             ),
             Text(
-              'INITIAL D',
+              'INITIAL Donkdjfojhojhsdfh',
               style: TextStyle(
                 fontSize: 24,
-                color: Colors.black,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),

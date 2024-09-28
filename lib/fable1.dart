@@ -1,35 +1,20 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
-import 'menu.dart';
-//Method หลักทีRun
-void main() {
-  runApp(MyApp());
-}
 
-//Class state less สงั่ แสดงผลหนา้จอ
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-// This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '...',
-      theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(239, 245, 188, 2)),
-        useMaterial3: true,
-      ),
-      home: fable01(),
-    );
-  }
-}
-
+// Class สำหรับหน้า fable01
 class fable01 extends StatelessWidget {
+  const fable01({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Page 1')),
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(175, 172, 255, 100),
+        title: Text('Page 1')
+       
+      ),
+       backgroundColor: Color.fromRGBO(58, 241, 248, 100),
       body: Center(
+        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -43,4 +28,3 @@ class fable01 extends StatelessWidget {
     );
   }
 }
-   
