@@ -14,7 +14,7 @@ class _HomePageState extends State<home> {
   // Array สำหรับเก็บข้อมูลของ item
   final List<Map<String, String>> items = [
     {
-      'text': 'Tak',
+      'text': 'Takumi Fujiwara',
       'image': 'assets/h1.jpg',
       'route': '/fable1', // ลิงก์ไปที่ fable01()
     },
@@ -132,9 +132,8 @@ class _HomePageState extends State<home> {
                 },
               ),
             ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(top: 15.0, bottom: 8.0), // ปรับ padding
+             Padding(
+              padding: const EdgeInsets.only(top: 15.0, bottom: 8.0), // ปรับ padding
               child: Text(
                 'คำแนะนำเพิ่มเติม',
                 style: TextStyle(
@@ -145,7 +144,7 @@ class _HomePageState extends State<home> {
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(
+           SizedBox(
               height: 400, // ปรับความสูงของ GridView ที่สองให้เท่ากับอันแรก
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
