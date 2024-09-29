@@ -3,6 +3,9 @@ import 'package:lottie/lottie.dart';
 import 'menu.dart';
 import 'home.dart';
 import 'fable1.dart';
+import 'fable2.dart';
+import 'fable3.dart';
+import 'fable4.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +28,9 @@ class MyApp extends StatelessWidget {
         '/menu': (context) => menu(),
         '/home': (context) => home(),
         '/fable1': (context) => fable01(),
+        '/fable2': (context) => fable02(),
+        '/fable3': (context) => fable03(),
+        '/fable4': (context) => fable04(),
       },
     );
   }

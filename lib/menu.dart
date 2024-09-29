@@ -82,19 +82,19 @@ class _MyHomePageState extends State<menu> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: 'FABLE1',
+            label: 'นิทานพื้นบ้าน',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'FABLE2',
+            label: 'นิทานคติสอนใจ',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'FABLE3',
+            label: 'นิทานก่อนอน',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'FABLE4',
+            label: 'รวมนิทาน',
           ),
         ],
         type:

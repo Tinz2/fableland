@@ -42,7 +42,7 @@ class _MyHomePageState extends State<fable1> {
       
       body: Center(
 //ส่วนออกแบบหนา้จอ
-        child: Text('fable1'),
+        child: Text('นิทานคติสอนใจ'),
       ),
     );
   }
