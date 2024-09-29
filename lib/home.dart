@@ -14,7 +14,7 @@ class _HomePageState extends State<home> {
   // Array สำหรับเก็บข้อมูลของ item
   final List<Map<String, String>> items = [
     {
-      'text': 'Takumi Fujiwara',
+      'text': 'Takumi',
       'image': 'assets/h1.jpg',
       'route': '/fable1', // ลิงก์ไปที่ fable01()
     },
