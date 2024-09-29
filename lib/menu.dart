@@ -1,3 +1,4 @@
+import 'package:fableland_application/fable1.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'fablemenu1.dart';
@@ -49,6 +50,7 @@ class _MyHomePageState extends State<menu> {
     fable2(),
     fable3(),
     fable4(),
+    fable01(),
   ];
 // สร้างฟังกช์ นั ที่ใชส้ลบั หนา้จอเมื่อผใู้ชเ้ลือกแทบ็
   void _onTabTapped(int index) {
@@ -80,19 +82,19 @@ class _MyHomePageState extends State<menu> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: 'FABLE1',
+            label: 'นิทานพื้นบ้าน',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'FABLE2',
+            label: 'นิทานคติสอนใจ',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'FABLE3',
+            label: 'นิทานก่อนอน',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'FABLE4',
+            label: 'รวมนิทาน',
           ),
         ],
         type:
