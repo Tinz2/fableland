@@ -5,20 +5,21 @@ import 'fablemenu1.dart';
 import 'fablemenu2.dart';
 import 'fablemenu3.dart';
 import 'fablemenu4.dart';
+import 'contact.dart'; // ตรวจสอบว่ามีการนำเข้า ContactUs
 
-//Method หลักทีRun
+// Method หลักที่ Run
 void main() {
   runApp(MyApp());
 }
 
-//Class state less สงั่ แสดงผลหนา้จอ
+// Class state less สั่งแสดงผลหน้าจอ
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-// This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '...',
+      title: 'Fableland Application',
       theme: ThemeData(
         colorScheme:
             ColorScheme.fromSeed(seedColor: Color.fromARGB(239, 245, 188, 2)),
@@ -29,38 +30,38 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//Class stateful เรียกใช้การท างานแบบโต้ตอบ (เรียกใช้ State)
+// Class stateful เรียกใช้การทำงานแบบโต้ตอบ (เรียกใช้ State)
 class menu extends StatefulWidget {
   @override
   State<menu> createState() => _MyHomePageState();
 }
 
-//class state เขียน Code ภาษา dart เพอื่รับค่าจากหนา้จอมาคา นวณและส่งคา่่กลบัไปแสดงผล
+// Class state เขียน Code ภาษา Dart เพื่อติดต่อหน้าจอ
 class _MyHomePageState extends State<menu> {
-  void _intialstate() {
-    setState(() {});
-  }
-
-//ประกาศตวัแปรเกบ็ลา ดบัของหนา้จอ
   int _currentIndex = 0;
-// สร้างตวัแปรอาร์เรยเ์พื่อเกบ็ รายการของหนา้จอที่ตอ้งการสลบัไปเมื่อเลือกแต่ละแทบ็
+
   final List<Widget> _screens = [
     home(),
     fable1(),
     fable2(),
     fable3(),
     fable4(),
-    fable1(),
   ];
-// สร้างฟังกช์ นั ที่ใชส้ลบั หนา้จอเมื่อผใู้ชเ้ลือกแทบ็
+
   void _onTabTapped(int index) {
     setState(() {
-      _currentIndex = index;
+      _currentIndex = index; // กำหนดค่า index ที่เลือก
     });
   }
 
+  void _showContactUs() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ContactUs()), // แสดงหน้าติดต่อเรา
+    );
+  }
+
   @override
-//ส่วนออกแบบหนา้จอ
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -69,16 +70,21 @@ class _MyHomePageState extends State<menu> {
           padding: const EdgeInsets.all(8.0),
           child: Image.asset('assets/logo.png'),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.contact_mail),
+            onPressed: _showContactUs, // ไปที่หน้าติดต่อเรา
+          ),
+        ],
       ),
       body: _screens[_currentIndex], // แสดงหน้าจอที่ถูกเลือกตามค่าในอาร์เรย์
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex, //ล าดับของแท็บที่ถูกเลือก
-        onTap: _onTabTapped, // ฟังกช์ นั ที่เรียกเมื่อกดแต่ละแทบ็
+        currentIndex: _currentIndex, // ลำดับของแท็บที่ถูกเลือก
+        onTap: _onTabTapped, // ฟังก์ชันที่เรียกเมื่อกดแต่ละแท็บ
         items: [
-          //กา หนดจา นวนBottomNavigationBarItemเท่ากบัจา นวนเมนูดา้นลา่ งที่ตอ้การ
           BottomNavigationBarItem(
-            icon: Icon(Icons.home), //กา หนดรูปแบบไอคอนของแต่ละแท็ป
-            label: 'Home', //กา หนดชื่อแทป็ ที่ตอ้งการ
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
@@ -97,21 +103,10 @@ class _MyHomePageState extends State<menu> {
             label: 'รวมนิทาน',
           ),
         ],
-        type:
-            BottomNavigationBarType.fixed, // คงที่เพื่อให้ทุกแท็บมีขนาดเท่ากัน
-
-        // ตั้งค่าพื้นหลังเป็นสีดำ
+        type: BottomNavigationBarType.fixed,
         backgroundColor: const Color.fromRGBO(175, 172, 255, 100),
-
-        // กำหนดสีของไอคอนและ label เมื่อเลือก
         selectedItemColor: const Color.fromARGB(255, 63, 63, 63),
-
-        // กำหนดสีของไอคอนและ label เมื่อยังไม่ได้เลือก
         unselectedItemColor: const Color.fromARGB(255, 0, 0, 0),
-
-        // ปรับขนาดของไอคอน
-        selectedIconTheme: IconThemeData(size: 30),
-        unselectedIconTheme: IconThemeData(size: 24),
       ),
     );
   }

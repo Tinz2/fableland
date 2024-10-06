@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'contact.dart'; // เพิ่มการนำเข้า ContactUs
 
 class fable02 extends StatefulWidget {
   const fable02({Key? key}) : super(key: key);
@@ -151,20 +152,16 @@ class _FablePageState extends State<fable02> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: GestureDetector(
-          onTap: () {
-            Navigator.pushReplacementNamed(context, '/home'); // Back to home
-          },
-          child: CircleAvatar(
-            backgroundImage: AssetImage('assets/logo.png'), // Logo
-            radius: 20,
-          ),
-        ),
+        title: Text('นิทานเรื่อง 1'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
-            icon: Icon(Icons.volume_up),
+            icon: Icon(Icons.contact_mail),
             onPressed: () {
-              // Control sound here
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ContactUs()), // ไปที่หน้า ContactUs
+              );
             },
           ),
         ],
