@@ -50,7 +50,7 @@ class _MyHomePageState extends State<menu> {
     fable2(),
     fable3(),
     fable4(),
-    fable01(),
+    fable1(),
   ];
 // สร้างฟังกช์ นั ที่ใชส้ลบั หนา้จอเมื่อผใู้ชเ้ลือกแทบ็
   void _onTabTapped(int index) {

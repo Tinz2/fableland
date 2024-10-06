@@ -31,11 +31,11 @@ dependencies:
   flutter:
     sdk: flutter
   lottie: ^2.0.0
+  audioplayers: ^6.1.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  audioplayers: ^6.1.0
   video_player: ^2.9.1
   webview_flutter: ^4.8.0
   
@@ -64,6 +64,8 @@ flutter:
     - assets/lottie/title.json
     - assets/logo.png
     - assets/h1.jpg
+    - assets/sound/86.mp3
+    - assets/sound/22.mp3
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
