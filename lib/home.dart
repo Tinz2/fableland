@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'fable1.dart';
-import 'fable4.dart';
-import 'fable2.dart'; // เพิ่มหน้าที่ต้องการ
-import 'fable3.dart'; // เพิ่มหน้าที่ต้องการ
+
 import 'webviewscreen.dart'; // สำหรับเปิด WebView
 
 class home extends StatefulWidget {
@@ -88,12 +85,13 @@ class _HomePageState extends State<home> {
                 ),
               ),
             ),
+            SizedBox(height: 10),
             SizedBox(
               height: 320, // กาหนดความสูงของ GridView
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, // แสดง 2 คอลัมน์ต่อแถว
-                  crossAxisSpacing: 10.0, // ระยะห่างระหว่างคอลัมน์
+                  crossAxisSpacing: 20.0, // ระยะห่างระหว่างคอลัมน์
                   mainAxisSpacing: 10.0, // ระยะห่างระหว่างแถว
                   childAspectRatio: 1.4,
                 ),
@@ -109,8 +107,13 @@ class _HomePageState extends State<home> {
                     },
                     child: Card(
                       elevation: 5,
-                      color: Colors
-                          .pink[50], // กำหนดสีพื้นหลังของ Card เป็นสีชมพูอ่อน
+                       shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
+            ),
+            color: const Color.fromARGB(255, 94, 255, 201), // สีพื้นหลังของการ์ด
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16), // ตัดมุมรูปภาพให้เป็นมุมมน
+                     
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -127,6 +130,7 @@ class _HomePageState extends State<home> {
                           ),
                         ],
                       ),
+            ),
                     ),
                   );
                 },
@@ -172,6 +176,12 @@ class _HomePageState extends State<home> {
                       child: Card(
                         color: const Color.fromARGB(255, 255, 255, 255),
                         elevation: 5,
+                         shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
+            ),
+           
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16), // ตัดมุมรูปภาพให้เป็นมุมมน
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
@@ -186,6 +196,7 @@ class _HomePageState extends State<home> {
                         ),
                       ),
                     ),
+                  ),
                   );
                 },
               ),

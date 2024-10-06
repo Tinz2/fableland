@@ -1,3 +1,4 @@
+import 'package:fableland_application/fable5.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'menu.dart';
@@ -6,7 +7,7 @@ import 'fable1.dart';
 import 'fable2.dart';
 import 'fable3.dart';
 import 'fable4.dart';
-
+import 'fable5.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/fable2': (context) => fable02(),
         '/fable3': (context) => fable03(),
         '/fable4': (context) => fable04(),
+        '/fable5': (context) => fable05(),
       },
     );
   }
