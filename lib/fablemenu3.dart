@@ -39,10 +39,57 @@ class _MyHomePageState extends State<fable3> {
 //ส่วนออกแบบหนา้จอ
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      body: Center(
-//ส่วนออกแบบหนา้จอ
-        child: Text('นิทานก่อนนอน'),
+      backgroundColor: Color.fromRGBO(58, 241, 248, 100),
+      body: SingleChildScrollView(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 20),
+              Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: Image.asset(
+                    'assets/h1.jpg',
+                    height: 200,
+                    width: 350,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+               SizedBox(height: 20),
+              Align(
+                alignment: Alignment.centerLeft, // จัดข้อความชิดซ้าย
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 16.0), // ปรับระยะห่างขอบซ้าย-ขวา
+                  child: Text(
+                    'นิทานก่อนนอน',
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 0, 0, 0),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 5),
+              Align(
+                alignment: Alignment.centerLeft, // จัดข้อความชิดซ้าย
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 16.0), // ปรับระยะห่างขอบซ้าย-ขวา
+                  child: Text(
+                    'เป็นนิทานที่นำเรื่องเล่ายกมาเป็นตัวอย่าง และเป็นคติ สอนใจแก่ผู้ฟังนิทานอุทาหรณ์มักเป็นเรื่องที่เข้าใจกันว่าเป็นเรื่องสมมุติที่เกิดขึ้น',
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 0, 0, 0),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+            ]),
       ),
     );
   }
