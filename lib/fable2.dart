@@ -109,8 +109,7 @@ class _FablePageState extends State<fable02> {
   }
 
   Future<void> _playAudio() async {
-    await _audioPlayer.setSource(
-        AssetSource('assets/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
+     await _audioPlayer.play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
     await _audioPlayer.resume();
     _isPlaying = true;
   }
@@ -152,7 +151,7 @@ class _FablePageState extends State<fable02> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('นิทานเรื่อง 1'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('พื้นบ้าน 2'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
@@ -166,7 +165,7 @@ class _FablePageState extends State<fable02> {
           ),
         ],
       ),
-      backgroundColor: Color.fromRGBO(58, 241, 248, 1),
+       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -183,7 +182,7 @@ class _FablePageState extends State<fable02> {
               ),
               SizedBox(height: 10),
               Text(
-                'นิทานเรื่อง 1',
+                'พื้นบ้าน2 2',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -194,11 +193,11 @@ class _FablePageState extends State<fable02> {
               SizedBox(height: 20),
 
               // Control buttons
-              Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: _isPlaying ? _pauseAudio : _playAudio,
+                    onPressed: _isPlaying ? _playAudio : _playAudio,
                     child: Text(buttonLabels['play']!),
                   ),
                   ElevatedButton(
@@ -206,7 +205,7 @@ class _FablePageState extends State<fable02> {
                     child: Text(buttonLabels['rewind']!),
                   ),
                   ElevatedButton(
-                    onPressed: _isPlaying ? _pauseAudio : _playAudio,
+                    onPressed: _isPlaying ? _pauseAudio : _pauseAudio,
                     child: Text(buttonLabels['pause']!),
                   ),
                   ElevatedButton(

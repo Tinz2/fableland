@@ -56,7 +56,7 @@ class _HomePageState extends State<home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(58, 241, 248, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -110,7 +110,7 @@ class _HomePageState extends State<home> {
                        shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
             ),
-            color: const Color.fromARGB(255, 94, 255, 201), // สีพื้นหลังของการ์ด
+            color: const Color.fromARGB(255, 173, 252, 248), // สีพื้นหลังของการ์ด
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16), // ตัดมุมรูปภาพให้เป็นมุมมน
                      

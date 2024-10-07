@@ -31,7 +31,7 @@ class _MyHomePageState extends State<webviewscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(183, 255, 0, 0),
+       backgroundColor: Color.fromRGBO(175, 172, 255, 100),
       ),
       body: WebViewWidget(
         controller: controller,

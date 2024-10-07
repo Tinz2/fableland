@@ -1,3 +1,12 @@
+import 'package:fableland_application/fable001.dart';
+import 'package:fableland_application/fable002.dart';
+import 'package:fableland_application/fable003.dart';
+import 'package:fableland_application/fable004.dart';
+import 'package:fableland_application/fable005.dart';
+import 'package:fableland_application/fable01.dart';
+import 'package:fableland_application/fable02.dart';
+import 'package:fableland_application/fable04.dart';
+import 'package:fableland_application/fable05.dart';
 import 'package:fableland_application/fable5.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -8,6 +17,11 @@ import 'fable2.dart';
 import 'fable3.dart';
 import 'fable4.dart';
 import 'fable5.dart';
+import 'fable01.dart';
+import 'fable02.dart';
+import 'fable03.dart';
+import 'fable04.dart';
+import 'fable05.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -34,6 +48,16 @@ class MyApp extends StatelessWidget {
         '/fable3': (context) => fable03(),
         '/fable4': (context) => fable04(),
         '/fable5': (context) => fable05(),
+        '/fable01': (context) => fable001(),
+        '/fable02': (context) => fable002(),
+        '/fable03': (context) => fable003(),
+        '/fable04': (context) => fable004(),
+        '/fable05': (context) => fable005(),
+        '/fable001': (context) => fable0001(),
+        '/fable002': (context) => fable0002(),
+        '/fable003': (context) => fable0003(),
+        '/fable004': (context) => fable0004(),
+        '/fable005': (context) => fable0005(),
       },
     );
   }
@@ -59,7 +83,7 @@ class _WaitScreenState extends State<WaitScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
