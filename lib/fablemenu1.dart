@@ -37,31 +37,31 @@ class _MyHomePageState extends State<fable1> {
 
   List<Map<String, dynamic>> places = [
     {
-      'name': 'พื้นบ้าน01',
-      'sound' : 'เสียงพากษ์ไทย/อังกฤษ',
+      'name': 'นิทานเรื่องจระเข้สามพัน',
+      'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/logo.png',
       'route': '/fable1',
     },
     {
-      'name': 'พื้นบ้าน02',
-      'sound' : 'เสียงพากษ์ไทย/อังกฤษ',
+      'name': 'นิทานเรื่องเศรษฐีกับยาจก',
+      'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/logo.png',
       'route': '/fable2',
     },
     {
-      'name': 'พื้นบ้าน03',
+      'name': 'นิทานเรื่องพญาคันคาก',
       'imagelist': 'assets/logo.png',
       'route': '/fable3',
     },
     {
-      'name': 'พื้นบ้าน04',
-      'sound' : 'เสียงพากษ์ไทย/อังกฤษ',
+      'name': 'นิทานเรื่อง เกาะหนู เกาะแมว',
+      'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/logo.png',
       'route': '/fable4',
     },
     {
-      'name': 'พื้นบ้าน05',
-      'sound' : 'เสียงพากษ์ไทย/อังกฤษ',
+      'name': 'นิทานเรื่อง กล่องข้าวน้อยฆ่าแม่',
+      'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/logo.png',
       'route': '/fable5',
     },
@@ -71,7 +71,7 @@ class _MyHomePageState extends State<fable1> {
 //ส่วนออกแบบหนา้จอ
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -112,7 +112,7 @@ class _MyHomePageState extends State<fable1> {
                 padding: EdgeInsets.symmetric(
                     horizontal: 16.0), // ปรับระยะห่างขอบซ้าย-ขวา
                 child: Text(
-                  'กล่าวถึงหลากหลายเรื่องราว มักสะท้อนชีวิตและความเชื่อของผู้คนในสังคมนั้น เนื้อหาหลักๆ ',
+                  'นิทานพื้นบ้าน คือ เรื่องที่เล่ากันต่อๆ มาจากคนรุ่นหนึ่งสู่คนอีกรุ่นหนึ่งโดยที่ไม่ทราบว่า ใครเป็นผู้แต่ง เช่น นิทานเรื่อง สังข์ทอง ปลาบู่ทอง หรือโสนน้อยเรือนงาม  มีการเล่าสู่กันฟังจากปู่ย่าตายายของเรา พ่อแม่ของเรา รวมทั้งตัวเราเองไปจนถึงลูกหลานเหลนโหลนของเรา เป็นทอด ๆ กันไป รุ่นแล้วรุ่นเล่า บางครั้งก็แพร่กระจายจากท้องถิ่นหนึ่งไปสู่อีกท้องถิ่นหนึ่ง เช่น นิทานเรื่อง สังข์ทอง อาจมีหลายสำนวน แล้วแต่ความทรงจำความเชื่อ อารมณ์ของผู้เล่า และวัฒนธรรมในแต่ละท้องถิ่น',
                   style: TextStyle(
                     color: const Color.fromARGB(255, 0, 0, 0),
                     fontWeight: FontWeight.bold,
@@ -130,38 +130,41 @@ class _MyHomePageState extends State<fable1> {
                 itemBuilder: (context, index) {
                   final place = places[index];
                   return Card(
-                    color: const Color.fromARGB(255, 173, 252, 248), // สีพื้นหลังของ Card
+                    color: const Color.fromARGB(
+                        255, 173, 252, 248), // สีพื้นหลังของ Card
                     elevation: 2.0, // ความนูน
                     shape: RoundedRectangleBorder(
                       // ความโค้งของมุม
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Container(
-          height: 100, // เพิ่มความสูงของแต่ละ item
-                    child: ListTile(
-                      title: Row(
-                        children: [
-                          SizedBox(
-                            width: 50,
-                            height: 80,
-                            child: Image.asset(place['imagelist'],fit: BoxFit.fill,),
-                          
-                          ),
-                          SizedBox(
-                              width: 15), // เพิ่มระยะห่างระหว่างรูปภาพและข้อความ
-                          Text(place['name']),
-                          
-                        ],
+                      height: 100, // เพิ่มความสูงของแต่ละ item
+                      child: ListTile(
+                        title: Row(
+                          children: [
+                            SizedBox(
+                              width: 50,
+                              height: 80,
+                              child: Image.asset(
+                                place['imagelist'],
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                            SizedBox(
+                                width:
+                                    15), // เพิ่มระยะห่างระหว่างรูปภาพและข้อความ
+                            Text(place['name']),
+                          ],
+                        ),
+                        onTap: () {
+                          if (place.containsKey('route')) {
+                            // นำทางไปยังหน้าตามที่กำหนดใน route
+                            Navigator.pushNamed(context, place['route']!);
+                          }
+                          //เมื่อกดที่ listview แล้วให้ขึ้นรายละเอียดต่างหรือไปหน้าอื่น ๆ
+                        },
                       ),
-                      onTap: () {
-                        if (place.containsKey('route')) {
-                          // นำทางไปยังหน้าตามที่กำหนดใน route
-                          Navigator.pushNamed(context, place['route']!);
-                        }
-                        //เมื่อกดที่ listview แล้วให้ขึ้นรายละเอียดต่างหรือไปหน้าอื่น ๆ
-                      },
                     ),
-                  ),
                   );
                 },
               ),

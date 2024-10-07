@@ -17,7 +17,8 @@ class _FablePageState extends State<fable005> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
+  final String _storyTh =
+      'หมาตัวหนึ่งเดินคาบเนื้อวิ่งข้ามสะพานมา เมื่อถึงกลางสะพานก็ก้มมองลงไปในบ่อน้ำเบื้องล่าง เห็นหมาตัวหนึ่งกำลังคาบชิ้นเนื้อที่ใหญ่กว่า ซึ่งจริงๆ แล้วเป็นเงาของตัวเอง เจ้าหมาก็เกิดความละโมบ อ้าปากเห่ากระโชกเพื่อหวังจะแย่งชิ้นเนื้อในน้ำมาเป็นของตัวเอง ปรากฏว่าทันทีที่อ้าปาก เนื้อที่คาบอยู่ก็ร่วงหล่นลงน้ำ กว่าจะสำนึกได้ว่าหมากับก้อนเนื้อที่เห็นคือเงาของตัวเองในน้ำ ก็สายเกินไปแล้ว'; // Thai story
   final String _storyEn = 'Hi'; // English story
 
   final List<Map<String, String>> _quizOptions = [
@@ -28,7 +29,7 @@ class _FablePageState extends State<fable005> {
 
   void _submitComment() {
     String thankYouMessage = _storyLanguage == 'th'
-        ? 'ขอบคุณที่ตั้งใจฟัง'
+        ? 'คติสอนใจ : โลภมาก ลาภหาย'
         : 'Thank you for your attention';
     _showDialog(
         _storyLanguage == 'th' ? 'ขอบคุณ!' : 'Thank You!', thankYouMessage);
@@ -109,7 +110,8 @@ class _FablePageState extends State<fable005> {
   }
 
   Future<void> _playAudio() async {
-     await _audioPlayer.play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
+    await _audioPlayer
+        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
     await _audioPlayer.resume();
     _isPlaying = true;
   }
@@ -151,7 +153,7 @@ class _FablePageState extends State<fable005> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('สอนใจ 5'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('นิทานอีสป หมากับเงา'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
@@ -165,7 +167,7 @@ class _FablePageState extends State<fable005> {
           ),
         ],
       ),
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -182,7 +184,7 @@ class _FablePageState extends State<fable005> {
               ),
               SizedBox(height: 10),
               Text(
-                'สอนใจ 5',
+                'นิทานอีสป หมากับเงา',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -193,7 +195,7 @@ class _FablePageState extends State<fable005> {
               SizedBox(height: 20),
 
               // Control buttons
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(

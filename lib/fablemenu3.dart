@@ -34,33 +34,34 @@ class _MyHomePageState extends State<fable3> {
   void _intialstate() {
     setState(() {});
   }
-List<Map<String, dynamic>> places = [
+
+  List<Map<String, dynamic>> places = [
     {
-      'name': 'ก่อนนอน01',
-      'sound' : 'เสียงพากษ์ไทย/อังกฤษ',
+      'name': 'นิทานเงือกน้อยผจญภัย',
+      'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/logo.png',
       'route': '/fable001',
     },
     {
-      'name': 'ก่อนนอน02',
-      'sound' : 'เสียงพากษ์ไทย/อังกฤษ',
+      'name': 'นิทานเจ้าหญิงนิทรา',
+      'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/logo.png',
       'route': '/fable002',
     },
     {
-      'name': 'ก่อนนอน03',
+      'name': 'นิทานโฉมงามกับเจ้าชายอสูร',
       'imagelist': 'assets/logo.png',
       'route': '/fable003',
     },
     {
-      'name': 'ก่อนนอน04',
-      'sound' : 'เสียงพากษ์ไทย/อังกฤษ',
+      'name': 'นิทาน สโนว์ไวท์กับคนแคระทั้งเจ็ด',
+      'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/logo.png',
       'route': '/fable004',
     },
     {
-      'name': 'ก่อนนอน05',
-      'sound' : 'เสียงพากษ์ไทย/อังกฤษ',
+      'name': 'นิทาน นางฟ้ากับดวงดาว',
+      'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/logo.png',
       'route': '/fable005',
     },
@@ -69,7 +70,7 @@ List<Map<String, dynamic>> places = [
 //ส่วนออกแบบหนา้จอ
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -87,7 +88,7 @@ List<Map<String, dynamic>> places = [
                   ),
                 ),
               ),
-               SizedBox(height: 20),
+              SizedBox(height: 20),
               Align(
                 alignment: Alignment.centerLeft, // จัดข้อความชิดซ้าย
                 child: Padding(
@@ -110,7 +111,7 @@ List<Map<String, dynamic>> places = [
                   padding: EdgeInsets.symmetric(
                       horizontal: 16.0), // ปรับระยะห่างขอบซ้าย-ขวา
                   child: Text(
-                    'เป็นนิทานที่นำเรื่องเล่ายกมาเป็นตัวอย่าง และเป็นคติ สอนใจแก่ผู้ฟังนิทานอุทาหรณ์มักเป็นเรื่องที่เข้าใจกันว่าเป็นเรื่องสมมุติที่เกิดขึ้น',
+                    'นิทานก่อนนอน เป็นรูปแบบการเล่านิทาน แบบดั้งเดิม โดยเล่านิทานให้เด็กฟังก่อนนอนเพื่อเตรียมเด็กให้พร้อมสำหรับการนอนหลับ นิทานก่อนนอนถือเป็น "ประเพณีที่สืบทอดกันมายาวนานในหลายครอบครัว" มีประโยชน์มากมายสำหรับทั้งพ่อแม่และลูก การเล่านิทานก่อนนอนเป็นประจำทุกวันจะช่วยพัฒนาสมองการเรียนรู้ภาษาและทักษะการแก้ปัญหา ของเด็กได้',
                     style: TextStyle(
                       color: const Color.fromARGB(255, 0, 0, 0),
                       fontWeight: FontWeight.bold,
@@ -120,50 +121,53 @@ List<Map<String, dynamic>> places = [
                 ),
               ),
               SizedBox(height: 20),
-            // ใส่ ListView.builder ตรงนี้
-            SizedBox(
-              height: 550, // กำหนดความสูงให้กับ ListView เพื่อไม่ให้บีบตัว
-              child: ListView.builder(
-                itemCount: places.length,
-                itemBuilder: (context, index) {
-                  final place = places[index];
-                  return Card(
-                    color: const Color.fromARGB(255, 173, 252, 248), // สีพื้นหลังของ Card
-                    elevation: 2.0, // ความนูน
-                    shape: RoundedRectangleBorder(
-                      // ความโค้งของมุม
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Container(
-          height: 100, // เพิ่มความสูงของแต่ละ item
-                    child: ListTile(
-                      title: Row(
-                        children: [
-                          SizedBox(
-                            width: 50,
-                            height: 80,
-                            child: Image.asset(place['imagelist'],fit: BoxFit.fill,),
-                          
-                          ),
-                          SizedBox(
-                              width: 15), // เพิ่มระยะห่างระหว่างรูปภาพและข้อความ
-                          Text(place['name']),
-                          
-                        ],
+              // ใส่ ListView.builder ตรงนี้
+              SizedBox(
+                height: 550, // กำหนดความสูงให้กับ ListView เพื่อไม่ให้บีบตัว
+                child: ListView.builder(
+                  itemCount: places.length,
+                  itemBuilder: (context, index) {
+                    final place = places[index];
+                    return Card(
+                      color: const Color.fromARGB(
+                          255, 173, 252, 248), // สีพื้นหลังของ Card
+                      elevation: 2.0, // ความนูน
+                      shape: RoundedRectangleBorder(
+                        // ความโค้งของมุม
+                        borderRadius: BorderRadius.circular(5),
                       ),
-                      onTap: () {
-                        if (place.containsKey('route')) {
-                          // นำทางไปยังหน้าตามที่กำหนดใน route
-                          Navigator.pushNamed(context, place['route']!);
-                        }
-                        //เมื่อกดที่ listview แล้วให้ขึ้นรายละเอียดต่างหรือไปหน้าอื่น ๆ
-                      },
-                    ),
-                  ),
-                  );
-                },
+                      child: Container(
+                        height: 100, // เพิ่มความสูงของแต่ละ item
+                        child: ListTile(
+                          title: Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                height: 80,
+                                child: Image.asset(
+                                  place['imagelist'],
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                              SizedBox(
+                                  width:
+                                      15), // เพิ่มระยะห่างระหว่างรูปภาพและข้อความ
+                              Text(place['name']),
+                            ],
+                          ),
+                          onTap: () {
+                            if (place.containsKey('route')) {
+                              // นำทางไปยังหน้าตามที่กำหนดใน route
+                              Navigator.pushNamed(context, place['route']!);
+                            }
+                            //เมื่อกดที่ listview แล้วให้ขึ้นรายละเอียดต่างหรือไปหน้าอื่น ๆ
+                          },
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
             ]),
       ),
     );

@@ -17,7 +17,8 @@ class _FablePageState extends State<fable05> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
+  final String _storyTh =
+      'ลูกชายที่ออกไปทำนาวันหนึ่งเขาออกไปทำนาตั้งแต่เช้ามืด   รออยู่จนสายไม่เห็นแม่นำข้าวมาส่งทำให้เขารู้สึกหงุดหงิดเพราะหิวจนแสบท้อง แม่เห็นแม่ถือกล่องข้าวเดินมาแต่ไกล ก็รีบลุกตรงเข้าไปต่อว่าทันที ด้วยความหิวจึงทำให้ลืมตัวว่าคนที่ต่อว่าอยู่นั่นคือแม่ตัวเอง และไม่สนใจเหตุผลที่แม่อธิบาย และทำร้ายแม่เพราะมองเห็นว่าข้าวที่แม่นำมาให้ในกล่องนั่นน้อยนิดเดียว และรีบเปิดกล่องข้าวกินอย่างหิวโหย  เมื่อกินอิ่มแล้วจึงรู้ว่าข้าวในกล่องยังเหลืออีกตั้งมาก และมองเห็นแม่ที่นอนแน่นิ่ง ปรากฏว่าแม่ได้สิ้นใจด้วยน้ำมือลูกไปแล้ว ชายหนุ่มจึงสำนึกตัวได้ว่าตนเองทำรุนแรงกับแม่ กอดศพแม่ร้องไห้รำพัน และได้สร้างพระธาตุเจดีย์ขึ้นมากลางท้องนาเป็นรูปลักษณะคล้ายกล่องข้าว เพื่ออุทิศส่วนกุศลและใส่กระดูกของแม่ ทุกวันนี้ธาตุกล่องข้าวน้อยฆ่าแม่ได้ตั้งอยู่ที่จังหวัดยโสธรนั่นเอง'; // Thai story
   final String _storyEn = 'Hi'; // English story
 
   final List<Map<String, String>> _quizOptions = [
@@ -109,7 +110,8 @@ class _FablePageState extends State<fable05> {
   }
 
   Future<void> _playAudio() async {
-     await _audioPlayer.play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
+    await _audioPlayer
+        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
     await _audioPlayer.resume();
     _isPlaying = true;
   }
@@ -151,7 +153,8 @@ class _FablePageState extends State<fable05> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('พื้นบ้าน 5'), // แสดงชื่อเรื่องแทนโลโก้
+        title:
+            Text('นิทานเรื่อง กล่องข้าวน้อยฆ่าแม่'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
@@ -165,7 +168,7 @@ class _FablePageState extends State<fable05> {
           ),
         ],
       ),
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -182,7 +185,7 @@ class _FablePageState extends State<fable05> {
               ),
               SizedBox(height: 10),
               Text(
-                'พื้นบ้าน 5',
+                'นิทานเรื่อง กล่องข้าวน้อยฆ่าแม่',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -193,7 +196,7 @@ class _FablePageState extends State<fable05> {
               SizedBox(height: 20),
 
               // Control buttons
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(

@@ -17,7 +17,8 @@ class _FablePageState extends State<fable03> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
+  final String _storyTh =
+      'พญาแถนเป็นผู้ควบคุมฟ้า คอยปัดเป่าทุกข์บำรุงสุขชาวบ้านอยู่เสมอ จึงเป็นที่สักการะนับถือของชาวบ้านอย่างมาก อีกทั้งยังเป็นผู้เปิดประตูให้เหล่าพญานาคมาเล่นน้ำ ทำให้เกิดฝนตกในเมืองมนุษย์ ส่วนพญาคันคากนั้นเมื่อแรกเกิดมีผิวบนร่างกายตะปุ่มตะป่ำเหมือนคางคก แต่เมื่อโตขึ้นก็ได้กลายเป็นเจ้าชายหนุ่มรูปงามและปุ่มตามตัวก็หาไป และได้ปกครองบ้านเมืองด้วยทศพิศราชธรรม บ้านเมืองมีความสุข แต่ทั้งสองกลับมาต่อสู้กันด้วยอิทธิฤทธิ์ต่าง ๆ เนื่องจากพญาแถนไม่ทำให้ฝนไม่ตกถึง 7 ปี และในที่สุดพญาแถนเป็นฝ่ายพ่ายแพ้ จึงมีการทำข้อตกลงร่วมกัน โดยพญาคันคากได้ขอร้องให้พญาแถนช่วยเปิดปล่องน้ำเพื่อให้พญานาคมาเล่นน้ำเพื่อฝนจะได้ตก โดยทำข้อตกลงในการเปิดปิดปล่องเป็นเวลาเพื่อไม่ให้น้ำไหลมากไป โดยให้สัญญานเป็นการจุดบั้งไฟขึ้นมาในเเดือน 6 ซึ่งเป็นฤดูทำนา เมื่อฝนตกลงมากบก็จะร้องระงม และเมื่อน้ำมากพอก็จะแกว่งโหวดเพื่อให้ฝนหยุด นิทานเรื่องนี้จึงเป็นตำนานของประเพณีบุญบั้งไฟเพื่อขอฝนเพื่อเป็นการสักการะบูชาถึงพญาแถน.'; // Thai story
   final String _storyEn = 'Hi'; // English story
 
   final List<Map<String, String>> _quizOptions = [
@@ -109,7 +110,8 @@ class _FablePageState extends State<fable03> {
   }
 
   Future<void> _playAudio() async {
-     await _audioPlayer.play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
+    await _audioPlayer
+        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
     await _audioPlayer.resume();
     _isPlaying = true;
   }
@@ -151,7 +153,7 @@ class _FablePageState extends State<fable03> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('พื้นบ้าน 3'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('นิทานเรื่องพญาคันคาก'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
@@ -165,7 +167,7 @@ class _FablePageState extends State<fable03> {
           ),
         ],
       ),
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -182,7 +184,7 @@ class _FablePageState extends State<fable03> {
               ),
               SizedBox(height: 10),
               Text(
-                'พื้นบ้าน 3',
+                'นิทานเรื่องพญาคันคาก',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -193,7 +195,7 @@ class _FablePageState extends State<fable03> {
               SizedBox(height: 20),
 
               // Control buttons
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(

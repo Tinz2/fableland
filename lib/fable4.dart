@@ -17,7 +17,8 @@ class _FablePageState extends State<fable04> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
+  final String _storyTh =
+      'ตำนานของเกาะหนู เกาะแมว สถานที่ท่องเที่ยวสำคัญของจังหวัดสงขลา ที่เล่าว่า..เมื่อนานมาแล้วยังไม่มีเกาะหนูเกาะแมวเกิดขึ้นนั้น ที่นี่เคยเป็นเมืองท่าสำคัญที่มีการค้าขายมากมาย และพ่อค้าชาวจีนก็ได้นำหมาและแมวคู่หนึ่งขึ้นเรือสำเภามาด้วย พวกมันทั้งคู่ต่างก็อยากกลับบ้าน จนได้ค้นพบความลับว่ามีลูกแก้ววิเศษที่ทำให้ไม่จมน้ำ และให้เจ้าหนูไปขโมยลูกแก้ววิเศษนั้นมา แต่ทว่าเจ้าหนูกลับนำลูกแก้ววิเศษหนีลงทะเลซะเอง การไล่ล่าของเจ้าแมวและหนูกลางทะเลจึงเริ่มต้นขึ้น ส่วนเจ้าหมาตัดสินใจที่จะว่ายไปฝั่งข้างหน้า ในที่สุดเรี่ยวแรงจากการล่าและหนีก็ทำให้พวกมันจมลงสู่ทะเล และได้เกิดความมหัศจรรย์แห่งท้องทะเลขึ้น คือได้เกิดเกาะหนูซึ่งมีลักษณะเหมือนหนู และเกาะแมวที่มีลักษณะเหมือนแมว ส่วนเจ้าหมาขาดใจตายเมื่อว่ายถึงฝังกลายเป็นกลายเป็นเป็นเขาตังกวน และลูกแก้ววิเศษแตกละเอียดและถูกคลื่นซัดกลายเป็นหาดแก้วที่สวยงามในปัจจุบัน.'; // Thai story
   final String _storyEn = 'Hi'; // English story
 
   final List<Map<String, String>> _quizOptions = [
@@ -109,7 +110,8 @@ class _FablePageState extends State<fable04> {
   }
 
   Future<void> _playAudio() async {
-     await _audioPlayer.play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
+    await _audioPlayer
+        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
     await _audioPlayer.resume();
     _isPlaying = true;
   }
@@ -151,7 +153,7 @@ class _FablePageState extends State<fable04> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('พื้นบ้าน 4'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('นิทานเรื่อง เกาะหนู เกาะแมว'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
@@ -165,7 +167,7 @@ class _FablePageState extends State<fable04> {
           ),
         ],
       ),
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -182,7 +184,7 @@ class _FablePageState extends State<fable04> {
               ),
               SizedBox(height: 10),
               Text(
-                'พื้นบ้าน 4',
+                'นิทานเรื่อง เกาะหนู เกาะแมว',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -193,7 +195,7 @@ class _FablePageState extends State<fable04> {
               SizedBox(height: 20),
 
               // Control buttons
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(

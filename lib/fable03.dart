@@ -17,7 +17,8 @@ class _FablePageState extends State<fable003> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
+  final String _storyTh =
+      'แม่หมูมีลูกน้อย 3 ตัว และได้ปล่อยให้ลูกๆ ได้ออกเดินทางไปเผชิญโลกภายนอกด้วยตัวเอง ลูกหมูตัวที่ 1 ผู้เกียจคร้านได้ออกไปสร้างบ้านที่ทำจากฟาง เพราะทำได้ง่ายและเร็วที่สุด แต่วันหนึ่งหมาป่าจ้องจะมากินลูกหมูตัวที่ 1 ซึ่งบ้านไม่มีความแข็งแรง ทำให้ลูกหมูต้องวิ่งหนีสุดชีวิตไปหลบที่บ้านของลูกหมูตัวที่ 2 ที่สร้างจากไม้ แม้จะมีความแข็งแรงกว่า แต่ก็ไม่สามารถต้านทานหมาป่าได้อีกเช่นกัน ลูกหมูทั้ง 2 ตัว จึงรีบวิ่งหนีออกไปยังบ้านของลูกหมูตัวที่ 3 ซึ่งสร้างด้วยอิฐ เมื่อหมาป่าตามมา ก็ไม่สามารถทำลายบ้านอิฐได้ ลูกหมูทั้ง 3 ตัวจึงรอดชีวิต'; // Thai story
   final String _storyEn = 'Hi'; // English story
 
   final List<Map<String, String>> _quizOptions = [
@@ -28,7 +29,7 @@ class _FablePageState extends State<fable003> {
 
   void _submitComment() {
     String thankYouMessage = _storyLanguage == 'th'
-        ? 'ขอบคุณที่ตั้งใจฟัง'
+        ? 'คติสอนใจ : ความเกียจคร้านแม้จะทำให้เราสบาย แต่ก็อาจนำทุกข์ภัยมาสู่ตนได้'
         : 'Thank you for your attention';
     _showDialog(
         _storyLanguage == 'th' ? 'ขอบคุณ!' : 'Thank You!', thankYouMessage);
@@ -109,7 +110,8 @@ class _FablePageState extends State<fable003> {
   }
 
   Future<void> _playAudio() async {
-     await _audioPlayer.play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
+    await _audioPlayer
+        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
     await _audioPlayer.resume();
     _isPlaying = true;
   }
@@ -151,7 +153,7 @@ class _FablePageState extends State<fable003> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('สอนใจ 3'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('นิทานอีสป ลูกหมูสามตัว'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
@@ -165,7 +167,7 @@ class _FablePageState extends State<fable003> {
           ),
         ],
       ),
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -182,7 +184,7 @@ class _FablePageState extends State<fable003> {
               ),
               SizedBox(height: 10),
               Text(
-                'สอนใจ 3',
+                'นิทานอีสป ลูกหมูสามตัว',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -193,7 +195,7 @@ class _FablePageState extends State<fable003> {
               SizedBox(height: 20),
 
               // Control buttons
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(

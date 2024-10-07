@@ -19,7 +19,8 @@ class _FablePageState extends State<fable01> {
 
   final String _storyTh =
       'ในแม่น้ำสายหนึ่งมีจระเข้ชุกชุมถึงสามสายพันธุ์ด้วยกัน จึงทำให้ไม่มีใครกล้ามาจับปลา มีเพียงตาอยู่คนเดียวเท่านั้นที่คลุกคลีกับจระเข้และจับปลามาขายได้ เมื่อชาวบ้านเดือดร้อนที่ใช้แม่น้ำหล่อเลี้ยงชีวิตไม่ได้ เรื่องนี้จึงร้อนถึงหูพระราชา ตาอยู่จึงได้บอกกับพระราชาไปว่า ได้เลี้ยงจระเข้ตัวหนึ่งตั้งแต่ยังเล็กมันจึงไม่ทำร้าย ส่วนจระเข้ตัวอื่นถ้ามันกินอิ่มมันก็จะไม่ทำร้ายคนพระราชาจึงได้มีพระราชโองการสั่งให้เสมียนไปนับจำนวนจระเข้เพื่อที่จะได้นำอาหารไปเลี้ยงพวกมันได้อย่างทั่วถึง เสมียนทั้งสามคนก็พยายามนับจระเข้ที่อยู่ทั้งบนบกและในน้ำ สุดท้ายก็นับจระเข้ได้คนละหนึ่งพันตัว รวมทั้งหมดมีจระเข้ถึงสามพันตัว และพระราชาก็ได้สั่งให้เลี้ยงอาหารจระเข้จนอิ่มและไม่ออกมาทำร้ายชาวบ้าน และหากินในแม่น้ำแห่งนี้ได้อย่างมีความสุข นิทานเรื่องนี้เป็นตำนานหรือนิทานพื้นบ้านของจังหวัดสุพรรณบุรี จนกลายมาเป็นชื่อตำบลจระเข้สามพันจนถึงทุกวันนี้'; // เนื้อหาThai story
-  final String _storyEn = 'Hi'; // English story
+  final String _storyEn =
+      'In a river, there lived a thriving population of crocodiles from three different species, making it dangerous for anyone to fish there. However, one man named Ta U was brave enough to interact with the crocodiles and catch fish to sell. When the villagers were troubled because they could not rely on the river for their livelihood, news of their plight reached the king.Ta U told the king that he had raised one crocodile from a young age, and it wouldn’t harm him. He explained that the other crocodiles would also refrain from attacking people if they were well-fed. The king then commanded his officials to count the crocodiles so that they could provide enough food for them.Three officials set out to count the crocodiles, both on land and in the water. They each counted one thousand, making a total of three thousand crocodiles. The king ordered that food be provided for the crocodiles until they were full, ensuring they wouldn’t harm the villagers. This allowed the crocodiles to live happily in the river, and the villagers could return to their lives without fear.This tale is a legend from Suphanburi province, which eventually led to the naming of a place called "Sam Phan Crocodile," meaning "three thousand crocodiles," which continues to be used to this day.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
     //คถาม
@@ -113,7 +114,7 @@ class _FablePageState extends State<fable01> {
 
   Future<void> _playAudio() async {
     await _audioPlayer
-        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
+        .play(AssetSource('sound/1.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
     await _audioPlayer.resume();
     _isPlaying = true;
   }

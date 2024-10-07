@@ -22,6 +22,7 @@ import 'fable02.dart';
 import 'fable03.dart';
 import 'fable04.dart';
 import 'fable05.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -83,7 +84,7 @@ class _WaitScreenState extends State<WaitScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -17,7 +17,8 @@ class _FablePageState extends State<fable001> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
+  final String _storyTh =
+      'กระต่ายหลงตัวเอง ชอบโอ้อวดว่าวิ่งเร็วกว่าใครๆ เมื่อเห็นเต่าเดินต้วมเตี้ยมมาก็หัวเราะเยาะ พร้อมกับพูดจาถากถางว่าต่อให้เต่าวิ่งนำหน้าไปก่อน กระต่ายก็สามารถก็แซงหน้าได้อยู่ดี ทำให้เต่าเกิดความไม่พอใจ จึงท้ากระต่ายวิ่งแข่งกัน กระต่ายเริ่มวิ่งนำหน้าเต่าไปไกล แต่เมื่อไปถึงครึ่งทาง ก็เกิดความชะล่าใจ หยุดพักเอนกายนอนใต้ต้นไม้ใหญ่จนเผลอหลับไป ในขณะที่เต่ายังคงเดินต่อไปเรื่อยๆ อย่างไม่ลดละ เมื่อกระต่ายตื่นนอนขึ้นมาก็ตกใจ รีบลนลานวิ่งไปยังเส้นชัย ทว่าเต่าไปถึงเส้นชัยก่อนแล้ว'; // Thai story
   final String _storyEn = 'Hi'; // English story
 
   final List<Map<String, String>> _quizOptions = [
@@ -28,7 +29,7 @@ class _FablePageState extends State<fable001> {
 
   void _submitComment() {
     String thankYouMessage = _storyLanguage == 'th'
-        ? 'ขอบคุณที่ตั้งใจฟัง'
+        ? 'คติสอนใจ : ความประมาทเป็นต้นเหตุของความพ่ายแพ้ แม้คู่ต่อสู้จะอ่อนด้อยกว่าก็ตาม'
         : 'Thank you for your attention';
     _showDialog(
         _storyLanguage == 'th' ? 'ขอบคุณ!' : 'Thank You!', thankYouMessage);
@@ -109,7 +110,8 @@ class _FablePageState extends State<fable001> {
   }
 
   Future<void> _playAudio() async {
-     await _audioPlayer.play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
+    await _audioPlayer
+        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
     await _audioPlayer.resume();
     _isPlaying = true;
   }
@@ -151,7 +153,7 @@ class _FablePageState extends State<fable001> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('สอนใจ 1'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('นิทานอีสป กระต่ายกับเต่า'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
@@ -165,7 +167,7 @@ class _FablePageState extends State<fable001> {
           ),
         ],
       ),
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -182,7 +184,7 @@ class _FablePageState extends State<fable001> {
               ),
               SizedBox(height: 10),
               Text(
-                'สอนใจ 1',
+                'นิทานอีสป กระต่ายกับเต่า',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,

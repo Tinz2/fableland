@@ -34,33 +34,34 @@ class _MyHomePageState extends State<fable2> {
   void _intialstate() {
     setState(() {});
   }
-List<Map<String, dynamic>> places = [
+
+  List<Map<String, dynamic>> places = [
     {
-      'name': 'สอนใจ01',
-      'sound' : 'เสียงพากษ์ไทย/อังกฤษ',
+      'name': 'นิทานอีสป กระต่ายกับเต่า',
+      'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/logo.png',
       'route': '/fable01',
     },
     {
-      'name': 'สอนใจ02',
-      'sound' : 'เสียงพากษ์ไทย/อังกฤษ',
+      'name': 'นิทานอีสป ราชสีห์กับหนู',
+      'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/logo.png',
       'route': '/fable02',
     },
     {
-      'name': 'สอนใจ03',
+      'name': 'นิทานอีสป ลูกหมูสามตัว',
       'imagelist': 'assets/logo.png',
       'route': '/fable03',
     },
     {
-      'name': 'สอนใจ04',
-      'sound' : 'เสียงพากษ์ไทย/อังกฤษ',
+      'name': 'นิทานอีสป หมาจิ้งจอกตกบ่อ',
+      'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/logo.png',
       'route': '/fable04',
     },
     {
-      'name': 'สอนใจ05',
-      'sound' : 'เสียงพากษ์ไทย/อังกฤษ',
+      'name': 'นิทานอีสป หมากับเงา',
+      'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/logo.png',
       'route': '/fable05',
     },
@@ -69,7 +70,7 @@ List<Map<String, dynamic>> places = [
 //ส่วนออกแบบหนา้จอ
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -87,14 +88,14 @@ List<Map<String, dynamic>> places = [
                   ),
                 ),
               ),
-               SizedBox(height: 20),
+              SizedBox(height: 20),
               Align(
                 alignment: Alignment.centerLeft, // จัดข้อความชิดซ้าย
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: 16.0), // ปรับระยะห่างขอบซ้าย-ขวา
                   child: Text(
-                    'นิทานคติสอนใจ',
+                    'นิทานอีสปคติสอนใจ',
                     style: TextStyle(
                       color: const Color.fromARGB(255, 0, 0, 0),
                       fontWeight: FontWeight.bold,
@@ -110,7 +111,7 @@ List<Map<String, dynamic>> places = [
                   padding: EdgeInsets.symmetric(
                       horizontal: 16.0), // ปรับระยะห่างขอบซ้าย-ขวา
                   child: Text(
-                    'เป็นนิทานที่กล่าวถึงคุณธรรม ความสามารถ ฉลาดเฉลียว ความกล้าหาญของบุคคล ส่วนมากเป็นวีรบุรุษของชาติหรือบ้านเมือง',
+                    'นิทานคติสอนใจ มักเป็นเรื่องที่มีขนาดไม่ยาวนัก การดำเนินเรื่องก็ไม่ซับซ้อน ตัวละครอาจเป็นคนหรือสัตว์ก็ได้ เรื่องหนึ่งๆ อาจมีตัวละครประมาณ ๒ - ๔ คน  แนวคิดที่ปรากฏในนิทานประเภทนี้คือ คุณค่าของจริยธรรม และผลแห่งกรรมชี้ให้เห็นว่า การประกอบกรรมดีย่อมได้ดี และการประกอบกรรมชั่วย่อมได้ชั่ว',
                     style: TextStyle(
                       color: const Color.fromARGB(255, 0, 0, 0),
                       fontWeight: FontWeight.bold,
@@ -120,50 +121,53 @@ List<Map<String, dynamic>> places = [
                 ),
               ),
               SizedBox(height: 20),
-            // ใส่ ListView.builder ตรงนี้
-            SizedBox(
-              height: 550, // กำหนดความสูงให้กับ ListView เพื่อไม่ให้บีบตัว
-              child: ListView.builder(
-                itemCount: places.length,
-                itemBuilder: (context, index) {
-                  final place = places[index];
-                  return Card(
-                    color: const Color.fromARGB(255, 173, 252, 248), // สีพื้นหลังของ Card
-                    elevation: 2.0, // ความนูน
-                    shape: RoundedRectangleBorder(
-                      // ความโค้งของมุม
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Container(
-          height: 100, // เพิ่มความสูงของแต่ละ item
-                    child: ListTile(
-                      title: Row(
-                        children: [
-                          SizedBox(
-                            width: 50,
-                            height: 80,
-                            child: Image.asset(place['imagelist'],fit: BoxFit.fill,),
-                          
-                          ),
-                          SizedBox(
-                              width: 15), // เพิ่มระยะห่างระหว่างรูปภาพและข้อความ
-                          Text(place['name']),
-                          
-                        ],
+              // ใส่ ListView.builder ตรงนี้
+              SizedBox(
+                height: 550, // กำหนดความสูงให้กับ ListView เพื่อไม่ให้บีบตัว
+                child: ListView.builder(
+                  itemCount: places.length,
+                  itemBuilder: (context, index) {
+                    final place = places[index];
+                    return Card(
+                      color: const Color.fromARGB(
+                          255, 173, 252, 248), // สีพื้นหลังของ Card
+                      elevation: 2.0, // ความนูน
+                      shape: RoundedRectangleBorder(
+                        // ความโค้งของมุม
+                        borderRadius: BorderRadius.circular(5),
                       ),
-                      onTap: () {
-                        if (place.containsKey('route')) {
-                          // นำทางไปยังหน้าตามที่กำหนดใน route
-                          Navigator.pushNamed(context, place['route']!);
-                        }
-                        //เมื่อกดที่ listview แล้วให้ขึ้นรายละเอียดต่างหรือไปหน้าอื่น ๆ
-                      },
-                    ),
-                  ),
-                  );
-                },
+                      child: Container(
+                        height: 100, // เพิ่มความสูงของแต่ละ item
+                        child: ListTile(
+                          title: Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                height: 80,
+                                child: Image.asset(
+                                  place['imagelist'],
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                              SizedBox(
+                                  width:
+                                      15), // เพิ่มระยะห่างระหว่างรูปภาพและข้อความ
+                              Text(place['name']),
+                            ],
+                          ),
+                          onTap: () {
+                            if (place.containsKey('route')) {
+                              // นำทางไปยังหน้าตามที่กำหนดใน route
+                              Navigator.pushNamed(context, place['route']!);
+                            }
+                            //เมื่อกดที่ listview แล้วให้ขึ้นรายละเอียดต่างหรือไปหน้าอื่น ๆ
+                          },
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
             ]),
       ),
     );
