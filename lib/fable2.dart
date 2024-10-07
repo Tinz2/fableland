@@ -17,7 +17,8 @@ class _FablePageState extends State<fable02> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
+  final String _storyTh =
+      'มีชายสองคนที่มีฐานะต่างกัน ทั้งสองได้เป็นเพื่อนกัน ชายคนแรกมีฐานะร่ำรวย แต่อาศัยอยู่ตามลำพัง ไม่มีญาติพี่น้อง ส่วนชายคนที่สองมีครอบครัวที่อยู่อย่างมีความสุขแต่มีฐานะยากจน ชายคนแรกได้บอกว่า ถึงแม้จะอยู่คนเดียว แต่ก็ไม่คิดอิจฉา ด้วยความที่มีทรัพย์สินเงินทองให้ใช้มากมาย ส่วนชายคนที่สองก็บอกว่า ไม่เคยคิดอิจฉาเช่นกัน เพราะมีครอบครัวที่ดี มีลูกคอยดูแล ชายทั้งสองต่างก็พยายามพูดให้อิจฉาในชีวิตในแบบของตนโดยไม่มีใครยอมใคร ในที่สุดชายคนที่สองจึงออกความเห็นให้ต่างฝ่ายต่างมากินข้าวที่บ้านของแต่ละคน เมื่อชายคนที่สองได้ไปกินข้าวที่บ้านชายคนแรกก็พบว่าบ้านของชายคนแรกมีของใช้ของกินมากมาย แต่กลับต้องเหนื่อยเพิ่มขึ้นที่จะต้องทำอะไรคนเดียว และเมื่อชายคนแรกไปกินข้าวที่บ้านของชายคนที่สองก็พบว่า เขาไม่ต้องทำอะไรเลย เพราะมีลูก ๆ คอยช่วยเหลืองานบ้านต่าง ๆ และกินข้าวกันอย่างพร้อมหน้าพร้อมตา'; // Thai story
   final String _storyEn = 'Hi'; // English story
 
   final List<Map<String, String>> _quizOptions = [
@@ -109,7 +110,8 @@ class _FablePageState extends State<fable02> {
   }
 
   Future<void> _playAudio() async {
-     await _audioPlayer.play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
+    await _audioPlayer
+        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
     await _audioPlayer.resume();
     _isPlaying = true;
   }
@@ -151,7 +153,7 @@ class _FablePageState extends State<fable02> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('พื้นบ้าน 2'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('นิทานเรื่องเศรษฐีกับยาจก'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
@@ -165,7 +167,7 @@ class _FablePageState extends State<fable02> {
           ),
         ],
       ),
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -182,7 +184,7 @@ class _FablePageState extends State<fable02> {
               ),
               SizedBox(height: 10),
               Text(
-                'พื้นบ้าน2 2',
+                'นิทานเรื่องเศรษฐีกับยาจก',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -193,7 +195,7 @@ class _FablePageState extends State<fable02> {
               SizedBox(height: 20),
 
               // Control buttons
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
