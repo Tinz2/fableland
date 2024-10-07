@@ -109,7 +109,8 @@ class _FablePageState extends State<fable0003> {
   }
 
   Future<void> _playAudio() async {
-     await _audioPlayer.play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
+    await _audioPlayer
+        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
     await _audioPlayer.resume();
     _isPlaying = true;
   }
@@ -165,7 +166,7 @@ class _FablePageState extends State<fable0003> {
           ),
         ],
       ),
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -182,7 +183,7 @@ class _FablePageState extends State<fable0003> {
               ),
               SizedBox(height: 10),
               Text(
-                'ก่อนนอน 3',
+                'นิทานโฉมงามกับเจ้าชายอสูร',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -193,7 +194,7 @@ class _FablePageState extends State<fable0003> {
               SizedBox(height: 20),
 
               // Control buttons
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
