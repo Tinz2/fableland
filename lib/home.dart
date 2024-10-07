@@ -11,23 +11,23 @@ class _HomePageState extends State<home> {
   // Array สำหรับเก็บข้อมูลของ item
   final List<Map<String, String>> items = [
     {
-      'text': 'Takumi',
-      'image': 'assets/h1.jpg',
+      'text': 'นิทานเรื่องจระเข้สามพัน',
+      'image': 'assets/photo/1.jpg',
       'route': '/fable1', // ลิงก์ไปที่ fable01()
     },
     {
-      'text': 'Bunta Fujiwara',
-      'image': 'assets/h1.jpg',
+      'text': 'นิทานเรื่องเศรษฐีกับยาจก',
+      'image': 'assets/photo/2.jpg',
       'route': '/fable2',
     },
     {
-      'text': 'Keisuke Takahashi',
-      'image': 'assets/h1.jpg',
+      'text': 'นิทานเรื่องพญาคันคาก',
+      'image': 'assets/photo/3.jpg',
       'route': '/fable3',
     },
     {
-      'text': 'Ryousuke Takahashi',
-      'image': 'assets/h1.jpg',
+      'text': 'นิทานอีสป หมาจิ้งจอกตกบ่อ',
+      'image': 'assets/photo/9.jpg',
       'route': '/fable4',
     },
   ];
@@ -107,37 +107,41 @@ class _HomePageState extends State<home> {
                     },
                     child: Card(
                       elevation: 5,
-                       shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
-            ),
-            color: const Color.fromARGB(255, 173, 252, 248), // สีพื้นหลังของการ์ด
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16), // ตัดมุมรูปภาพให้เป็นมุมมน
-                     
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            item['image']!, // แสดงรูปภาพจาก assets
-                            height: 100,
-                            width: 200,
-                            fit: BoxFit.fill,
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            item['text']!, // แสดงข้อความ
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ],
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
                       ),
-            ),
+                      color: const Color.fromARGB(
+                          255, 173, 252, 248), // สีพื้นหลังของการ์ด
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                            16), // ตัดมุมรูปภาพให้เป็นมุมมน
+
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              item['image']!, // แสดงรูปภาพจาก assets
+                              height: 100,
+                              width: 200,
+                              fit: BoxFit.fill,
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              item['text']!, // แสดงข้อความ
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   );
                 },
               ),
             ),
-             Padding(
-              padding: const EdgeInsets.only(top: 15.0, bottom: 8.0), // ปรับ padding
+            Padding(
+              padding:
+                  const EdgeInsets.only(top: 15.0, bottom: 8.0), // ปรับ padding
               child: Text(
                 'คำแนะนำเพิ่มเติม',
                 style: TextStyle(
@@ -148,7 +152,7 @@ class _HomePageState extends State<home> {
                 textAlign: TextAlign.center,
               ),
             ),
-           SizedBox(
+            SizedBox(
               height: 400, // ปรับความสูงของ GridView ที่สองให้เท่ากับอันแรก
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -176,27 +180,28 @@ class _HomePageState extends State<home> {
                       child: Card(
                         color: const Color.fromARGB(255, 255, 255, 255),
                         elevation: 5,
-                         shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
-            ),
-           
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16), // ตัดมุมรูปภาพให้เป็นมุมมน
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Image.asset(
-                              item['image']!,
-                              height: 175,
-                              width: 175,
-                              fit: BoxFit.fill,
-                            ),
-                          ],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              16), // กำหนดมุมมนให้กับ Card
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(
+                              16), // ตัดมุมรูปภาพให้เป็นมุมมน
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Image.asset(
+                                item['image']!,
+                                height: 175,
+                                width: 175,
+                                fit: BoxFit.fill,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
                   );
                 },
               ),
