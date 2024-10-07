@@ -17,10 +17,12 @@ class _FablePageState extends State<fable01> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
+  final String _storyTh =
+      'ในแม่น้ำสายหนึ่งมีจระเข้ชุกชุมถึงสามสายพันธุ์ด้วยกัน จึงทำให้ไม่มีใครกล้ามาจับปลา มีเพียงตาอยู่คนเดียวเท่านั้นที่คลุกคลีกับจระเข้และจับปลามาขายได้ เมื่อชาวบ้านเดือดร้อนที่ใช้แม่น้ำหล่อเลี้ยงชีวิตไม่ได้ เรื่องนี้จึงร้อนถึงหูพระราชา ตาอยู่จึงได้บอกกับพระราชาไปว่า ได้เลี้ยงจระเข้ตัวหนึ่งตั้งแต่ยังเล็กมันจึงไม่ทำร้าย ส่วนจระเข้ตัวอื่นถ้ามันกินอิ่มมันก็จะไม่ทำร้ายคนพระราชาจึงได้มีพระราชโองการสั่งให้เสมียนไปนับจำนวนจระเข้เพื่อที่จะได้นำอาหารไปเลี้ยงพวกมันได้อย่างทั่วถึง เสมียนทั้งสามคนก็พยายามนับจระเข้ที่อยู่ทั้งบนบกและในน้ำ สุดท้ายก็นับจระเข้ได้คนละหนึ่งพันตัว รวมทั้งหมดมีจระเข้ถึงสามพันตัว และพระราชาก็ได้สั่งให้เลี้ยงอาหารจระเข้จนอิ่มและไม่ออกมาทำร้ายชาวบ้าน และหากินในแม่น้ำแห่งนี้ได้อย่างมีความสุข นิทานเรื่องนี้เป็นตำนานหรือนิทานพื้นบ้านของจังหวัดสุพรรณบุรี จนกลายมาเป็นชื่อตำบลจระเข้สามพันจนถึงทุกวันนี้'; // เนื้อหาThai story
   final String _storyEn = 'Hi'; // English story
 
   final List<Map<String, String>> _quizOptions = [
+    //คถาม
     {'value': 'cat', 'label': 'แมว'},
     {'value': 'dog', 'label': 'หมา'},
     {'value': 'mouse', 'label': 'หนู'},
@@ -35,6 +37,7 @@ class _FablePageState extends State<fable01> {
   }
 
   void _showQuiz() {
+    //โจทย์
     String question =
         _storyLanguage == 'th' ? 'dog แปลว่าอะไร?' : 'What does dog mean?';
     showDialog(
@@ -109,7 +112,8 @@ class _FablePageState extends State<fable01> {
   }
 
   Future<void> _playAudio() async {
-    await _audioPlayer.play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
+    await _audioPlayer
+        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
     await _audioPlayer.resume();
     _isPlaying = true;
   }
@@ -151,7 +155,7 @@ class _FablePageState extends State<fable01> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('พื้นบ้าน 1'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('นิทานเรื่องจระเข้สามพัน'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
@@ -165,7 +169,7 @@ class _FablePageState extends State<fable01> {
           ),
         ],
       ),
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -182,7 +186,7 @@ class _FablePageState extends State<fable01> {
               ),
               SizedBox(height: 10),
               Text(
-                'พื้นบ้าน 1',
+                'นิทานเรื่องจระเข้สามพัน',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
