@@ -68,7 +68,9 @@ class _MyHomePageState extends State<menu> {
         backgroundColor: Color.fromRGBO(175, 172, 255, 100),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Image.asset('assets/logo.png'),
+          child: ClipOval(
+            child: Image.asset('assets/logo.png'),
+          ),
         ),
         actions: [
           IconButton(

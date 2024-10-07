@@ -152,7 +152,7 @@ class _FablePageState extends State<fable0005> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('ก่อนนอน 5'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('นิทาน นางฟ้ากับดวงดาว'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
@@ -177,7 +177,7 @@ class _FablePageState extends State<fable0005> {
                 borderRadius: BorderRadius.circular(20),
                 child: Stack(
                   children: [
-                    Image.asset('assets/h1.jpg'), // Image path
+                    Image.asset('assets/photo/15.jpg'), // Image path
                   ],
                 ),
               ),

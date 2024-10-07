@@ -81,7 +81,7 @@ class _MyHomePageState extends State<fable2> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20.0),
                   child: Image.asset(
-                    'assets/h1.jpg',
+                    'assets/photo/p3.jpg',
                     height: 200,
                     width: 350,
                     fit: BoxFit.fill,

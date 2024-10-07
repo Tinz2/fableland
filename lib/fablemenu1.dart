@@ -37,30 +37,30 @@ class _MyHomePageState extends State<fable1> {
 
   List<Map<String, dynamic>> places = [
     {
-      'name': 'นิทานเรื่องจระเข้สามพัน',
+      'name': 'นิทาน จระเข้สามพัน',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/photo/1.jpg',
       'route': '/fable1',
     },
     {
-      'name': 'นิทานเรื่องเศรษฐีกับยาจก',
+      'name': 'นิทาน เศรษฐีกับยาจก',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/photo/2.jpg',
       'route': '/fable2',
     },
     {
-      'name': 'นิทานเรื่องพญาคันคาก',
+      'name': 'นิทาน พญาคันคาก',
       'imagelist': 'assets/photo/3.jpg',
       'route': '/fable3',
     },
     {
-      'name': 'นิทานเรื่อง เกาะหนู เกาะแมว',
+      'name': 'นิทาน เกาะหนู เกาะแมว',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/photo/4.jpg',
       'route': '/fable4',
     },
     {
-      'name': 'นิทานเรื่อง กล่องข้าวน้อยฆ่าแม่',
+      'name': 'นิทาน กล่องข้าวน้อยฆ่าแม่',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
       'imagelist': 'assets/photo/5.jpg',
       'route': '/fable5',
@@ -82,7 +82,7 @@ class _MyHomePageState extends State<fable1> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
                 child: Image.asset(
-                  'assets/h1.jpg',
+                  'assets/photo/p2.jpg',
                   height: 200,
                   width: 350,
                   fit: BoxFit.fill,

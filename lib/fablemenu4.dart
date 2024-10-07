@@ -37,81 +37,81 @@ class _MyHomePageState extends State<fable4> {
 
   final List<Map<String, String>> items = [ //เปลี่ยนรูปนิทานพื้นบ้าน
     {
-      'text': 'Takumi',
+      'text': 'นิทาน จระเข้สามพัน',
       'image': 'assets/photo/1.jpg',
       'route': '/fable1', // ลิงก์ไปที่ fable01()
     },
     {
-      'text': 'Bunta Fujiwara',
+      'text': 'นิทาน เศรษฐีกับยาจก',
       'image': 'assets/photo/2.jpg',
       'route': '/fable2',
     },
     {
-      'text': 'Keisuke Takahashi',
+      'text': 'นิทาน พญาคันคาก',
       'image': 'assets/photo/3.jpg',
       'route': '/fable3',
     },
     {
-      'text': 'Ryousuke Takahashi',
+      'text': 'นิทาน เกาะหนู เกาะแมว',
       'image': 'assets/photo/4.jpg',
       'route': '/fable4',
     },
     {
-      'text': 'Ryousuke Takahashi',
+      'text': 'นิทาน กล่องข้าวน้อยฆ่าแม่',
       'image': 'assets/photo/5.jpg',
       'route': '/fable5',
     },
   ];
   final List<Map<String, String>> items1 = [ //เปลี่ยนรูปนิทานคติสอนใจ
     {
-      'text': 'Takumi',
+      'text': 'นิทานอีสป กระต่ายกับเต่า',
       'image': 'assets/photo/6.jpg',
       'route': '/fable01', // ลิงก์ไปที่ fable01()
     },
     {
-      'text': 'Bunta Fujiwara',
+      'text': 'นิทานอีสป ราชสีห์กับหนู',
       'image': 'assets/photo/7.jpg',
       'route': '/fable02',
     },
     {
-      'text': 'Keisuke Takahashi',
+      'text': 'นิทานอีสป ลูกหมูสามตัว',
       'image': 'assets/photo/8.jpg',
       'route': '/fable03',
     },
     {
-      'text': 'Ryousuke Takahashi',
+      'text': 'นิทานอีสป หมาจิ้งจอกตกบ่อ',
       'image': 'assets/photo/9.jpg',
       'route': '/fable04',
     },
     {
-      'text': 'Ryousuke Takahashi',
+      'text': 'นิทานอีสป หมากับเงา',
       'image': 'assets/photo/10.jpg',
       'route': '/fable05',
     },
   ];
   final List<Map<String, String>> items2 = [ //เปลี่ยนรูปนิทานก่อนนอน
     {
-      'text': 'Takumi',
+      'text': 'นิทาน เงือกน้อยผจญภัย',
       'image': 'assets/photo/11.jpg',
       'route': '/fable001', // ลิงก์ไปที่ fable01()
     },
     {
-      'text': 'Bunta Fujiwara',
+      'text': 'นิทาน เจ้าหญิงนิทรา',
       'image': 'assets/photo/12.jpg',
       'route': '/fable002',
     },
     {
-      'text': 'Keisuke Takahashi',
+      'text': 'นิทาน โฉมงามกับเจ้าชายอสูร',
       'image': 'assets/photo/13.jpg',
       'route': '/fable003',
     },
     {
-      'text': 'Ryousuke Takahashi',
+      'text': 'นิทาน สโนว์ไวท์กับคนแคระทั้งเจ็ด',
       'image': 'assets/photo/14.jpg',
       'route': '/fable004',
     },
     {
-      'text': 'Ryousuke Takahashi',
+      'text': 'นิทาน นางฟ้ากับดวงดาว',
       'image': 'assets/photo/15.jpg',
       'route': '/fable005',
     },
@@ -198,9 +198,9 @@ class _MyHomePageState extends State<fable4> {
                         children: [
                           Image.asset(
                             item['image']!, // แสดงรูปภาพจาก assets
-                            height: 100,
-                            width: 200,
-                            fit: BoxFit.fill,
+                            height: 142,
+                            width: 92,
+                            fit: BoxFit.cover,
                           ),
                         ],
                       ),
@@ -264,9 +264,9 @@ class _MyHomePageState extends State<fable4> {
                         children: [
                           Image.asset(
                             item['image']!, // แสดงรูปภาพจาก assets
-                            height: 100,
-                            width: 200,
-                            fit: BoxFit.fill,
+                            height: 142,
+                            width: 92,
+                            fit: BoxFit.cover,
                           ),
                         ],
                       ),
@@ -330,11 +330,11 @@ class _MyHomePageState extends State<fable4> {
                         children: [
                           Image.asset(
                             item['image']!, // แสดงรูปภาพจาก assets
-                            height: 100,
-                            width: 200,
-                            fit: BoxFit.fill,
+                            height: 142,
+                            width: 92,
+                            fit: BoxFit.cover,
                           ),
-                          SizedBox(height: 20),
+                          //SizedBox(height: 20),
           
                         ],
                       ),

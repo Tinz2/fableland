@@ -153,7 +153,7 @@ class _FablePageState extends State<fable03> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('นิทานเรื่องพญาคันคาก'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('นิทาน เรื่องพญาคันคาก'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
