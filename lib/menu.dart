@@ -84,22 +84,22 @@ class _MyHomePageState extends State<menu> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'หน้าแรก',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.people),
             label: 'นิทานพื้นบ้าน',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.star),
             label: 'นิทานคติสอนใจ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.bed),
             label: 'นิทานก่อนอน',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.book),
             label: 'รวมนิทาน',
           ),
         ],

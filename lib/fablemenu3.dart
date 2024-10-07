@@ -39,30 +39,30 @@ class _MyHomePageState extends State<fable3> {
     {
       'name': 'นิทานเงือกน้อยผจญภัย',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/11.jpg',
       'route': '/fable001',
     },
     {
       'name': 'นิทานเจ้าหญิงนิทรา',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/12.jpg',
       'route': '/fable002',
     },
     {
       'name': 'นิทานโฉมงามกับเจ้าชายอสูร',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/13.jpg',
       'route': '/fable003',
     },
     {
       'name': 'นิทาน สโนว์ไวท์กับคนแคระทั้งเจ็ด',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/14.jpg',
       'route': '/fable004',
     },
     {
       'name': 'นิทาน นางฟ้ากับดวงดาว',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/15.jpg',
       'route': '/fable005',
     },
   ];

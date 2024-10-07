@@ -38,81 +38,81 @@ class _MyHomePageState extends State<fable4> {
   final List<Map<String, String>> items = [ //เปลี่ยนรูปนิทานพื้นบ้าน
     {
       'text': 'Takumi',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/1.jpg',
       'route': '/fable1', // ลิงก์ไปที่ fable01()
     },
     {
       'text': 'Bunta Fujiwara',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/2.jpg',
       'route': '/fable2',
     },
     {
       'text': 'Keisuke Takahashi',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/3.jpg',
       'route': '/fable3',
     },
     {
       'text': 'Ryousuke Takahashi',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/4.jpg',
       'route': '/fable4',
     },
     {
       'text': 'Ryousuke Takahashi',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/5.jpg',
       'route': '/fable5',
     },
   ];
   final List<Map<String, String>> items1 = [ //เปลี่ยนรูปนิทานคติสอนใจ
     {
       'text': 'Takumi',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/6.jpg',
       'route': '/fable01', // ลิงก์ไปที่ fable01()
     },
     {
       'text': 'Bunta Fujiwara',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/7.jpg',
       'route': '/fable02',
     },
     {
       'text': 'Keisuke Takahashi',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/8.jpg',
       'route': '/fable03',
     },
     {
       'text': 'Ryousuke Takahashi',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/9.jpg',
       'route': '/fable04',
     },
     {
       'text': 'Ryousuke Takahashi',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/10.jpg',
       'route': '/fable05',
     },
   ];
   final List<Map<String, String>> items2 = [ //เปลี่ยนรูปนิทานก่อนนอน
     {
       'text': 'Takumi',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/11.jpg',
       'route': '/fable001', // ลิงก์ไปที่ fable01()
     },
     {
       'text': 'Bunta Fujiwara',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/12.jpg',
       'route': '/fable002',
     },
     {
       'text': 'Keisuke Takahashi',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/13.jpg',
       'route': '/fable003',
     },
     {
       'text': 'Ryousuke Takahashi',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/14.jpg',
       'route': '/fable004',
     },
     {
       'text': 'Ryousuke Takahashi',
-      'image': 'assets/h1.jpg',
+      'image': 'assets/photo/15.jpg',
       'route': '/fable005',
     },
   ];

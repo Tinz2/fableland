@@ -181,7 +181,7 @@ class _FablePageState extends State<fable01> {
                 borderRadius: BorderRadius.circular(20),
                 child: Stack(
                   children: [
-                    Image.asset('assets/86.png'), // รูปการ์ตูน
+                    Image.asset('assets/photo/1.jpg'), // ..รูปนิทานเรื่องจระเข้สามพัน..
                   ],
                 ),
               ),

@@ -178,7 +178,7 @@ class _FablePageState extends State<fable03> {
                 borderRadius: BorderRadius.circular(20),
                 child: Stack(
                   children: [
-                    Image.asset('assets/h1.jpg'), // Image path
+                    Image.asset('assets/photo/3.jpg'), // รูป นิทานเรื่องพญาคันคาก
                   ],
                 ),
               ),

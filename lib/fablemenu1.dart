@@ -39,30 +39,30 @@ class _MyHomePageState extends State<fable1> {
     {
       'name': 'นิทานเรื่องจระเข้สามพัน',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/1.jpg',
       'route': '/fable1',
     },
     {
       'name': 'นิทานเรื่องเศรษฐีกับยาจก',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/2.jpg',
       'route': '/fable2',
     },
     {
       'name': 'นิทานเรื่องพญาคันคาก',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/3.jpg',
       'route': '/fable3',
     },
     {
       'name': 'นิทานเรื่อง เกาะหนู เกาะแมว',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/4.jpg',
       'route': '/fable4',
     },
     {
       'name': 'นิทานเรื่อง กล่องข้าวน้อยฆ่าแม่',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/5.jpg',
       'route': '/fable5',
     },
   ];

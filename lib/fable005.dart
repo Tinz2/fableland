@@ -176,13 +176,13 @@ class _FablePageState extends State<fable0005> {
                 borderRadius: BorderRadius.circular(20),
                 child: Stack(
                   children: [
-                    Image.asset('assets/h1.jpg'), // Image path
+                    Image.asset('assets/photo/15.jpg'), // Image path
                   ],
                 ),
               ),
               SizedBox(height: 10),
               Text(
-                'ก่อนนอน 5',
+                'นิทานโฉมงามกับเจ้าชายอสูรนิทาน นางฟ้ากับดวงดาว',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,

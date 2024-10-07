@@ -39,30 +39,30 @@ class _MyHomePageState extends State<fable2> {
     {
       'name': 'นิทานอีสป กระต่ายกับเต่า',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/6.jpg',
       'route': '/fable01',
     },
     {
       'name': 'นิทานอีสป ราชสีห์กับหนู',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/7.jpg',
       'route': '/fable02',
     },
     {
       'name': 'นิทานอีสป ลูกหมูสามตัว',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/8.jpg',
       'route': '/fable03',
     },
     {
       'name': 'นิทานอีสป หมาจิ้งจอกตกบ่อ',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/9.jpg',
       'route': '/fable04',
     },
     {
       'name': 'นิทานอีสป หมากับเงา',
       'sound': 'เสียงพากษ์ไทย/อังกฤษ',
-      'imagelist': 'assets/logo.png',
+      'imagelist': 'assets/photo/10.jpg',
       'route': '/fable05',
     },
   ];
