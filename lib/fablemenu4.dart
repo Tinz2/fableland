@@ -59,61 +59,61 @@ class _MyHomePageState extends State<fable4> {
     {
       'text': 'Ryousuke Takahashi',
       'image': 'assets/h1.jpg',
-      'route': '/fable4',
+      'route': '/fable5',
     },
   ];
   final List<Map<String, String>> items1 = [ //เปลี่ยนรูปนิทานคติสอนใจ
     {
       'text': 'Takumi',
       'image': 'assets/h1.jpg',
-      'route': '/fable1', // ลิงก์ไปที่ fable01()
+      'route': '/fable01', // ลิงก์ไปที่ fable01()
     },
     {
       'text': 'Bunta Fujiwara',
       'image': 'assets/h1.jpg',
-      'route': '/fable2',
+      'route': '/fable02',
     },
     {
       'text': 'Keisuke Takahashi',
       'image': 'assets/h1.jpg',
-      'route': '/fable3',
+      'route': '/fable03',
     },
     {
       'text': 'Ryousuke Takahashi',
       'image': 'assets/h1.jpg',
-      'route': '/fable4',
+      'route': '/fable04',
     },
     {
       'text': 'Ryousuke Takahashi',
       'image': 'assets/h1.jpg',
-      'route': '/fable4',
+      'route': '/fable05',
     },
   ];
   final List<Map<String, String>> items2 = [ //เปลี่ยนรูปนิทานก่อนนอน
     {
       'text': 'Takumi',
       'image': 'assets/h1.jpg',
-      'route': '/fable1', // ลิงก์ไปที่ fable01()
+      'route': '/fable001', // ลิงก์ไปที่ fable01()
     },
     {
       'text': 'Bunta Fujiwara',
       'image': 'assets/h1.jpg',
-      'route': '/fable2',
+      'route': '/fable002',
     },
     {
       'text': 'Keisuke Takahashi',
       'image': 'assets/h1.jpg',
-      'route': '/fable3',
+      'route': '/fable003',
     },
     {
       'text': 'Ryousuke Takahashi',
       'image': 'assets/h1.jpg',
-      'route': '/fable4',
+      'route': '/fable004',
     },
     {
       'text': 'Ryousuke Takahashi',
       'image': 'assets/h1.jpg',
-      'route': '/fable4',
+      'route': '/fable005',
     },
   ];
   final List<Map<String, String>> items3 = [ //เปลี่ยนรูปลิงก์คำแนะนำเพิ่มเติม
@@ -142,7 +142,7 @@ class _MyHomePageState extends State<fable4> {
 //ส่วนออกแบบหนา้จอ
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(58, 241, 248, 100),
+       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Column(children: [
           SizedBox(height: 20),

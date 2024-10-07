@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'contact.dart'; // เพิ่มการนำเข้า ContactUs
 
-class fable05 extends StatefulWidget {
-  const fable05({Key? key}) : super(key: key);
+class fable001 extends StatefulWidget {
+  const fable001({Key? key}) : super(key: key);
 
   @override
   _FablePageState createState() => _FablePageState();
 }
 
-class _FablePageState extends State<fable05> {
+class _FablePageState extends State<fable001> {
   String _storyLanguage = 'th'; // 'th' for Thai, 'en' for English
   String _comment = '';
   String? _selectedAnimal; // For Radio
@@ -151,7 +151,7 @@ class _FablePageState extends State<fable05> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('พื้นบ้าน 5'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('สอนใจ 1'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
@@ -182,7 +182,7 @@ class _FablePageState extends State<fable05> {
               ),
               SizedBox(height: 10),
               Text(
-                'พื้นบ้าน 5',
+                'สอนใจ 1',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -193,7 +193,7 @@ class _FablePageState extends State<fable05> {
               SizedBox(height: 20),
 
               // Control buttons
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
