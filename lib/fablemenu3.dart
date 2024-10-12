@@ -111,7 +111,7 @@ class _MyHomePageState extends State<fable3> {
                   padding: EdgeInsets.symmetric(
                       horizontal: 16.0), // ปรับระยะห่างขอบซ้าย-ขวา
                   child: Text(
-                    'นิทานก่อนนอน เป็นรูปแบบการเล่านิทาน แบบดั้งเดิม โดยเล่านิทานให้เด็กฟังก่อนนอนเพื่อเตรียมเด็กให้พร้อมสำหรับการนอนหลับ นิทานก่อนนอนถือเป็น "ประเพณีที่สืบทอดกันมายาวนานในหลายครอบครัว" มีประโยชน์มากมายสำหรับทั้งพ่อแม่และลูก การเล่านิทานก่อนนอนเป็นประจำทุกวันจะช่วยพัฒนาสมองการเรียนรู้ภาษาและทักษะการแก้ปัญหา ของเด็กได้',
+                    'นิทานก่อนนอน โดยเล่านิทานให้เด็กฟังก่อนนอนเพื่อเตรียมเด็กให้พร้อมสำหรับการนอนหลับ',
                     style: TextStyle(
                       color: const Color.fromARGB(255, 0, 0, 0),
                       fontWeight: FontWeight.bold,
@@ -146,7 +146,7 @@ class _MyHomePageState extends State<fable3> {
                                 height: 80,
                                 child: Image.asset(
                                   place['imagelist'],
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                               SizedBox(

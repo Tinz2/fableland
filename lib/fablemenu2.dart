@@ -111,7 +111,7 @@ class _MyHomePageState extends State<fable2> {
                   padding: EdgeInsets.symmetric(
                       horizontal: 16.0), // ปรับระยะห่างขอบซ้าย-ขวา
                   child: Text(
-                    'นิทานคติสอนใจ มักเป็นเรื่องที่มีขนาดไม่ยาวนัก การดำเนินเรื่องก็ไม่ซับซ้อน ตัวละครอาจเป็นคนหรือสัตว์ก็ได้ เรื่องหนึ่งๆ อาจมีตัวละครประมาณ ๒ - ๔ คน  แนวคิดที่ปรากฏในนิทานประเภทนี้คือ คุณค่าของจริยธรรม และผลแห่งกรรมชี้ให้เห็นว่า การประกอบกรรมดีย่อมได้ดี และการประกอบกรรมชั่วย่อมได้ชั่ว',
+                    'นิทานคติสอนใจ มักเป็นเรื่องที่มีขนาดไม่ยาวนัก การดำเนินเรื่องก็ไม่ซับซ้อน มีแนวคิดคุณค่าของคุณธรรมจริยธรรม ',
                     style: TextStyle(
                       color: const Color.fromARGB(255, 0, 0, 0),
                       fontWeight: FontWeight.bold,
@@ -146,7 +146,7 @@ class _MyHomePageState extends State<fable2> {
                                 height: 80,
                                 child: Image.asset(
                                   place['imagelist'],
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                               SizedBox(

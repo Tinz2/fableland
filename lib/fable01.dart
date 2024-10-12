@@ -19,25 +19,27 @@ class _FablePageState extends State<fable001> {
 
   final String _storyTh =
       'กระต่ายหลงตัวเอง ชอบโอ้อวดว่าวิ่งเร็วกว่าใครๆ เมื่อเห็นเต่าเดินต้วมเตี้ยมมาก็หัวเราะเยาะ พร้อมกับพูดจาถากถางว่าต่อให้เต่าวิ่งนำหน้าไปก่อน กระต่ายก็สามารถก็แซงหน้าได้อยู่ดี ทำให้เต่าเกิดความไม่พอใจ จึงท้ากระต่ายวิ่งแข่งกัน กระต่ายเริ่มวิ่งนำหน้าเต่าไปไกล แต่เมื่อไปถึงครึ่งทาง ก็เกิดความชะล่าใจ หยุดพักเอนกายนอนใต้ต้นไม้ใหญ่จนเผลอหลับไป ในขณะที่เต่ายังคงเดินต่อไปเรื่อยๆ อย่างไม่ลดละ เมื่อกระต่ายตื่นนอนขึ้นมาก็ตกใจ รีบลนลานวิ่งไปยังเส้นชัย ทว่าเต่าไปถึงเส้นชัยก่อนแล้ว'; // Thai story
-  final String _storyEn = 'Hi'; // English story
+  final String _storyEn =
+      'The self-confident rabbit loved to boast that he could run faster than anyone else. When he saw the tortoise moving slowly, he laughed mockingly and said that even if the tortoise started ahead, he could easily overtake him. This made the tortoise feel dissatisfied, so he challenged the rabbit to a race.The rabbit started off strong, quickly pulling far ahead of the tortoise. However, halfway through the race, he became overconfident and decided to take a nap under a big tree. Meanwhile, the tortoise continued to walk steadily without stopping.When the rabbit woke up, he was shocked to realize how much time had passed. He rushed to the finish line, but the tortoise had already crossed it first.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'cat', 'label': 'แมว'},
-    {'value': 'dog', 'label': 'หมา'},
-    {'value': 'mouse', 'label': 'หนู'},
+    {'value': 'rabbit', 'label': 'กระต่าย'},
+    {'value': 'tortoise', 'label': 'เต่า'},
+    {'value': 'walk', 'label': 'เดิน'},
   ];
 
   void _submitComment() {
     String thankYouMessage = _storyLanguage == 'th'
         ? 'คติสอนใจ : ความประมาทเป็นต้นเหตุของความพ่ายแพ้ แม้คู่ต่อสู้จะอ่อนด้อยกว่าก็ตาม'
-        : 'Thank you for your attention';
+        : 'Carelessness is the root of defeat, even if the opponent is weaker.';
     _showDialog(
         _storyLanguage == 'th' ? 'ขอบคุณ!' : 'Thank You!', thankYouMessage);
   }
 
   void _showQuiz() {
-    String question =
-        _storyLanguage == 'th' ? 'dog แปลว่าอะไร?' : 'What does dog mean?';
+    String question = _storyLanguage == 'th'
+        ? 'rabbit แปลว่าอะไร?'
+        : 'What does rabbit mean?';
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -62,7 +64,7 @@ class _FablePageState extends State<fable001> {
           actions: [
             TextButton(
               onPressed: () {
-                String message = _selectedAnimal == 'dog'
+                String message = _selectedAnimal == 'rabbit'
                     ? (_storyLanguage == 'th' ? "ถูกนะครับ" : "Correct!")
                     : (_storyLanguage == 'th' ? "ผิดนะครับ" : "Incorrect!");
                 Navigator.of(context).pop(); // Close dialog
@@ -110,7 +112,8 @@ class _FablePageState extends State<fable001> {
   }
 
   Future<void> _playAudio() async {
-    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    String audioFile =
+        _storyLanguage == 'th' ? 'sound/th01.mp3' : 'sound/en01.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
@@ -280,6 +283,44 @@ class _FablePageState extends State<fable001> {
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                    : 'Vocabulary from this story',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
+                    : 'Question: Please write the translation of the following words in 3 lines:',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 20),
+
+              // White background box for user input
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: _storyLanguage == 'th'
+                        ? 'พิมพ์คำแปลที่นี่...'
+                        : 'Type the translation here...',
+                    contentPadding: EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _showQuiz,

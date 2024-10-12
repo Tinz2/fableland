@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'webviewscreen.dart';
+
 //Method หลักทีRun
 void main() {
   runApp(MyApp());
@@ -35,7 +36,8 @@ class _MyHomePageState extends State<fable4> {
     setState(() {});
   }
 
-  final List<Map<String, String>> items = [ //เปลี่ยนรูปนิทานพื้นบ้าน
+  final List<Map<String, String>> items = [
+    //เปลี่ยนรูปนิทานพื้นบ้าน
     {
       'text': 'นิทาน จระเข้สามพัน',
       'image': 'assets/photo/1.jpg',
@@ -62,7 +64,8 @@ class _MyHomePageState extends State<fable4> {
       'route': '/fable5',
     },
   ];
-  final List<Map<String, String>> items1 = [ //เปลี่ยนรูปนิทานคติสอนใจ
+  final List<Map<String, String>> items1 = [
+    //เปลี่ยนรูปนิทานคติสอนใจ
     {
       'text': 'นิทานอีสป กระต่ายกับเต่า',
       'image': 'assets/photo/6.jpg',
@@ -89,7 +92,8 @@ class _MyHomePageState extends State<fable4> {
       'route': '/fable05',
     },
   ];
-  final List<Map<String, String>> items2 = [ //เปลี่ยนรูปนิทานก่อนนอน
+  final List<Map<String, String>> items2 = [
+    //เปลี่ยนรูปนิทานก่อนนอน
     {
       'text': 'นิทาน เงือกน้อยผจญภัย',
       'image': 'assets/photo/11.jpg',
@@ -116,33 +120,35 @@ class _MyHomePageState extends State<fable4> {
       'route': '/fable005',
     },
   ];
-  final List<Map<String, String>> items3 = [ //เปลี่ยนรูปลิงก์คำแนะนำเพิ่มเติม
+  final List<Map<String, String>> items3 = [
+    //เปลี่ยนรูปลิงก์คำแนะนำเพิ่มเติม
     {
-      'text': 'Takumi Fujiwara',
-      'image': 'assets/logo.png',
-      'url': 'https://initiald.fandom.com/wiki/Takumi_Fujiwara',
+      'text': '101 เรื่องเอก นิทานอีสป',
+      'image': 'assets/photo/logo1.jpg',
+      'url': 'https://online.fliphtml5.com/mofx/zyqh/#p=2',
     },
     {
-      'text': 'Bunta Fujiwara',
-      'image': 'assets/logo.png',
-      'url': 'https://initiald.fandom.com/wiki/Bunta_Fujiwara',
+      'text': 'เทคนิคการอ่านหนังสือ',
+      'image': 'assets/photo/logo2.png',
+      'url': 'http://www.kalyanamitra.org/th/Aesop_list.php',
     },
     {
-      'text': 'Keisuke Takahashi',
-      'image': 'assets/logo.png',
-      'url': 'https://initiald.fandom.com/wiki/Keisuke_Takahashi?so=search',
+      'text': 'การนอนหลับ',
+      'image': 'assets/photo/logo3.JPG',
+      'url':
+          'https://www.se-ed.com/product-search/นิทาน.aspx?keyword=นิทาน&search=default',
     },
     {
-      'text': 'Ryousuke Takahashi',
-      'image': 'assets/logo.png',
-      'url': 'https://initiald.fandom.com/wiki/Ryosuke_Takahashi?so=search',
+      'text': 'การถนอมสายตา',
+      'image': 'assets/photo/logo4.JPG',
+      'url': 'http://bookworldpublishing.lnwshop.com/',
     },
   ];
   @override
 //ส่วนออกแบบหนา้จอ
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
       body: SingleChildScrollView(
         child: Column(children: [
           SizedBox(height: 20),
@@ -187,26 +193,29 @@ class _MyHomePageState extends State<fable4> {
                     width: 50, // กำหนดความกว้างของ Card (ปรับตามที่ต้องการ)
                     child: Card(
                       elevation: 5,
-                       shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
-            ),
-            color: const Color.fromARGB(255, 94, 255, 201), // สีพื้นหลังของการ์ด
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16), // ตัดมุมรูปภาพให้เป็นมุมมน
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            item['image']!, // แสดงรูปภาพจาก assets
-                            height: 142,
-                            width: 92,
-                            fit: BoxFit.cover,
-                          ),
-                        ],
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
+                      ),
+                      color: const Color.fromARGB(
+                          255, 94, 255, 201), // สีพื้นหลังของการ์ด
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                            16), // ตัดมุมรูปภาพให้เป็นมุมมน
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              item['image']!, // แสดงรูปภาพจาก assets
+                              height: 142,
+                              width: 92,
+                              fit: BoxFit.cover,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
                 );
               },
             ),
@@ -253,26 +262,29 @@ class _MyHomePageState extends State<fable4> {
                     width: 50, // กำหนดความกว้างของ Card (ปรับตามที่ต้องการ)
                     child: Card(
                       elevation: 5,
-                       shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
-            ),
-            color: const Color.fromARGB(255, 94, 255, 201), // สีพื้นหลังของการ์ด
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16), // ตัดมุมรูปภาพให้เป็นมุมมน
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            item['image']!, // แสดงรูปภาพจาก assets
-                            height: 142,
-                            width: 92,
-                            fit: BoxFit.cover,
-                          ),
-                        ],
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
+                      ),
+                      color: const Color.fromARGB(
+                          255, 94, 255, 201), // สีพื้นหลังของการ์ด
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                            16), // ตัดมุมรูปภาพให้เป็นมุมมน
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              item['image']!, // แสดงรูปภาพจาก assets
+                              height: 142,
+                              width: 92,
+                              fit: BoxFit.cover,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
                 );
               },
             ),
@@ -319,29 +331,30 @@ class _MyHomePageState extends State<fable4> {
                     width: 50, // กำหนดความกว้างของ Card (ปรับตามที่ต้องการ)
                     child: Card(
                       elevation: 5,
-                       shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
-            ),
-            color: const Color.fromARGB(255, 94, 255, 201), // สีพื้นหลังของการ์ด
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16), // ตัดมุมรูปภาพให้เป็นมุมมน
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            item['image']!, // แสดงรูปภาพจาก assets
-                            height: 142,
-                            width: 92,
-                            fit: BoxFit.cover,
-                          ),
-                          //SizedBox(height: 20),
-          
-                        ],
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
+                      ),
+                      color: const Color.fromARGB(
+                          255, 94, 255, 201), // สีพื้นหลังของการ์ด
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                            16), // ตัดมุมรูปภาพให้เป็นมุมมน
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              item['image']!, // แสดงรูปภาพจาก assets
+                              height: 142,
+                              width: 92,
+                              fit: BoxFit.cover,
+                            ),
+                            //SizedBox(height: 20),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                
                 );
               },
             ),
@@ -363,59 +376,59 @@ class _MyHomePageState extends State<fable4> {
             ),
           ),
           SizedBox(height: 10),
-           SizedBox(
-              height: 400, // ปรับความสูงของ GridView ที่สองให้เท่ากับอันแรก
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10.0,
-                  mainAxisSpacing: 10.0,
-                  childAspectRatio: 1.1, // ปรับอัตราส่วนของ Card
-                ),
-                itemCount: items3.length,
-                itemBuilder: (context, index) {
-                  final item = items3[index];
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              webviewscreen(url: item['url']!),
-                        ),
-                      );
-                    },
-                    child: SizedBox(
-                      height: 200,
-                      width: 200,
-                      child: Card(
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        elevation: 5,
-                         shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
-            ),
-           
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16), // ตัดมุมรูปภาพให้เป็นมุมมน
+          SizedBox(
+            height: 400, // ปรับความสูงของ GridView ที่สองให้เท่ากับอันแรก
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10.0,
+                mainAxisSpacing: 10.0,
+                childAspectRatio: 1.1, // ปรับอัตราส่วนของ Card
+              ),
+              itemCount: items3.length,
+              itemBuilder: (context, index) {
+                final item = items3[index];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => webviewscreen(url: item['url']!),
+                      ),
+                    );
+                  },
+                  child: SizedBox(
+                    height: 200,
+                    width: 200,
+                    child: Card(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                            16), // ตัดมุมรูปภาพให้เป็นมุมมน
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Image.asset(
                               item['image']!,
-                              height: 175,
-                              width: 175,
-                              fit: BoxFit.fill,
+                              height: 182.5,
+                              width: 200,
+                              fit: BoxFit.cover,
                             ),
                           ],
                         ),
                       ),
                     ),
                   ),
-                  );
-                },
-              ),
+                );
+              },
             ),
+          ),
         ]),
       ),
     );

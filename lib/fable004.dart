@@ -17,13 +17,15 @@ class _FablePageState extends State<fable0004> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
-  final String _storyEn = 'Hi'; // English story
+  final String _storyTh =
+      'กาลครั้งหนึ่ง มีเจ้าหญิงชื่อ “สโนว์ไวท์” ที่ถูกแม่เลี้ยงใจร้ายอิจฉาความงาม สโนว์ไวท์ถูกสั่งให้ทำงานหนัก จนวันหนึ่งกระจกวิเศษบอกแม่เลี้ยงว่ามีหญิงสาวที่งามที่สุดคือสโนว์ไวท์ ราชินีจึงสั่งนายพรานให้ฆ่าเธอ แต่เขาไม่สามารถทำได้และให้เธอหนีไปในป่าสโนว์ไวท์พบกระท่อมของคนแคระทั้งเจ็ดและได้อาศัยอยู่กับพวกเขา ในขณะที่แม่เลี้ยงกลับมาถามกระจกอีกครั้งและรู้ว่าสโนว์ไวท์ยังมีชีวิตอยู่ เธอจึงปลอมตัวเป็นหญิงชราขายแอปเปิลพิษ สโนว์ไวท์โดนหลอกให้กัดแอปเปิลและล้มลงหมดสติคนแคระพบเธอและนำร่างของเธอใส่โลงแก้ว จนกระทั่งเจ้าชายมาพบและจุมพิตเธอ ทำให้คำสาปถูกทำลาย สโนว์ไวท์ตื่นขึ้นและทั้งสองได้แต่งงานกัน และครองรักกันอย่างมีความสุขตลอดไป'; // Thai story
+  final String _storyEn =
+      'Once upon a time, there was a princess named "Snow White" who was mistreated by her jealous stepmother. Snow White was made to work hard, until one day the magic mirror told the queen that the most beautiful woman was Snow White. Enraged, the queen ordered a huntsman to kill her, but he couldn t do it and let her escape into the forest.Snow White found the cottage of seven dwarfs and lived with them. Meanwhile, the stepmother consulted the mirror again and learned that Snow White was still alive. Disguised as an old woman selling poisoned apples, she tricked Snow White into taking a bite, causing her to fall into a deep sleep.The dwarfs found her and placed her in a glass coffin. Eventually, a prince came by, kissed her, and broke the spell. Snow White awoke, and they got married, living happily ever after.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'cat', 'label': 'แมว'},
-    {'value': 'dog', 'label': 'หมา'},
-    {'value': 'mouse', 'label': 'หนู'},
+    {'value': 'mirror', 'label': 'กระจก'},
+    {'value': 'apple', 'label': 'แอปเปิ้ล'},
+    {'value': 'stepmother', 'label': 'แม่เลี้ยง'},
   ];
 
   void _submitComment() {
@@ -35,8 +37,9 @@ class _FablePageState extends State<fable0004> {
   }
 
   void _showQuiz() {
-    String question =
-        _storyLanguage == 'th' ? 'dog แปลว่าอะไร?' : 'What does dog mean?';
+    String question = _storyLanguage == 'th'
+        ? 'mirror แปลว่าอะไร?'
+        : 'What does mirror mean?';
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -61,7 +64,7 @@ class _FablePageState extends State<fable0004> {
           actions: [
             TextButton(
               onPressed: () {
-                String message = _selectedAnimal == 'dog'
+                String message = _selectedAnimal == 'mirror'
                     ? (_storyLanguage == 'th' ? "ถูกนะครับ" : "Correct!")
                     : (_storyLanguage == 'th' ? "ผิดนะครับ" : "Incorrect!");
                 Navigator.of(context).pop(); // Close dialog
@@ -109,7 +112,8 @@ class _FablePageState extends State<fable0004> {
   }
 
   Future<void> _playAudio() async {
-    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    String audioFile =
+        _storyLanguage == 'th' ? 'sound/th004.mp3' : 'sound/en004.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
@@ -280,6 +284,44 @@ class _FablePageState extends State<fable0004> {
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                    : 'Vocabulary from this story',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
+                    : 'Question: Please write the translation of the following words in 3 lines:',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 20),
+
+              // White background box for user input
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: _storyLanguage == 'th'
+                        ? 'พิมพ์คำแปลที่นี่...'
+                        : 'Type the translation here...',
+                    contentPadding: EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _showQuiz,

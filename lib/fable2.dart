@@ -19,12 +19,13 @@ class _FablePageState extends State<fable02> {
 
   final String _storyTh =
       'มีชายสองคนที่มีฐานะต่างกัน ทั้งสองได้เป็นเพื่อนกัน ชายคนแรกมีฐานะร่ำรวย แต่อาศัยอยู่ตามลำพัง ไม่มีญาติพี่น้อง ส่วนชายคนที่สองมีครอบครัวที่อยู่อย่างมีความสุขแต่มีฐานะยากจน ชายคนแรกได้บอกว่า ถึงแม้จะอยู่คนเดียว แต่ก็ไม่คิดอิจฉา ด้วยความที่มีทรัพย์สินเงินทองให้ใช้มากมาย ส่วนชายคนที่สองก็บอกว่า ไม่เคยคิดอิจฉาเช่นกัน เพราะมีครอบครัวที่ดี มีลูกคอยดูแล ชายทั้งสองต่างก็พยายามพูดให้อิจฉาในชีวิตในแบบของตนโดยไม่มีใครยอมใคร ในที่สุดชายคนที่สองจึงออกความเห็นให้ต่างฝ่ายต่างมากินข้าวที่บ้านของแต่ละคน เมื่อชายคนที่สองได้ไปกินข้าวที่บ้านชายคนแรกก็พบว่าบ้านของชายคนแรกมีของใช้ของกินมากมาย แต่กลับต้องเหนื่อยเพิ่มขึ้นที่จะต้องทำอะไรคนเดียว และเมื่อชายคนแรกไปกินข้าวที่บ้านของชายคนที่สองก็พบว่า เขาไม่ต้องทำอะไรเลย เพราะมีลูก ๆ คอยช่วยเหลืองานบ้านต่าง ๆ และกินข้าวกันอย่างพร้อมหน้าพร้อมตา'; // Thai story
-  final String _storyEn = 'Hi'; // English story
+  final String _storyEn =
+      'There were two men of different social statuses who became friends. The first man was wealthy but lived alone, with no relatives. The second man had a happy family but lived in poverty. The first man said that although he was alone, he didn t feel jealous because he had plenty of wealth to use. The second man also claimed he never felt jealous because he had a good family with children to take care of him. Both tried to make the other envious of their own lives, but neither succeeded. Eventually, the second man suggested they have dinner at each other s homes.When the second man visited the first man s home, he found that there were plenty of food and household items, but it also meant more work for the first man, who had to do everything alone. Conversely, when the first man went to the second man s home, he realized he didn t have to do anything, as the children helped with various chores, and they all shared meals together as a family.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'cat', 'label': 'แมว'},
-    {'value': 'dog', 'label': 'หมา'},
-    {'value': 'mouse', 'label': 'หนู'},
+    {'value': 'men', 'label': 'ผู้ชาย'},
+    {'value': 'alone', 'label': 'โดดเดี่ยว'},
+    {'value': ' different', 'label': 'แตกต่าง'},
   ];
 
   void _submitComment() {
@@ -37,7 +38,7 @@ class _FablePageState extends State<fable02> {
 
   void _showQuiz() {
     String question =
-        _storyLanguage == 'th' ? 'dog แปลว่าอะไร?' : 'What does dog mean?';
+        _storyLanguage == 'th' ? 'alone แปลว่าอะไร?' : 'What does alone mean?';
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -62,7 +63,7 @@ class _FablePageState extends State<fable02> {
           actions: [
             TextButton(
               onPressed: () {
-                String message = _selectedAnimal == 'dog'
+                String message = _selectedAnimal == 'alone'
                     ? (_storyLanguage == 'th' ? "ถูกนะครับ" : "Correct!")
                     : (_storyLanguage == 'th' ? "ผิดนะครับ" : "Incorrect!");
                 Navigator.of(context).pop(); // Close dialog
@@ -110,7 +111,8 @@ class _FablePageState extends State<fable02> {
   }
 
   Future<void> _playAudio() async {
-    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    String audioFile =
+        _storyLanguage == 'th' ? 'sound/th2.mp3' : 'sound/en2.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
@@ -281,6 +283,44 @@ class _FablePageState extends State<fable02> {
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                    : 'Vocabulary from this story',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
+                    : 'Question: Please write the translation of the following words in 3 lines:',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 20),
+
+              // White background box for user input
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: _storyLanguage == 'th'
+                        ? 'พิมพ์คำแปลที่นี่...'
+                        : 'Type the translation here...',
+                    contentPadding: EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _showQuiz,

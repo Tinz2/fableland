@@ -33,24 +33,25 @@ class _HomePageState extends State<home> {
   ];
   final List<Map<String, String>> items2 = [
     {
-      'text': 'Takumi Fujiwara',
-      'image': 'assets/logo.png',
-      'url': 'https://initiald.fandom.com/wiki/Takumi_Fujiwara',
+      'text': '101 เรื่องเอก นิทานอีสป',
+      'image': 'assets/photo/logo1.jpg',
+      'url': 'https://online.fliphtml5.com/pbor/myhp/#p=1',
     },
     {
-      'text': 'Bunta Fujiwara',
-      'image': 'assets/logo.png',
-      'url': 'https://initiald.fandom.com/wiki/Bunta_Fujiwara',
+      'text': 'เทคนิคการอ่านหนังสือ',
+      'image': 'assets/photo/logo2.png',
+      'url': 'https://plan.vru.ac.th/?p=5176',
     },
     {
-      'text': 'Keisuke Takahashi',
-      'image': 'assets/logo.png',
-      'url': 'https://initiald.fandom.com/wiki/Keisuke_Takahashi?so=search',
+      'text': 'การนอนหลับ',
+      'image': 'assets/photo/logo3.JPG',
+      'url': 'https://www.thecoverage.info/news/content/3229',
     },
     {
-      'text': 'Ryousuke Takahashi',
-      'image': 'assets/logo.png',
-      'url': 'https://initiald.fandom.com/wiki/Ryosuke_Takahashi?so=search',
+      'text': 'การถนอมสายตา',
+      'image': 'assets/photo/logo4.JPG',
+      'url':
+          'https://www.taradhealth.com/info/5-%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%87%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B9%86-%E0%B8%96%E0%B8%99%E0%B8%AD%E0%B8%A1%E0%B8%AA%E0%B8%B2%E0%B8%A2%E0%B8%95%E0%B8%B2%E0%B8%88%E0%B8%B2%E0%B8%81/',
     },
   ];
   @override
@@ -124,7 +125,7 @@ class _HomePageState extends State<home> {
                               item['image']!, // แสดงรูปภาพจาก assets
                               height: 100,
                               width: 200,
-                              fit: BoxFit.fill,
+                              fit: BoxFit.cover,
                             ),
                             SizedBox(height: 10),
                             Text(
@@ -193,9 +194,9 @@ class _HomePageState extends State<home> {
                             children: [
                               Image.asset(
                                 item['image']!,
-                                height: 175,
-                                width: 175,
-                                fit: BoxFit.fill,
+                                height: 182.5,
+                                width: 200,
+                                fit: BoxFit.cover,
                               ),
                             ],
                           ),

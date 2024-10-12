@@ -62,7 +62,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/lottie/title.json
-    - assets/logo.png
     - assets/h1.jpg
     - assets/sound/86.mp3
     - assets/sound/22.mp3
@@ -85,7 +84,42 @@ flutter:
     - assets/photo/p2.jpg
     - assets/photo/p3.jpg
     - assets/photo/p4.jpg
-
+    - assets/photo/logo1.jpg
+    - assets/photo/logo2.png
+    - assets/photo/logo3.jpg
+    - assets/photo/logo4.jpg
+    - assets/photo/logo.png
+    - assets/sound/th1.mp3
+    - assets/sound/th01.mp3
+    - assets/sound/th001.mp3
+    - assets/sound/th2.mp3
+    - assets/sound/th02.mp3
+    - assets/sound/th002.mp3
+    - assets/sound/th3.mp3
+    - assets/sound/th03.mp3
+    - assets/sound/th003.mp3
+    - assets/sound/th4.mp3
+    - assets/sound/th04.mp3
+    - assets/sound/th004.mp3
+    - assets/sound/th5.mp3
+    - assets/sound/th05.mp3
+    - assets/sound/th005.mp3
+    - assets/sound/en1.mp3
+    - assets/sound/en01.mp3
+    - assets/sound/en001.mp3
+    - assets/sound/en2.mp3
+    - assets/sound/en02.mp3
+    - assets/sound/en002.mp3
+    - assets/sound/en3.mp3
+    - assets/sound/en03.mp3
+    - assets/sound/en003.mp3
+    - assets/sound/en4.mp3
+    - assets/sound/en04.mp3
+    - assets/sound/en004.mp3
+    - assets/sound/en5.mp3
+    - assets/sound/en05.mp3
+    - assets/sound/en005.mp3
+ 
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

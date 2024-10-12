@@ -19,12 +19,13 @@ class _FablePageState extends State<fable04> {
 
   final String _storyTh =
       'ตำนานของเกาะหนู เกาะแมว สถานที่ท่องเที่ยวสำคัญของจังหวัดสงขลา ที่เล่าว่า..เมื่อนานมาแล้วยังไม่มีเกาะหนูเกาะแมวเกิดขึ้นนั้น ที่นี่เคยเป็นเมืองท่าสำคัญที่มีการค้าขายมากมาย และพ่อค้าชาวจีนก็ได้นำหมาและแมวคู่หนึ่งขึ้นเรือสำเภามาด้วย พวกมันทั้งคู่ต่างก็อยากกลับบ้าน จนได้ค้นพบความลับว่ามีลูกแก้ววิเศษที่ทำให้ไม่จมน้ำ และให้เจ้าหนูไปขโมยลูกแก้ววิเศษนั้นมา แต่ทว่าเจ้าหนูกลับนำลูกแก้ววิเศษหนีลงทะเลซะเอง การไล่ล่าของเจ้าแมวและหนูกลางทะเลจึงเริ่มต้นขึ้น ส่วนเจ้าหมาตัดสินใจที่จะว่ายไปฝั่งข้างหน้า ในที่สุดเรี่ยวแรงจากการล่าและหนีก็ทำให้พวกมันจมลงสู่ทะเล และได้เกิดความมหัศจรรย์แห่งท้องทะเลขึ้น คือได้เกิดเกาะหนูซึ่งมีลักษณะเหมือนหนู และเกาะแมวที่มีลักษณะเหมือนแมว ส่วนเจ้าหมาขาดใจตายเมื่อว่ายถึงฝังกลายเป็นกลายเป็นเป็นเขาตังกวน และลูกแก้ววิเศษแตกละเอียดและถูกคลื่นซัดกลายเป็นหาดแก้วที่สวยงามในปัจจุบัน.'; // Thai story
-  final String _storyEn = 'Hi'; // English story
+  final String _storyEn =
+      'Here s the translation of the legend of Koh Ngu (Mouse Island) and Koh Maew (Cat Island):The legend of Koh Ngu and Koh Maew, significant tourist attractions in Songkhla Province, tells the story of a time long ago when these islands had not yet formed. This area was once an important trading port with a thriving marketplace. A Chinese merchant brought a dog and a cat on his trading ship. Both animals longed to return home and discovered a secret: there was a magical pearl that prevented drowning. The cat sent the mouse to steal the magical pearl, but the mouse ended up dropping it into the sea instead.Thus began a chase between the cat and the mouse in the ocean, while the dog decided to swim towards the shore. Eventually, the exhaustion from the chase caused all of them to sink into the sea, leading to the miraculous emergence of the islands: Koh Ngu, shaped like a mouse, and Koh Maew, shaped like a cat. The dog, having died from exhaustion upon reaching the shore, became Tanguan Hill. The magical pearl shattered and was washed ashore by the waves, transforming into the beautiful Glass Beach we see today.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'cat', 'label': 'แมว'},
-    {'value': 'dog', 'label': 'หมา'},
-    {'value': 'mouse', 'label': 'หนู'},
+    {'value': 'legend', 'label': ' ตำนาน'},
+    {'value': ' island', 'label': 'เกาะ'},
+    {'value': ' beautiful', 'label': 'สวย'},
   ];
 
   void _submitComment() {
@@ -36,8 +37,9 @@ class _FablePageState extends State<fable04> {
   }
 
   void _showQuiz() {
-    String question =
-        _storyLanguage == 'th' ? 'dog แปลว่าอะไร?' : 'What does dog mean?';
+    String question = _storyLanguage == 'th'
+        ? 'legend แปลว่าอะไร?'
+        : 'What does legend mean?';
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -62,7 +64,7 @@ class _FablePageState extends State<fable04> {
           actions: [
             TextButton(
               onPressed: () {
-                String message = _selectedAnimal == 'dog'
+                String message = _selectedAnimal == 'legend'
                     ? (_storyLanguage == 'th' ? "ถูกนะครับ" : "Correct!")
                     : (_storyLanguage == 'th' ? "ผิดนะครับ" : "Incorrect!");
                 Navigator.of(context).pop(); // Close dialog
@@ -110,7 +112,8 @@ class _FablePageState extends State<fable04> {
   }
 
   Future<void> _playAudio() async {
-    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    String audioFile =
+        _storyLanguage == 'th' ? 'sound/th4.mp3' : 'sound/en4.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
@@ -281,6 +284,44 @@ class _FablePageState extends State<fable04> {
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                    : 'Vocabulary from this story',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
+                    : 'Question: Please write the translation of the following words in 3 lines:',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 20),
+
+              // White background box for user input
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: _storyLanguage == 'th'
+                        ? 'พิมพ์คำแปลที่นี่...'
+                        : 'Type the translation here...',
+                    contentPadding: EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _showQuiz,

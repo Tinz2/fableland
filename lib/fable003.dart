@@ -17,13 +17,15 @@ class _FablePageState extends State<fable0003> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
-  final String _storyEn = 'Hi'; // English story
+  final String _storyTh =
+      'ครั้งหนึ่งมีพ่อค้าร่ำรวยที่มีลูกสาวสามคน วันหนึ่งเขาสูญเสียทรัพย์สินทั้งหมดและต้องย้ายไปอยู่ชนบท จนกระทั่งได้รับข่าวดีว่าเรือสินค้าที่เขาส่งออกกลับเข้าท่า เขาจึงเดินทางไปเมืองและถามลูกๆ ว่าต้องการของขวัญอะไร ลูกสาวคนโตขอชุดสวย คนที่สองขอสร้อยไข่มุก แต่เบลล์ ลูกสาวคนเล็กขอกุหลาบระหว่างทางกลับบ้าน พ่อค้าถูกพายุพัดไปจนต้องพักที่ปราสาทร้าง เขาพบอาหารและนอนหลับไป เมื่อตื่นขึ้น พบว่าเขาขโมยกุหลาบจากสวนของอสูร อสูรจึงขู่ว่าจะฆ่าเขา แต่สุดท้ายให้อภัยโดยขอให้พ่อค้านำเบลล์มาแทนเบลล์อาสากลับไปยังปราสาทเพื่อช่วยชีวิตพ่อ เธอเริ่มรู้จักอสูรและพบว่าเขาอ่อนโยน ทั้งสองใช้ชีวิตร่วมกันอย่างมีความสุข จนวันหนึ่ง อสูรถามเธอว่าจะอยู่เป็นภรรยาของเขาไหม แต่เบลล์ลังเลเมื่อเบลล์เห็นพ่อป่วย เธอขออนุญาตกลับบ้านและสัญญาว่าจะกลับภายใน 7 วัน แต่วันเวลาผ่านไปเร็ว เบลล์ตัดสินใจกลับไปยังปราสาท เมื่อถึงที่นั่น เธอพบอสูรนอนหมดสติ เธอประกาศรักเขาและขอแต่งงาน ซึ่งทำให้คำสาปถูกทำลาย อสูรกลับคืนเป็นเจ้าชายและทั้งคู่มีความสุขตลอดไป'; // Thai story
+  final String _storyEn =
+      'Once upon a time, there was a wealthy merchant with three daughters. One day, he lost all his fortune and had to move to the countryside. Then he received good news that a trading ship he had sent out was returning to port. He traveled to the city and asked his daughters what gifts they wanted. The eldest daughter asked for a beautiful dress, the second one wanted a pearl necklace, but Belle, the youngest daughter, requested a rose.On his way home, the merchant was caught in a storm and had to seek shelter in an abandoned castle. He found food and fell asleep. When he woke up he realized he had taken a rose from the Beast s garden The Beast threatened to kill him but ultimately forgave him on the condition that he bring Belle in exchange for his life Belle volunteered to return to the castle to save her father. She began to get to know the Beast and discovered that he was gentle. They lived together happily until one day the Beast asked her if she would be his wife but Belle hesitated.When Belle saw her father was ill she asked permission to return home and promised to come back within seven days. However, time passed quickly, and Belle decided to return to the castle. When she arrived, she found the Beast unconscious. She professed her love for him and asked to marry him which broke the curse. The Beast turned back into a prince and they lived happly ever after.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'cat', 'label': 'แมว'},
-    {'value': 'dog', 'label': 'หมา'},
-    {'value': 'mouse', 'label': 'หนู'},
+    {'value': 'daughters', 'label': 'ลูกสาว'},
+    {'value': 'rose', 'label': 'กุหลาบ'},
+    {'value': 'quickly', 'label': 'อย่างรวดเร็ว'},
   ];
 
   void _submitComment() {
@@ -35,8 +37,9 @@ class _FablePageState extends State<fable0003> {
   }
 
   void _showQuiz() {
-    String question =
-        _storyLanguage == 'th' ? 'dog แปลว่าอะไร?' : 'What does dog mean?';
+    String question = _storyLanguage == 'th'
+        ? 'quickly แปลว่าอะไร?'
+        : 'What does quickly mean?';
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -61,7 +64,7 @@ class _FablePageState extends State<fable0003> {
           actions: [
             TextButton(
               onPressed: () {
-                String message = _selectedAnimal == 'dog'
+                String message = _selectedAnimal == 'quickly'
                     ? (_storyLanguage == 'th' ? "ถูกนะครับ" : "Correct!")
                     : (_storyLanguage == 'th' ? "ผิดนะครับ" : "Incorrect!");
                 Navigator.of(context).pop(); // Close dialog
@@ -109,7 +112,8 @@ class _FablePageState extends State<fable0003> {
   }
 
   Future<void> _playAudio() async {
-    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    String audioFile =
+        _storyLanguage == 'th' ? 'sound/th003.mp3' : 'sound/en003.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
@@ -279,6 +283,44 @@ class _FablePageState extends State<fable0003> {
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                    : 'Vocabulary from this story',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
+                    : 'Question: Please write the translation of the following words in 3 lines:',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 20),
+
+              // White background box for user input
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: _storyLanguage == 'th'
+                        ? 'พิมพ์คำแปลที่นี่...'
+                        : 'Type the translation here...',
+                    contentPadding: EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _showQuiz,

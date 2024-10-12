@@ -19,18 +19,19 @@ class _FablePageState extends State<fable005> {
 
   final String _storyTh =
       'หมาตัวหนึ่งเดินคาบเนื้อวิ่งข้ามสะพานมา เมื่อถึงกลางสะพานก็ก้มมองลงไปในบ่อน้ำเบื้องล่าง เห็นหมาตัวหนึ่งกำลังคาบชิ้นเนื้อที่ใหญ่กว่า ซึ่งจริงๆ แล้วเป็นเงาของตัวเอง เจ้าหมาก็เกิดความละโมบ อ้าปากเห่ากระโชกเพื่อหวังจะแย่งชิ้นเนื้อในน้ำมาเป็นของตัวเอง ปรากฏว่าทันทีที่อ้าปาก เนื้อที่คาบอยู่ก็ร่วงหล่นลงน้ำ กว่าจะสำนึกได้ว่าหมากับก้อนเนื้อที่เห็นคือเงาของตัวเองในน้ำ ก็สายเกินไปแล้ว'; // Thai story
-  final String _storyEn = 'Hi'; // English story
+  final String _storyEn =
+      'A dog was walking across a bridge, holding a piece of meat in his mouth. When he reached the middle of the bridge, he looked down into the water below and saw another dog with a piece of meat that was larger than his own. In his greed, the dog opened his mouth to bark in hopes of grabbing the larger piece of meat in the water. However, as soon as he opened his mouth, the piece of meat he was holding fell into the water. By the time he realized that the dog and the larger piece of meat he saw were just his own reflection, it was already too late.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'cat', 'label': 'แมว'},
     {'value': 'dog', 'label': 'หมา'},
-    {'value': 'mouse', 'label': 'หนู'},
+    {'value': 'meat', 'label': 'เนื้อ'},
+    {'value': 'mouth', 'label': 'ปาก'},
   ];
 
   void _submitComment() {
     String thankYouMessage = _storyLanguage == 'th'
         ? 'คติสอนใจ : โลภมาก ลาภหาย'
-        : 'Thank you for your attention';
+        : 'Greed leads to loss.';
     _showDialog(
         _storyLanguage == 'th' ? 'ขอบคุณ!' : 'Thank You!', thankYouMessage);
   }
@@ -110,7 +111,8 @@ class _FablePageState extends State<fable005> {
   }
 
   Future<void> _playAudio() async {
-    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    String audioFile =
+        _storyLanguage == 'th' ? 'sound/th05.mp3' : 'sound/en05.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
@@ -280,6 +282,44 @@ class _FablePageState extends State<fable005> {
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                    : 'Vocabulary from this story',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
+                    : 'Question: Please write the translation of the following words in 3 lines:',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 20),
+
+              // White background box for user input
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: _storyLanguage == 'th'
+                        ? 'พิมพ์คำแปลที่นี่...'
+                        : 'Type the translation here...',
+                    contentPadding: EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _showQuiz,

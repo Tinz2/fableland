@@ -69,7 +69,7 @@ class _MyHomePageState extends State<menu> {
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ClipOval(
-            child: Image.asset('assets/logo.png'),
+            child: Image.asset('assets/photo/logo.png'),
           ),
         ),
         actions: [

@@ -19,12 +19,13 @@ class _FablePageState extends State<fable03> {
 
   final String _storyTh =
       'พญาแถนเป็นผู้ควบคุมฟ้า คอยปัดเป่าทุกข์บำรุงสุขชาวบ้านอยู่เสมอ จึงเป็นที่สักการะนับถือของชาวบ้านอย่างมาก อีกทั้งยังเป็นผู้เปิดประตูให้เหล่าพญานาคมาเล่นน้ำ ทำให้เกิดฝนตกในเมืองมนุษย์ ส่วนพญาคันคากนั้นเมื่อแรกเกิดมีผิวบนร่างกายตะปุ่มตะป่ำเหมือนคางคก แต่เมื่อโตขึ้นก็ได้กลายเป็นเจ้าชายหนุ่มรูปงามและปุ่มตามตัวก็หาไป และได้ปกครองบ้านเมืองด้วยทศพิศราชธรรม บ้านเมืองมีความสุข แต่ทั้งสองกลับมาต่อสู้กันด้วยอิทธิฤทธิ์ต่าง ๆ เนื่องจากพญาแถนไม่ทำให้ฝนไม่ตกถึง 7 ปี และในที่สุดพญาแถนเป็นฝ่ายพ่ายแพ้ จึงมีการทำข้อตกลงร่วมกัน โดยพญาคันคากได้ขอร้องให้พญาแถนช่วยเปิดปล่องน้ำเพื่อให้พญานาคมาเล่นน้ำเพื่อฝนจะได้ตก โดยทำข้อตกลงในการเปิดปิดปล่องเป็นเวลาเพื่อไม่ให้น้ำไหลมากไป โดยให้สัญญานเป็นการจุดบั้งไฟขึ้นมาในเเดือน 6 ซึ่งเป็นฤดูทำนา เมื่อฝนตกลงมากบก็จะร้องระงม และเมื่อน้ำมากพอก็จะแกว่งโหวดเพื่อให้ฝนหยุด นิทานเรื่องนี้จึงเป็นตำนานของประเพณีบุญบั้งไฟเพื่อขอฝนเพื่อเป็นการสักการะบูชาถึงพญาแถน.'; // Thai story
-  final String _storyEn = 'Hi'; // English story
+  final String _storyEn =
+      'Phaya Than is the deity who controls the heavens, always dispelling misfortune and nurturing the happiness of the people. He is highly revered by the villagers. Additionally, he opens the gates for the Naga deities to come and play in the water, which brings rain to the human world. Phaya Kankak, on the other hand, was born with bumpy skin like a toad, but as he grew up, he transformed into a handsome young prince, and the bumps disappeared. He ruled the land with righteousness, and the kingdom thrived.However, the two eventually fought against each other due to various powers because Phaya Than did not bring rain for seven years. In the end, Phaya Than was defeated, and they made a mutual agreement. Phaya Kankak requested Phaya Than to open the water channel so the Naga could come and play in the water, which would allow rain to fall. They agreed on a schedule for opening and closing the channel to control the water flow, using the signal of lighting a firecracker in the sixth month, which is the rice-planting season. When it rained heavily, they would make loud noises, and when the water reached a sufficient level, they would swing a wooden scoop to stop the rain.This tale thus becomes the legend of the Boon Bung Fai festival, a rainmaking ceremony to honor Phaya Than.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'cat', 'label': 'แมว'},
-    {'value': 'dog', 'label': 'หมา'},
-    {'value': 'mouse', 'label': 'หนู'},
+    {'value': 'villagers', 'label': 'ชาวบ้าน'},
+    {'value': 'water', 'label': 'น้ำ'},
+    {'value': 'season', 'label': 'ฤดูกาล'},
   ];
 
   void _submitComment() {
@@ -36,8 +37,9 @@ class _FablePageState extends State<fable03> {
   }
 
   void _showQuiz() {
-    String question =
-        _storyLanguage == 'th' ? 'dog แปลว่าอะไร?' : 'What does dog mean?';
+    String question = _storyLanguage == 'th'
+        ? 'season แปลว่าอะไร?'
+        : 'What does season mean?';
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -62,7 +64,7 @@ class _FablePageState extends State<fable03> {
           actions: [
             TextButton(
               onPressed: () {
-                String message = _selectedAnimal == 'dog'
+                String message = _selectedAnimal == 'season'
                     ? (_storyLanguage == 'th' ? "ถูกนะครับ" : "Correct!")
                     : (_storyLanguage == 'th' ? "ผิดนะครับ" : "Incorrect!");
                 Navigator.of(context).pop(); // Close dialog
@@ -110,7 +112,8 @@ class _FablePageState extends State<fable03> {
   }
 
   Future<void> _playAudio() async {
-    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    String audioFile =
+        _storyLanguage == 'th' ? 'sound/th3.mp3' : 'sound/en3.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
@@ -281,6 +284,44 @@ class _FablePageState extends State<fable03> {
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                    : 'Vocabulary from this story',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
+                    : 'Question: Please write the translation of the following words in 3 lines:',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 20),
+
+              // White background box for user input
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: _storyLanguage == 'th'
+                        ? 'พิมพ์คำแปลที่นี่...'
+                        : 'Type the translation here...',
+                    contentPadding: EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _showQuiz,

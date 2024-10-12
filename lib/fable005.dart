@@ -17,13 +17,15 @@ class _FablePageState extends State<fable0005> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
-  final String _storyEn = 'Hi'; // English story
+  final String _storyTh =
+      'ณ สวนสวรรค์อันไกลโพ้น นางฟ้าน้อยทุกคนตั้งใจศึกษาเพื่อเป็นนางฟ้าที่สมบูรณ์ ในวันสำเร็จหลักสูตร พวกเธอได้รับคฑาวิเศษเพื่อใช้ในการร่ายมนตร์กำกับดวงดาวให้ส่องแสงระยิบระยับเมื่อนางฟ้าหน้าใหม่เริ่มใช้คฑา ดวงดาวนับล้านบนฟ้าสว่างไสว แต่แสงสว่างนี้อยู่ได้ไม่นาน จึงต้องแบ่งปันดวงดาวให้แต่ละคนรับผิดชอบ หากดาวของใครเริ่มอ่อนแสง จะต้องทำให้สว่างสดใสอีกครั้งคืนแล้วคืนเล่า ดวงดาวสว่างอยู่เสมอ จนคืนหนึ่งมีดวงดาวใหม่เพิ่มขึ้น และดาวที่เคยสดใสกลับเริ่มริบหรี่ นางฟ้าต่างตื่นตระหนกและตามหานางฟ้าที่กำกับดาวนั้น จนพบว่าเธอสนุกกับการกำกับดาวพร้อมกันสองดวงนางฟ้าองค์น้อยจึงรู้ว่า ดวงดาวคือภาระ ไม่ใช่ทรัพย์สิน เธอรีบหันไปร่ายมนตรากำกับดาวของตนอีกครั้ง แสงดาวที่ริบหรี่กลับสว่างไสวสดใสเหมือนเดิม'; // Thai story
+  final String _storyEn =
+      'In a distant heavenly garden, all the little fairies dedicated themselves to studying to become complete fairies. On the day of their graduation, they received magical wands to use for casting spells to make the stars shine brightly.As the new fairies began to use their wands, millions of stars in the sky sparkled brilliantly. However, this light did not last long, so they had to share the responsibility of guiding the stars. If anyone s star began to dim, they needed to make it bright again.Night after night, the stars remained bright until one night a new star appeared, and a previously bright star began to flicker. The fairies were alarmed and searched for the fairy responsible for that dimming star. They found her having fun guiding two stars at once.The little fairy realized that guiding the stars was a responsibility, not a possession. She quickly turned her attention back to her own star, casting a spell to make it shine brightly again, restoring its brilliance.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'cat', 'label': 'แมว'},
-    {'value': 'dog', 'label': 'หมา'},
-    {'value': 'mouse', 'label': 'หนู'},
+    {'value': 'fairies', 'label': 'นางฟ้า'},
+    {'value': ' garden', 'label': 'สวน'},
+    {'value': 'star', 'label': 'ดาว'},
   ];
 
   void _submitComment() {
@@ -35,8 +37,9 @@ class _FablePageState extends State<fable0005> {
   }
 
   void _showQuiz() {
-    String question =
-        _storyLanguage == 'th' ? 'dog แปลว่าอะไร?' : 'What does dog mean?';
+    String question = _storyLanguage == 'th'
+        ? 'fairies แปลว่าอะไร?'
+        : 'What does fairies mean?';
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -61,7 +64,7 @@ class _FablePageState extends State<fable0005> {
           actions: [
             TextButton(
               onPressed: () {
-                String message = _selectedAnimal == 'dog'
+                String message = _selectedAnimal == 'fairies'
                     ? (_storyLanguage == 'th' ? "ถูกนะครับ" : "Correct!")
                     : (_storyLanguage == 'th' ? "ผิดนะครับ" : "Incorrect!");
                 Navigator.of(context).pop(); // Close dialog
@@ -109,7 +112,8 @@ class _FablePageState extends State<fable0005> {
   }
 
   Future<void> _playAudio() async {
-    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    String audioFile =
+        _storyLanguage == 'th' ? 'sound/th005.mp3' : 'sound/en005.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
@@ -279,6 +283,44 @@ class _FablePageState extends State<fable0005> {
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                    : 'Vocabulary from this story',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
+                    : 'Question: Please write the translation of the following words in 3 lines:',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 20),
+
+              // White background box for user input
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: _storyLanguage == 'th'
+                        ? 'พิมพ์คำแปลที่นี่...'
+                        : 'Type the translation here...',
+                    contentPadding: EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _showQuiz,

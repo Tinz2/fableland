@@ -17,13 +17,15 @@ class _FablePageState extends State<fable0001> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
-  final String _storyEn = 'Hi'; // English story
+  final String _storyTh =
+      'ในท้องทะเลอันไกลโพ้น ราชาไทรตันมีลูกสาว 7 คน นางเงือกน้อยคนสุดท้องเฝ้ารอคอยวันว่ายขึ้นผิวน้ำเพื่อพบกับมนุษย์ เมื่ออายุครบ 15 ปี เธอได้เห็นเรือที่เต็มไปด้วยมนุษย์และเจ้าชายรูปงาม แต่เกิดพายุทำให้เรือพลิกคว่ำ เธอจึงช่วยเจ้าชายขึ้นฝั่งและตกหลุมรักเขาเมื่อนางเงือกน้อยได้ยินเสียงพี่สาวพูดถึงมนุษย์ เธอจึงไปหาแม่มดแห่งท้องทะเลเพื่อขอมีขาแบบมนุษย์ แลกกับเสียงของเธอ นางเงือกน้อยตกลง แม้จะรู้ว่าถ้าเจ้าชายแต่งงานกับคนอื่น เธอจะต้องตายเมื่อเธอได้ขาแล้ว เจ้าชายพาเธอไปที่ปราสาท แต่เขายังคงนึกถึงเสียงที่ช่วยชีวิตเขา วันต่อมา เจ้าชายได้รับข่าวว่าจะต้องแต่งงานกับเจ้าหญิง และนางเงือกน้อยรู้ว่าจะเกิดอะไรขึ้นพี่สาวของเธอได้ตัดผมและแลกมีดกับแม่มดเพื่อให้เธอไปฆ่าเจ้าหญิง แต่เธอไม่ทำ  เจ้าชายและเจ้าหญิงจัดงานแต่งงาน ขณะที่แม่มดแปลงร่างเป็นอสุรกาย นางเงือกน้อยปกป้องเจ้าชายและเจ้าสาว จนแม่มดบาดเจ็บและจมลงสู่ทะเลเสียงของนางเงือกน้อยกลับมา เจ้าชายรู้ว่าเธอคือคนที่เขารัก ทั้งคู่แต่งงานบนเรือท่ามกลางความยินดีของทุกคน และได้ครองรักกันอย่างมีความสุขสืบไป'; // Thai story
+  final String _storyEn =
+      'In a distant ocean, King Triton had seven daughters. The youngest mermaid eagerly awaited the day she could swim to the surface and meet humans. When she turned 15, she saw a ship filled with people and a handsome prince. However, a storm struck, causing the ship to capsize. She saved the prince and fell in love with him.Curious about humans, the little mermaid sought out the sea witch to trade her voice for human legs. She agreed, knowing that if the prince married someone else, she would die.Once she had legs, the prince took her to his castle, but he still thought of the voice that had saved him. The next day, the prince learned he would have to marry a princess, and the little mermaid realized what that meant.Her sisters cut their hair and traded it with the sea witch for a dagger, hoping the little mermaid would kill the princess. But she couldn t bring herself to do it. As the prince and princess prepared for their wedding, the sea witch transformed into a monstrous creature. The little mermaid defended the prince and the bride, causing the witch to be injured and sink into the sea.The little mermaids voice returned, and the prince realized she was the one he truly loved. They married on the ship amid the joy of everyone and lived happily ever after'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'cat', 'label': 'แมว'},
-    {'value': 'dog', 'label': 'หมา'},
-    {'value': 'mouse', 'label': 'หนู'},
+    {'value': 'ocean', 'label': 'มหาสมุทร'},
+    {'value': 'mermaid', 'label': 'นางเงือก'},
+    {'value': 'ship', 'label': 'เรือ'},
   ];
 
   void _submitComment() {
@@ -36,7 +38,7 @@ class _FablePageState extends State<fable0001> {
 
   void _showQuiz() {
     String question =
-        _storyLanguage == 'th' ? 'dog แปลว่าอะไร?' : 'What does dog mean?';
+        _storyLanguage == 'th' ? 'ocean แปลว่าอะไร?' : 'What does ocean mean?';
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -61,7 +63,7 @@ class _FablePageState extends State<fable0001> {
           actions: [
             TextButton(
               onPressed: () {
-                String message = _selectedAnimal == 'dog'
+                String message = _selectedAnimal == 'ocean'
                     ? (_storyLanguage == 'th' ? "ถูกนะครับ" : "Correct!")
                     : (_storyLanguage == 'th' ? "ผิดนะครับ" : "Incorrect!");
                 Navigator.of(context).pop(); // Close dialog
@@ -109,7 +111,8 @@ class _FablePageState extends State<fable0001> {
   }
 
   Future<void> _playAudio() async {
-    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    String audioFile =
+        _storyLanguage == 'th' ? 'sound/th001.mp3' : 'sound/en001.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
@@ -280,6 +283,44 @@ class _FablePageState extends State<fable0001> {
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                    : 'Vocabulary from this story',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
+                    : 'Question: Please write the translation of the following words in 3 lines:',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 20),
+
+              // White background box for user input
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: _storyLanguage == 'th'
+                        ? 'พิมพ์คำแปลที่นี่...'
+                        : 'Type the translation here...',
+                    contentPadding: EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _showQuiz,

@@ -19,25 +19,26 @@ class _FablePageState extends State<fable003> {
 
   final String _storyTh =
       'แม่หมูมีลูกน้อย 3 ตัว และได้ปล่อยให้ลูกๆ ได้ออกเดินทางไปเผชิญโลกภายนอกด้วยตัวเอง ลูกหมูตัวที่ 1 ผู้เกียจคร้านได้ออกไปสร้างบ้านที่ทำจากฟาง เพราะทำได้ง่ายและเร็วที่สุด แต่วันหนึ่งหมาป่าจ้องจะมากินลูกหมูตัวที่ 1 ซึ่งบ้านไม่มีความแข็งแรง ทำให้ลูกหมูต้องวิ่งหนีสุดชีวิตไปหลบที่บ้านของลูกหมูตัวที่ 2 ที่สร้างจากไม้ แม้จะมีความแข็งแรงกว่า แต่ก็ไม่สามารถต้านทานหมาป่าได้อีกเช่นกัน ลูกหมูทั้ง 2 ตัว จึงรีบวิ่งหนีออกไปยังบ้านของลูกหมูตัวที่ 3 ซึ่งสร้างด้วยอิฐ เมื่อหมาป่าตามมา ก็ไม่สามารถทำลายบ้านอิฐได้ ลูกหมูทั้ง 3 ตัวจึงรอดชีวิต'; // Thai story
-  final String _storyEn = 'Hi'; // English story
+  final String _storyEn =
+      'Mother Pig had three little piglets and allowed them to venture out into the world on their own. The first piglet, who was lazy, built a house of straw because it was the easiest and quickest option. However, one day, a wolf came to eat the first piglet. The straw house was not strong enough, so the piglet had to run for its life to the house of the second piglet, which was made of wood. Although the wooden house was sturdier, it could not withstand the wolf either.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'cat', 'label': 'แมว'},
-    {'value': 'dog', 'label': 'หมา'},
-    {'value': 'mouse', 'label': 'หนู'},
+    {'three': 'mother', 'label': 'แม่'},
+    {'one': 'pig', 'label': 'หมู'},
+    {'pig': 'wolf', 'label': 'หมาป่า'},
   ];
 
   void _submitComment() {
     String thankYouMessage = _storyLanguage == 'th'
         ? 'คติสอนใจ : ความเกียจคร้านแม้จะทำให้เราสบาย แต่ก็อาจนำทุกข์ภัยมาสู่ตนได้'
-        : 'Thank you for your attention';
+        : 'Laziness may bring us comfort, but it can also lead to suffering and misfortune.';
     _showDialog(
         _storyLanguage == 'th' ? 'ขอบคุณ!' : 'Thank You!', thankYouMessage);
   }
 
   void _showQuiz() {
     String question =
-        _storyLanguage == 'th' ? 'dog แปลว่าอะไร?' : 'What does dog mean?';
+        _storyLanguage == 'th' ? 'wolf แปลว่าอะไร?' : 'What does wolf mean?';
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -62,7 +63,7 @@ class _FablePageState extends State<fable003> {
           actions: [
             TextButton(
               onPressed: () {
-                String message = _selectedAnimal == 'dog'
+                String message = _selectedAnimal == 'wolf'
                     ? (_storyLanguage == 'th' ? "ถูกนะครับ" : "Correct!")
                     : (_storyLanguage == 'th' ? "ผิดนะครับ" : "Incorrect!");
                 Navigator.of(context).pop(); // Close dialog
@@ -110,7 +111,8 @@ class _FablePageState extends State<fable003> {
   }
 
   Future<void> _playAudio() async {
-    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    String audioFile =
+        _storyLanguage == 'th' ? 'sound/th03.mp3' : 'sound/en03.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
@@ -280,6 +282,44 @@ class _FablePageState extends State<fable003> {
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                    : 'Vocabulary from this story',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
+                    : 'Question: Please write the translation of the following words in 3 lines:',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 20),
+
+              // White background box for user input
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: _storyLanguage == 'th'
+                        ? 'พิมพ์คำแปลที่นี่...'
+                        : 'Type the translation here...',
+                    contentPadding: EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _showQuiz,

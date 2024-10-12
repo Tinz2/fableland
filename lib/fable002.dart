@@ -17,13 +17,15 @@ class _FablePageState extends State<fable0002> {
   bool _isPlaying = false;
   Duration _currentPosition = Duration.zero;
 
-  final String _storyTh = 'สวัสดี'; // Thai story
-  final String _storyEn = 'Hi'; // English story
+  final String _storyTh =
+      'กาลครั้งหนึ่งมีพระราชาและพระราชินีที่ไม่มีทายาท วันหนึ่งพระราชินีได้ให้กำเนิดเจ้าหญิงสวยงาม พระราชาจัดงานเลี้ยงใหญ่ แต่ไม่ได้เชิญนางฟ้าองค์ที่ 13 ซึ่งโกรธและสาปเจ้าหญิงว่าในวันเกิดปีที่ 16 จะถูกเข็มปั่นด้ายแทงนิ้วและสิ้นพระชนม์ นางฟ้าองค์ที่ 12 ได้ช่วยลดคำสาปให้เจ้าหญิงหลับไป 100 ปีเมื่อเจ้าหญิงอายุ 16 ปี เธอไปสำรวจปราสาทและได้พบหญิงชราที่ปั่นด้าย นิ้วของเธอถูกเข็มทิ่ม ทำให้หลับไปและทำให้ทุกคนในอาณาจักรหลับไปด้วย พุ่มหนามล้อมรอบปราสาท ป้องกันไม่ให้ใครเข้ามาผ่านไป 100 ปี เจ้าชายได้ยินเรื่องราวและต้องการพิสูจน์ เจ้าชายเดินเข้าไปในปราสาทซึ่งในวันนั้นพุ่มหนามกลายเป็นดอกไม้ เมื่อเจ้าชายพบเจ้าหญิง เขาจุมพิตเธอและเจ้าหญิงตื่นขึ้น คำสาปถูกทำลาย ทุกคนในปราสาทกลับมามีชีวิต เจ้าชายและเจ้าหญิงแต่งงานและมีความสุขตลอดไป'; // Thai story
+  final String _storyEn =
+      'Once upon a time, there was a king and queen who had no heirs. One day, the queen gave birth to a beautiful princess. The king held a grand celebration but did not invite the 13th fairy, who, angered, cursed the princess to be pricked by a spindle on her 16th birthday and die. The 12th fairy softened the curse, allowing the princess to sleep for 100 years instead.When the princess turned 16, she explored the castle and encountered an old woman spinning thread. As she reached out, she pricked her finger, causing her to fall asleep and bringing slumber to everyone in the kingdom. Thorns surrounded the castle, preventing anyone from entering.A hundred years later, a prince heard the tale and wanted to see for himself. On the day he approached the castle, the thorns transformed into flowers. When the prince found the princess and kissed her, she awoke, breaking the curse. Everyone in the castle came back to life, and the prince and princess were married, living happily ever after.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'cat', 'label': 'แมว'},
-    {'value': 'dog', 'label': 'หมา'},
-    {'value': 'mouse', 'label': 'หนู'},
+    {'value': 'queen', 'label': 'ราชินี'},
+    {'value': 'princess', 'label': 'เจ้าหญิง'},
+    {'value': 'sleep', 'label': 'นอน'},
   ];
 
   void _submitComment() {
@@ -35,8 +37,9 @@ class _FablePageState extends State<fable0002> {
   }
 
   void _showQuiz() {
-    String question =
-        _storyLanguage == 'th' ? 'dog แปลว่าอะไร?' : 'What does dog mean?';
+    String question = _storyLanguage == 'th'
+        ? 'princess แปลว่าอะไร?'
+        : 'What does princess mean?';
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -61,7 +64,7 @@ class _FablePageState extends State<fable0002> {
           actions: [
             TextButton(
               onPressed: () {
-                String message = _selectedAnimal == 'dog'
+                String message = _selectedAnimal == 'princess'
                     ? (_storyLanguage == 'th' ? "ถูกนะครับ" : "Correct!")
                     : (_storyLanguage == 'th' ? "ผิดนะครับ" : "Incorrect!");
                 Navigator.of(context).pop(); // Close dialog
@@ -109,7 +112,8 @@ class _FablePageState extends State<fable0002> {
   }
 
   Future<void> _playAudio() async {
-    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    String audioFile =
+        _storyLanguage == 'th' ? 'sound/th002.mp3' : 'sound/en002.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
@@ -280,6 +284,44 @@ class _FablePageState extends State<fable0002> {
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                    : 'Vocabulary from this story',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 10),
+              Text(
+                _storyLanguage == 'th'
+                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
+                    : 'Question: Please write the translation of the following words in 3 lines:',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: 20),
+
+              // White background box for user input
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: _storyLanguage == 'th'
+                        ? 'พิมพ์คำแปลที่นี่...'
+                        : 'Type the translation here...',
+                    contentPadding: EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _showQuiz,
