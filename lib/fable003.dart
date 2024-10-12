@@ -109,9 +109,8 @@ class _FablePageState extends State<fable0003> {
   }
 
   Future<void> _playAudio() async {
-    await _audioPlayer
-        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
-    await _audioPlayer.resume();
+    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
 

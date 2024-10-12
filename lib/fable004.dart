@@ -109,9 +109,8 @@ class _FablePageState extends State<fable0004> {
   }
 
   Future<void> _playAudio() async {
-    await _audioPlayer
-        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
-    await _audioPlayer.resume();
+    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
 
@@ -152,7 +151,8 @@ class _FablePageState extends State<fable0004> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('นิทานสโนว์ไวท์กับคนแคระทั้งเจ็ด'), // แสดงชื่อเรื่องแทนโลโก้
+        title:
+            Text('นิทานสโนว์ไวท์กับคนแคระทั้งเจ็ด'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),

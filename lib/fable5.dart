@@ -110,9 +110,8 @@ class _FablePageState extends State<fable05> {
   }
 
   Future<void> _playAudio() async {
-    await _audioPlayer
-        .play(AssetSource('sound/22.mp3')); // เปลี่ยนเป็นชื่อไฟล์เสียงของคุณ
-    await _audioPlayer.resume();
+    String audioFile = _storyLanguage == 'th' ? 'sound/86.mp3' : 'sound/22.mp3';
+    await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
     _isPlaying = true;
   }
 
@@ -153,8 +152,7 @@ class _FablePageState extends State<fable05> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title:
-            Text('นิทาน กล่องข้าวน้อยฆ่าแม่'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('นิทาน กล่องข้าวน้อยฆ่าแม่'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
@@ -179,7 +177,8 @@ class _FablePageState extends State<fable05> {
                 borderRadius: BorderRadius.circular(20),
                 child: Stack(
                   children: [
-                    Image.asset('assets/photo/5.jpg'), // Image path ..รูปนิทานเรื่อง กล่องข้าวน้อยฆ่าแม่..
+                    Image.asset(
+                        'assets/photo/5.jpg'), // Image path ..รูปนิทานเรื่อง กล่องข้าวน้อยฆ่าแม่..
                   ],
                 ),
               ),
