@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'contact.dart'; // เพิ่มการนำเข้า ContactUs
+import 'contact.dart';
 
 class fable01 extends StatefulWidget {
   const fable01({Key? key}) : super(key: key);
@@ -25,6 +25,13 @@ class _FablePageState extends State<fable01> {
     {'value': 'crocodiles', 'label': 'จระเข้'},
     {'value': 'river', 'label': 'แม่น้ำ'},
     {'value': 'species', 'label': 'สายพันธ์ุ'},
+  ];
+
+  // คำศัพท์ที่ได้จากเรื่องนี้
+  final List<String> _vocabularies = [
+    'Crocodile จระเข้',
+    'Crocodile จระเข้',
+    'Crocodile จระเข้',
   ];
 
   void _submitComment() {
@@ -114,12 +121,16 @@ class _FablePageState extends State<fable01> {
     String audioFile =
         _storyLanguage == 'th' ? 'sound/th1.mp3' : 'sound/en1.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
-    _isPlaying = true;
+    setState(() {
+      _isPlaying = true;
+    });
   }
 
   Future<void> _pauseAudio() async {
     await _audioPlayer.pause();
-    _isPlaying = false;
+    setState(() {
+      _isPlaying = false;
+    });
   }
 
   Future<void> _rewindAudio() async {
@@ -140,7 +151,9 @@ class _FablePageState extends State<fable01> {
   Future<void> _restartAudio() async {
     await _audioPlayer.seek(Duration.zero);
     await _audioPlayer.resume();
-    _isPlaying = true;
+    setState(() {
+      _isPlaying = true;
+    });
   }
 
   @override
@@ -244,7 +257,6 @@ class _FablePageState extends State<fable01> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey),
                 ),
                 child: Text(
                   displayedStory,
@@ -255,24 +267,18 @@ class _FablePageState extends State<fable01> {
               SizedBox(height: 20),
 
               // Comment section
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey),
+              TextField(
+                maxLines: 3,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: _storyLanguage == 'th'
+                      ? 'ข้อคิดที่ได้จากการอ่าน'
+                      : 'Thoughts from reading',
+                  contentPadding: EdgeInsets.all(16),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'ข้อคิดที่ได้จากการอ่าน'
-                        : 'Thoughts from reading',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
-                  onChanged: (value) {
-                    _comment = value;
-                  },
-                ),
+                onChanged: (value) {
+                  _comment = value;
+                },
               ),
               SizedBox(height: 20),
               ElevatedButton(
@@ -285,44 +291,38 @@ class _FablePageState extends State<fable01> {
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
-                    : 'Vocabulary from this story',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 20),
 
-              // White background box for user input
+              // Vocabulary section with a border
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._vocabularies.map((vocab) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            vocab,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )),
+                  ],
                 ),
               ),
               SizedBox(height: 20),
-              SizedBox(height: 20),
+
+              // Quiz button
               ElevatedButton(
                 onPressed: _showQuiz,
                 style: ElevatedButton.styleFrom(

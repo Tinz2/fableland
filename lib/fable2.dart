@@ -23,9 +23,9 @@ class _FablePageState extends State<fable02> {
       'There were two men of different social statuses who became friends. The first man was wealthy but lived alone, with no relatives. The second man had a happy family but lived in poverty. The first man said that although he was alone, he didn t feel jealous because he had plenty of wealth to use. The second man also claimed he never felt jealous because he had a good family with children to take care of him. Both tried to make the other envious of their own lives, but neither succeeded. Eventually, the second man suggested they have dinner at each other s homes.When the second man visited the first man s home, he found that there were plenty of food and household items, but it also meant more work for the first man, who had to do everything alone. Conversely, when the first man went to the second man s home, he realized he didn t have to do anything, as the children helped with various chores, and they all shared meals together as a family.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'men', 'label': 'ผู้ชาย'},
-    {'value': 'alone', 'label': 'โดดเดี่ยว'},
-    {'value': ' different', 'label': 'แตกต่าง'},
+    {'value': 'men', 'label': 'Men ผู้ชาย'},
+    {'value': 'men', 'label': 'Men ผู้ชาย'},
+    {'value': 'men', 'label': 'Men ผู้ชาย'},
   ];
 
   void _submitComment() {
@@ -114,12 +114,16 @@ class _FablePageState extends State<fable02> {
     String audioFile =
         _storyLanguage == 'th' ? 'sound/th2.mp3' : 'sound/en2.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
-    _isPlaying = true;
+    setState(() {
+      _isPlaying = true;
+    });
   }
 
   Future<void> _pauseAudio() async {
     await _audioPlayer.pause();
-    _isPlaying = false;
+    setState(() {
+      _isPlaying = false;
+    });
   }
 
   Future<void> _rewindAudio() async {
@@ -136,7 +140,9 @@ class _FablePageState extends State<fable02> {
   Future<void> _restartAudio() async {
     await _audioPlayer.seek(Duration.zero);
     await _audioPlayer.resume();
-    _isPlaying = true;
+    setState(() {
+      _isPlaying = true;
+    });
   }
 
   @override
@@ -201,7 +207,7 @@ class _FablePageState extends State<fable02> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: _isPlaying ? _playAudio : _playAudio,
+                    onPressed: _isPlaying ? _pauseAudio : _playAudio,
                     child: Text(buttonLabels['play']!),
                   ),
                   ElevatedButton(
@@ -209,7 +215,7 @@ class _FablePageState extends State<fable02> {
                     child: Text(buttonLabels['rewind']!),
                   ),
                   ElevatedButton(
-                    onPressed: _isPlaying ? _pauseAudio : _pauseAudio,
+                    onPressed: _isPlaying ? _pauseAudio : _playAudio,
                     child: Text(buttonLabels['pause']!),
                   ),
                   ElevatedButton(
@@ -283,25 +289,9 @@ class _FablePageState extends State<fable02> {
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
-              SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
-                    : 'Vocabulary from this story',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
               SizedBox(height: 20),
 
-              // White background box for user input
+              // Vocabulary section with a border
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -309,19 +299,30 @@ class _FablePageState extends State<fable02> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._quizOptions.map((vocab) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            vocab['label']!,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )),
+                  ],
                 ),
               ),
               SizedBox(height: 20),
-              SizedBox(height: 20),
+
+              // Quiz button
               ElevatedButton(
                 onPressed: _showQuiz,
                 style: ElevatedButton.styleFrom(

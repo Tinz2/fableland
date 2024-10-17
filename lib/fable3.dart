@@ -23,9 +23,9 @@ class _FablePageState extends State<fable03> {
       'Phaya Than is the deity who controls the heavens, always dispelling misfortune and nurturing the happiness of the people. He is highly revered by the villagers. Additionally, he opens the gates for the Naga deities to come and play in the water, which brings rain to the human world. Phaya Kankak, on the other hand, was born with bumpy skin like a toad, but as he grew up, he transformed into a handsome young prince, and the bumps disappeared. He ruled the land with righteousness, and the kingdom thrived.However, the two eventually fought against each other due to various powers because Phaya Than did not bring rain for seven years. In the end, Phaya Than was defeated, and they made a mutual agreement. Phaya Kankak requested Phaya Than to open the water channel so the Naga could come and play in the water, which would allow rain to fall. They agreed on a schedule for opening and closing the channel to control the water flow, using the signal of lighting a firecracker in the sixth month, which is the rice-planting season. When it rained heavily, they would make loud noises, and when the water reached a sufficient level, they would swing a wooden scoop to stop the rain.This tale thus becomes the legend of the Boon Bung Fai festival, a rainmaking ceremony to honor Phaya Than.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'villagers', 'label': 'ชาวบ้าน'},
-    {'value': 'water', 'label': 'น้ำ'},
-    {'value': 'season', 'label': 'ฤดูกาล'},
+    {'value': 'villagers', 'label': 'Villagers ชาวบ้าน'},
+    {'value': 'villagers', 'label': 'Villagers ชาวบ้าน'},
+    {'value': 'villagers', 'label': 'Villagers ชาวบ้าน'},
   ];
 
   void _submitComment() {
@@ -285,24 +285,9 @@ class _FablePageState extends State<fable03> {
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
-                    : 'Vocabulary from this story',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
+
               SizedBox(height: 20),
 
-              // White background box for user input
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -310,15 +295,25 @@ class _FablePageState extends State<fable03> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._quizOptions.map((vocab) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            vocab['label']!,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )),
+                  ],
                 ),
               ),
               SizedBox(height: 20),

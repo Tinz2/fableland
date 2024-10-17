@@ -23,9 +23,9 @@ class _FablePageState extends State<fable004> {
       'A fox fell into a deep well and struggled for a long time to get out. Eventually, a wolf walked by. The fox shouted for help. The wolf asked, "How did you fall into this deep well? Have you been in the water for long? Didn t anyone else see you?" The fox replied, "I was hoping you would come to help me. Please pull me up first, and I will tell you everything in detail.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'fox', 'label': 'จิ้งจอก'},
-    {'value': 'help', 'label': 'ช่วย'},
-    {'value': 'please', 'label': 'ได้โปรด'},
+    {'value': 'fox', 'label': 'fox จิ้งจอก'},
+    {'value': 'fox', 'label': 'fox จิ้งจอก'},
+    {'value': 'fox', 'label': 'fox จิ้งจอก'},
   ];
 
   void _submitComment() {
@@ -291,16 +291,6 @@ class _FablePageState extends State<fable004> {
                 textAlign: TextAlign.left,
               ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 20),
-
-              // White background box for user input
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -308,15 +298,25 @@ class _FablePageState extends State<fable004> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._quizOptions.map((vocab) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            vocab['label']!,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )),
+                  ],
                 ),
               ),
               SizedBox(height: 20),

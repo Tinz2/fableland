@@ -23,9 +23,9 @@ class _FablePageState extends State<fable04> {
       'Here s the translation of the legend of Koh Ngu (Mouse Island) and Koh Maew (Cat Island):The legend of Koh Ngu and Koh Maew, significant tourist attractions in Songkhla Province, tells the story of a time long ago when these islands had not yet formed. This area was once an important trading port with a thriving marketplace. A Chinese merchant brought a dog and a cat on his trading ship. Both animals longed to return home and discovered a secret: there was a magical pearl that prevented drowning. The cat sent the mouse to steal the magical pearl, but the mouse ended up dropping it into the sea instead.Thus began a chase between the cat and the mouse in the ocean, while the dog decided to swim towards the shore. Eventually, the exhaustion from the chase caused all of them to sink into the sea, leading to the miraculous emergence of the islands: Koh Ngu, shaped like a mouse, and Koh Maew, shaped like a cat. The dog, having died from exhaustion upon reaching the shore, became Tanguan Hill. The magical pearl shattered and was washed ashore by the waves, transforming into the beautiful Glass Beach we see today.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'legend', 'label': ' ตำนาน'},
-    {'value': ' island', 'label': 'เกาะ'},
-    {'value': ' beautiful', 'label': 'สวย'},
+    {'value': ' island', 'label': 'Island เกาะ'},
+    {'value': ' island', 'label': 'Island เกาะ'},
+    {'value': ' island', 'label': 'Island เกาะ'},
   ];
 
   void _submitComment() {
@@ -285,24 +285,6 @@ class _FablePageState extends State<fable04> {
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
-                    : 'Vocabulary from this story',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 20),
-
-              // White background box for user input
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -310,15 +292,25 @@ class _FablePageState extends State<fable04> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._quizOptions.map((vocab) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            vocab['label']!,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )),
+                  ],
                 ),
               ),
               SizedBox(height: 20),

@@ -20,12 +20,12 @@ class _FablePageState extends State<fable002> {
   final String _storyTh =
       'สราชสีห์เจ้าป่ากำลังนอนหลับอย่างสบายใจ หนูตัวหนึ่งวิ่งซุกซนจนเผลอไต่ขึ้นไปบนร่างของราชสีห์ ทำให้ราชสีห์ตื่นและร้องคำรามด้วยความโกรธ จึงตะปบหนูไว้ในกรงเล็บ หนูตกใจกลัวจนตัวสั่น พร้อมร้องขอชีวิตและกล่าวว่า หากปล่อยตัวเองไป ในวันข้างหน้าอาจสามารถช่วยเหลือราชสีห์ได้ แม้ราชสีห์จะหัวเราะเยาะ แต่ก็ยอมปล่อยหนูไป ต่อมาวันหนึ่งราชสีห์ออกล่าเหยื่อแล้วพลาดท่าติดบ่วงของนายพราน พยายามดิ้นเท่าไรก็ดิ้นไม่หลุด หนูได้ยินเสียงร้องของราชสีห์จึงเข้ามาช่วยเหลือด้วยการกัดแทะบ่วงจนขาด ทำให้ราชสีห์รอดชีวิตมาได้ จากความช่วยเหลือของหนูตัวเล็กๆ นั่นเอง'; // Thai story
   final String _storyEn =
-      'The lion, king of the jungle, was sleeping peacefully when a mischievous little mouse accidentally climbed onto his body. This startled the lion, who awoke with a roar of anger and caught the mouse in his claws. The frightened mouse trembled and begged for his life, saying that if he was spared, he might be able to help the lion in the future. Although the lion laughed at the idea, he decided to let the mouse go.One day, the lion went hunting and accidentally got caught in a hunter s trap. No matter how hard he struggled, he couldn t break free. The mouse heard the lion s cries for help and rushed to assist. He gnawed through the trap s ropes until they broke, freeing the lion. Thus, the lion was saved by the little mouse.'; // English story
+      'The lion, king of the jungle, was sleeping peacefully when a mischievous little mouse accidentally climbed onto his body. This startled the lion, who awoke with a roar of anger and caught the mouse in his claws. The frightened mouse trembled and begged for his life, saying that if he was spared, he might be able to help the lion in the future. Although the lion laughed at the idea, he decided to let the mouse go. One day, the lion went hunting and accidentally got caught in a hunter s trap. No matter how hard he struggled, he couldn t break free. The mouse heard the lion s cries for help and rushed to assist. He gnawed through the trap s ropes until they broke, freeing the lion. Thus, the lion was saved by the little mouse.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'lion', 'label': 'สิงโต'},
-    {'value': 'king', 'label': 'ราชา'},
-    {'value': 'life', 'label': 'ชีวิต'},
+    {'value': 'lion', 'label': ' Lion สิงโต'},
+    {'value': 'lion', 'label': ' Lion สิงโต'},
+    {'value': 'lion', 'label': ' Lion สิงโต'},
   ];
 
   void _submitComment() {
@@ -200,7 +200,7 @@ class _FablePageState extends State<fable002> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: _isPlaying ? _playAudio : _playAudio,
+                    onPressed: _isPlaying ? _pauseAudio : _playAudio,
                     child: Text(buttonLabels['play']!),
                   ),
                   ElevatedButton(
@@ -208,7 +208,7 @@ class _FablePageState extends State<fable002> {
                     child: Text(buttonLabels['rewind']!),
                   ),
                   ElevatedButton(
-                    onPressed: _isPlaying ? _pauseAudio : _pauseAudio,
+                    onPressed: _isPlaying ? _pauseAudio : _playAudio,
                     child: Text(buttonLabels['pause']!),
                   ),
                   ElevatedButton(
@@ -253,7 +253,9 @@ class _FablePageState extends State<fable002> {
 
               // Comment section
               Container(
+                padding: EdgeInsets.all(16), // เพิ่ม padding
                 decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey),
                 ),
@@ -283,24 +285,6 @@ class _FablePageState extends State<fable002> {
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
-                    : 'Vocabulary from this story',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 20),
-
-              // White background box for user input
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -308,18 +292,27 @@ class _FablePageState extends State<fable002> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._quizOptions.map((vocab) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            vocab['label']!,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )),
+                  ],
                 ),
               ),
-              SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _showQuiz,

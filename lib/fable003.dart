@@ -23,9 +23,9 @@ class _FablePageState extends State<fable0003> {
       'Once upon a time, there was a wealthy merchant with three daughters. One day, he lost all his fortune and had to move to the countryside. Then he received good news that a trading ship he had sent out was returning to port. He traveled to the city and asked his daughters what gifts they wanted. The eldest daughter asked for a beautiful dress, the second one wanted a pearl necklace, but Belle, the youngest daughter, requested a rose.On his way home, the merchant was caught in a storm and had to seek shelter in an abandoned castle. He found food and fell asleep. When he woke up he realized he had taken a rose from the Beast s garden The Beast threatened to kill him but ultimately forgave him on the condition that he bring Belle in exchange for his life Belle volunteered to return to the castle to save her father. She began to get to know the Beast and discovered that he was gentle. They lived together happily until one day the Beast asked her if she would be his wife but Belle hesitated.When Belle saw her father was ill she asked permission to return home and promised to come back within seven days. However, time passed quickly, and Belle decided to return to the castle. When she arrived, she found the Beast unconscious. She professed her love for him and asked to marry him which broke the curse. The Beast turned back into a prince and they lived happly ever after.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'daughters', 'label': 'ลูกสาว'},
-    {'value': 'rose', 'label': 'กุหลาบ'},
-    {'value': 'quickly', 'label': 'อย่างรวดเร็ว'},
+    {'value': 'rose', 'label': 'Rose กุหลาบ'},
+    {'value': 'rose', 'label': 'Rose กุหลาบ'},
+    {'value': 'rose', 'label': 'Rose กุหลาบ'},
   ];
 
   void _submitComment() {
@@ -284,24 +284,7 @@ class _FablePageState extends State<fable0003> {
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
-                    : 'Vocabulary from this story',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 20),
-
-              // White background box for user input
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -309,15 +292,25 @@ class _FablePageState extends State<fable0003> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._quizOptions.map((vocab) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            vocab['label']!,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )),
+                  ],
                 ),
               ),
               SizedBox(height: 20),

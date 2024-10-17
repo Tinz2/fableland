@@ -23,9 +23,9 @@ class _FablePageState extends State<fable0004> {
       'Once upon a time, there was a princess named "Snow White" who was mistreated by her jealous stepmother. Snow White was made to work hard, until one day the magic mirror told the queen that the most beautiful woman was Snow White. Enraged, the queen ordered a huntsman to kill her, but he couldn t do it and let her escape into the forest.Snow White found the cottage of seven dwarfs and lived with them. Meanwhile, the stepmother consulted the mirror again and learned that Snow White was still alive. Disguised as an old woman selling poisoned apples, she tricked Snow White into taking a bite, causing her to fall into a deep sleep.The dwarfs found her and placed her in a glass coffin. Eventually, a prince came by, kissed her, and broke the spell. Snow White awoke, and they got married, living happily ever after.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'mirror', 'label': 'กระจก'},
-    {'value': 'apple', 'label': 'แอปเปิ้ล'},
-    {'value': 'stepmother', 'label': 'แม่เลี้ยง'},
+    {'value': 'apple', 'label': 'Apple แอปเปิ้ล'},
+    {'value': 'apple', 'label': 'Apple แอปเปิ้ล'},
+    {'value': 'apple', 'label': 'Apple แอปเปิ้ล'},
   ];
 
   void _submitComment() {
@@ -285,24 +285,6 @@ class _FablePageState extends State<fable0004> {
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
-                    : 'Vocabulary from this story',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 20),
-
-              // White background box for user input
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -310,15 +292,25 @@ class _FablePageState extends State<fable0004> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._quizOptions.map((vocab) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            vocab['label']!,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )),
+                  ],
                 ),
               ),
               SizedBox(height: 20),

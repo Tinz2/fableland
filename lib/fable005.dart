@@ -23,9 +23,9 @@ class _FablePageState extends State<fable0005> {
       'In a distant heavenly garden, all the little fairies dedicated themselves to studying to become complete fairies. On the day of their graduation, they received magical wands to use for casting spells to make the stars shine brightly.As the new fairies began to use their wands, millions of stars in the sky sparkled brilliantly. However, this light did not last long, so they had to share the responsibility of guiding the stars. If anyone s star began to dim, they needed to make it bright again.Night after night, the stars remained bright until one night a new star appeared, and a previously bright star began to flicker. The fairies were alarmed and searched for the fairy responsible for that dimming star. They found her having fun guiding two stars at once.The little fairy realized that guiding the stars was a responsibility, not a possession. She quickly turned her attention back to her own star, casting a spell to make it shine brightly again, restoring its brilliance.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'fairies', 'label': 'นางฟ้า'},
-    {'value': ' garden', 'label': 'สวน'},
-    {'value': 'star', 'label': 'ดาว'},
+    {'value': 'star', 'label': 'Star ดาว'},
+    {'value': 'star', 'label': 'Star ดาว'},
+    {'value': 'star', 'label': 'Star ดาว'},
   ];
 
   void _submitComment() {
@@ -284,24 +284,6 @@ class _FablePageState extends State<fable0005> {
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
-                    : 'Vocabulary from this story',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 20),
-
-              // White background box for user input
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -309,15 +291,25 @@ class _FablePageState extends State<fable0005> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._quizOptions.map((vocab) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            vocab['label']!,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )),
+                  ],
                 ),
               ),
               SizedBox(height: 20),

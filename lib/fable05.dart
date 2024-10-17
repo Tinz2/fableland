@@ -23,9 +23,9 @@ class _FablePageState extends State<fable005> {
       'A dog was walking across a bridge, holding a piece of meat in his mouth. When he reached the middle of the bridge, he looked down into the water below and saw another dog with a piece of meat that was larger than his own. In his greed, the dog opened his mouth to bark in hopes of grabbing the larger piece of meat in the water. However, as soon as he opened his mouth, the piece of meat he was holding fell into the water. By the time he realized that the dog and the larger piece of meat he saw were just his own reflection, it was already too late.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'dog', 'label': 'หมา'},
-    {'value': 'meat', 'label': 'เนื้อ'},
-    {'value': 'mouth', 'label': 'ปาก'},
+    {'value': 'dog', 'label': 'Dog หมา'},
+    {'value': 'dog', 'label': 'Dog หมา'},
+    {'value': 'dog', 'label': 'Dog หมา'},
   ];
 
   void _submitComment() {
@@ -283,24 +283,6 @@ class _FablePageState extends State<fable005> {
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
-                    : 'Vocabulary from this story',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 20),
-
-              // White background box for user input
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -308,15 +290,25 @@ class _FablePageState extends State<fable005> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._quizOptions.map((vocab) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            vocab['label']!,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )),
+                  ],
                 ),
               ),
               SizedBox(height: 20),
