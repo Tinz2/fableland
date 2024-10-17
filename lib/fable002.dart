@@ -23,9 +23,9 @@ class _FablePageState extends State<fable0002> {
       'Once upon a time, there was a king and queen who had no heirs. One day, the queen gave birth to a beautiful princess. The king held a grand celebration but did not invite the 13th fairy, who, angered, cursed the princess to be pricked by a spindle on her 16th birthday and die. The 12th fairy softened the curse, allowing the princess to sleep for 100 years instead.When the princess turned 16, she explored the castle and encountered an old woman spinning thread. As she reached out, she pricked her finger, causing her to fall asleep and bringing slumber to everyone in the kingdom. Thorns surrounded the castle, preventing anyone from entering.A hundred years later, a prince heard the tale and wanted to see for himself. On the day he approached the castle, the thorns transformed into flowers. When the prince found the princess and kissed her, she awoke, breaking the curse. Everyone in the castle came back to life, and the prince and princess were married, living happily ever after.'; // English story
 
   final List<Map<String, String>> _quizOptions = [
-    {'value': 'queen', 'label': 'ราชินี'},
-    {'value': 'princess', 'label': 'เจ้าหญิง'},
-    {'value': 'sleep', 'label': 'นอน'},
+    {'value': 'queen', 'label': 'Queen ราชินี'},
+    {'value': 'queen', 'label': 'Queen ราชินี'},
+    {'value': 'queen', 'label': 'Queen ราชินี'},
   ];
 
   void _submitComment() {
@@ -293,16 +293,6 @@ class _FablePageState extends State<fable0002> {
                 textAlign: TextAlign.left,
               ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 20),
-
-              // White background box for user input
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -310,15 +300,25 @@ class _FablePageState extends State<fable0002> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._quizOptions.map((vocab) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            vocab['label']!,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )),
+                  ],
                 ),
               ),
               SizedBox(height: 20),

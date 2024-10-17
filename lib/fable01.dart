@@ -15,17 +15,22 @@ class _FablePageState extends State<fable001> {
   String? _selectedAnimal; // For Radio
   final AudioPlayer _audioPlayer = AudioPlayer();
   bool _isPlaying = false;
-  Duration _currentPosition = Duration.zero;
 
   final String _storyTh =
       'กระต่ายหลงตัวเอง ชอบโอ้อวดว่าวิ่งเร็วกว่าใครๆ เมื่อเห็นเต่าเดินต้วมเตี้ยมมาก็หัวเราะเยาะ พร้อมกับพูดจาถากถางว่าต่อให้เต่าวิ่งนำหน้าไปก่อน กระต่ายก็สามารถก็แซงหน้าได้อยู่ดี ทำให้เต่าเกิดความไม่พอใจ จึงท้ากระต่ายวิ่งแข่งกัน กระต่ายเริ่มวิ่งนำหน้าเต่าไปไกล แต่เมื่อไปถึงครึ่งทาง ก็เกิดความชะล่าใจ หยุดพักเอนกายนอนใต้ต้นไม้ใหญ่จนเผลอหลับไป ในขณะที่เต่ายังคงเดินต่อไปเรื่อยๆ อย่างไม่ลดละ เมื่อกระต่ายตื่นนอนขึ้นมาก็ตกใจ รีบลนลานวิ่งไปยังเส้นชัย ทว่าเต่าไปถึงเส้นชัยก่อนแล้ว'; // Thai story
   final String _storyEn =
-      'The self-confident rabbit loved to boast that he could run faster than anyone else. When he saw the tortoise moving slowly, he laughed mockingly and said that even if the tortoise started ahead, he could easily overtake him. This made the tortoise feel dissatisfied, so he challenged the rabbit to a race.The rabbit started off strong, quickly pulling far ahead of the tortoise. However, halfway through the race, he became overconfident and decided to take a nap under a big tree. Meanwhile, the tortoise continued to walk steadily without stopping.When the rabbit woke up, he was shocked to realize how much time had passed. He rushed to the finish line, but the tortoise had already crossed it first.'; // English story
+      'The self-confident rabbit loved to boast that he could run faster than anyone else. When he saw the tortoise moving slowly, he laughed mockingly and said that even if the tortoise started ahead, he could easily overtake him. This made the tortoise feel dissatisfied, so he challenged the rabbit to a race.The rabbit started off strong, quickly pulling far ahead of the tortoise. However, halfway through the race, he became overconfident and decided to take a nap under a big tree. Meanwhile, the tortoise continued to walk steadily without stopping.When the rabbit woke up, he was shocked to realize how much time had passed. He rushed to the finish line, but the tortoise had already crossed it first.'; // English story // English story
 
   final List<Map<String, String>> _quizOptions = [
     {'value': 'rabbit', 'label': 'กระต่าย'},
     {'value': 'tortoise', 'label': 'เต่า'},
     {'value': 'walk', 'label': 'เดิน'},
+  ];
+
+  final List<String> _vocabularies = [
+    'Rabbit กระต่าย ',
+    'Rabbit กระต่าย',
+    'Rabbit กระต่าย',
   ];
 
   void _submitComment() {
@@ -115,29 +120,39 @@ class _FablePageState extends State<fable001> {
     String audioFile =
         _storyLanguage == 'th' ? 'sound/th01.mp3' : 'sound/en01.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
-    _isPlaying = true;
+    setState(() {
+      _isPlaying = true;
+    });
   }
 
   Future<void> _pauseAudio() async {
     await _audioPlayer.pause();
-    _isPlaying = false;
+    setState(() {
+      _isPlaying = false;
+    });
   }
 
   Future<void> _rewindAudio() async {
-    Duration newPosition = _currentPosition - Duration(seconds: 10);
+    Duration currentPosition =
+        await _audioPlayer.getCurrentPosition() ?? Duration.zero;
+    Duration newPosition = currentPosition - Duration(seconds: 10);
     await _audioPlayer
         .seek(newPosition < Duration.zero ? Duration.zero : newPosition);
   }
 
   Future<void> _forwardAudio() async {
-    Duration newPosition = _currentPosition + Duration(seconds: 10);
+    Duration currentPosition =
+        await _audioPlayer.getCurrentPosition() ?? Duration.zero;
+    Duration newPosition = currentPosition + Duration(seconds: 10);
     await _audioPlayer.seek(newPosition);
   }
 
   Future<void> _restartAudio() async {
     await _audioPlayer.seek(Duration.zero);
     await _audioPlayer.resume();
-    _isPlaying = true;
+    setState(() {
+      _isPlaying = true;
+    });
   }
 
   @override
@@ -155,15 +170,14 @@ class _FablePageState extends State<fable001> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('นิทานอีสป กระต่ายกับเต่า'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('นิทานอีสป กระต่ายกับเต่า'),
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => ContactUs()), // ไปที่หน้า ContactUs
+                MaterialPageRoute(builder: (context) => ContactUs()),
               );
             },
           ),
@@ -180,7 +194,7 @@ class _FablePageState extends State<fable001> {
                 borderRadius: BorderRadius.circular(20),
                 child: Stack(
                   children: [
-                    Image.asset('assets/photo/6.jpg'), // Image path
+                    Image.asset('assets/photo/6.jpg'),
                   ],
                 ),
               ),
@@ -201,7 +215,7 @@ class _FablePageState extends State<fable001> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: _isPlaying ? _playAudio : _playAudio,
+                    onPressed: _playAudio,
                     child: Text(buttonLabels['play']!),
                   ),
                   ElevatedButton(
@@ -209,7 +223,7 @@ class _FablePageState extends State<fable001> {
                     child: Text(buttonLabels['rewind']!),
                   ),
                   ElevatedButton(
-                    onPressed: _isPlaying ? _pauseAudio : _pauseAudio,
+                    onPressed: _isPlaying ? _pauseAudio : _playAudio,
                     child: Text(buttonLabels['pause']!),
                   ),
                   ElevatedButton(
@@ -228,8 +242,7 @@ class _FablePageState extends State<fable001> {
               ElevatedButton(
                 onPressed: _changeLanguage,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      Color.fromRGBO(175, 172, 255, 1), // Background color
+                  backgroundColor: Color.fromRGBO(175, 172, 255, 1),
                   textStyle: TextStyle(fontSize: 18),
                 ),
                 child: Text('เปลี่ยนภาษา'),
@@ -242,7 +255,6 @@ class _FablePageState extends State<fable001> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey),
                 ),
                 child: Text(
                   displayedStory,
@@ -276,57 +288,57 @@ class _FablePageState extends State<fable001> {
               ElevatedButton(
                 onPressed: _submitComment,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      Color.fromRGBO(175, 172, 255, 1), // Background color
+                  backgroundColor: Color.fromRGBO(175, 172, 255, 1),
                   textStyle: TextStyle(fontSize: 18),
                 ),
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
-                    : 'Vocabulary from this story',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 20),
 
-              // White background box for user input
+              // Vocabulary section without gray border
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: _vocabularies.map((word) {
+                        return Container(
+                          margin: EdgeInsets.only(bottom: 8),
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.white, // White background only
+                          ),
+                          child: Text(
+                            word,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(height: 20),
-              SizedBox(height: 20),
+
               ElevatedButton(
                 onPressed: _showQuiz,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      Color.fromRGBO(175, 172, 255, 1), // Background color
+                  backgroundColor: Color.fromRGBO(175, 172, 255, 1),
                   textStyle: TextStyle(fontSize: 18),
                 ),
                 child: Text(buttonLabels['quiz']!),

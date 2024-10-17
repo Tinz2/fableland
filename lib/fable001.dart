@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'contact.dart'; // เพิ่มการนำเข้า ContactUs
+import 'contact.dart';
 
 class fable0001 extends StatefulWidget {
   const fable0001({Key? key}) : super(key: key);
@@ -15,7 +15,6 @@ class _FablePageState extends State<fable0001> {
   String? _selectedAnimal; // For Radio
   final AudioPlayer _audioPlayer = AudioPlayer();
   bool _isPlaying = false;
-  Duration _currentPosition = Duration.zero;
 
   final String _storyTh =
       'ในท้องทะเลอันไกลโพ้น ราชาไทรตันมีลูกสาว 7 คน นางเงือกน้อยคนสุดท้องเฝ้ารอคอยวันว่ายขึ้นผิวน้ำเพื่อพบกับมนุษย์ เมื่ออายุครบ 15 ปี เธอได้เห็นเรือที่เต็มไปด้วยมนุษย์และเจ้าชายรูปงาม แต่เกิดพายุทำให้เรือพลิกคว่ำ เธอจึงช่วยเจ้าชายขึ้นฝั่งและตกหลุมรักเขาเมื่อนางเงือกน้อยได้ยินเสียงพี่สาวพูดถึงมนุษย์ เธอจึงไปหาแม่มดแห่งท้องทะเลเพื่อขอมีขาแบบมนุษย์ แลกกับเสียงของเธอ นางเงือกน้อยตกลง แม้จะรู้ว่าถ้าเจ้าชายแต่งงานกับคนอื่น เธอจะต้องตายเมื่อเธอได้ขาแล้ว เจ้าชายพาเธอไปที่ปราสาท แต่เขายังคงนึกถึงเสียงที่ช่วยชีวิตเขา วันต่อมา เจ้าชายได้รับข่าวว่าจะต้องแต่งงานกับเจ้าหญิง และนางเงือกน้อยรู้ว่าจะเกิดอะไรขึ้นพี่สาวของเธอได้ตัดผมและแลกมีดกับแม่มดเพื่อให้เธอไปฆ่าเจ้าหญิง แต่เธอไม่ทำ  เจ้าชายและเจ้าหญิงจัดงานแต่งงาน ขณะที่แม่มดแปลงร่างเป็นอสุรกาย นางเงือกน้อยปกป้องเจ้าชายและเจ้าสาว จนแม่มดบาดเจ็บและจมลงสู่ทะเลเสียงของนางเงือกน้อยกลับมา เจ้าชายรู้ว่าเธอคือคนที่เขารัก ทั้งคู่แต่งงานบนเรือท่ามกลางความยินดีของทุกคน และได้ครองรักกันอย่างมีความสุขสืบไป'; // Thai story
@@ -26,6 +25,13 @@ class _FablePageState extends State<fable0001> {
     {'value': 'ocean', 'label': 'มหาสมุทร'},
     {'value': 'mermaid', 'label': 'นางเงือก'},
     {'value': 'ship', 'label': 'เรือ'},
+  ];
+
+  // คำศัพท์ที่ได้จากเรื่องนี้
+  final List<String> _vocabularies = [
+    'Ocean มหาสมุทร',
+    'Ocean มหาสมุทร',
+    'Ocean มหาสมุทร',
   ];
 
   void _submitComment() {
@@ -114,29 +120,32 @@ class _FablePageState extends State<fable0001> {
     String audioFile =
         _storyLanguage == 'th' ? 'sound/th001.mp3' : 'sound/en001.mp3';
     await _audioPlayer.play(AssetSource(audioFile)); // เล่นเสียงตามภาษา
-    _isPlaying = true;
+    setState(() {
+      _isPlaying = true;
+    });
   }
 
   Future<void> _pauseAudio() async {
     await _audioPlayer.pause();
-    _isPlaying = false;
+    setState(() {
+      _isPlaying = false;
+    });
   }
 
   Future<void> _rewindAudio() async {
-    Duration newPosition = _currentPosition - Duration(seconds: 10);
-    await _audioPlayer
-        .seek(newPosition < Duration.zero ? Duration.zero : newPosition);
+    // Implement rewind logic
   }
 
   Future<void> _forwardAudio() async {
-    Duration newPosition = _currentPosition + Duration(seconds: 10);
-    await _audioPlayer.seek(newPosition);
+    // Implement forward logic
   }
 
   Future<void> _restartAudio() async {
     await _audioPlayer.seek(Duration.zero);
     await _audioPlayer.resume();
-    _isPlaying = true;
+    setState(() {
+      _isPlaying = true;
+    });
   }
 
   @override
@@ -154,15 +163,14 @@ class _FablePageState extends State<fable0001> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-        title: Text('นิทาน เงือกน้อยผจญภัย'), // แสดงชื่อเรื่องแทนโลโก้
+        title: Text('นิทาน เงือกน้อยผจญภัย'),
         actions: [
           IconButton(
             icon: Icon(Icons.contact_mail),
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => ContactUs()), // ไปที่หน้า ContactUs
+                MaterialPageRoute(builder: (context) => ContactUs()),
               );
             },
           ),
@@ -179,8 +187,7 @@ class _FablePageState extends State<fable0001> {
                 borderRadius: BorderRadius.circular(20),
                 child: Stack(
                   children: [
-                    Image.asset(
-                        'assets/photo/11.jpg'), // Image path รูปนิทานเงือกน้อยผจญภัย
+                    Image.asset('assets/photo/11.jpg'), // Image path
                   ],
                 ),
               ),
@@ -201,7 +208,7 @@ class _FablePageState extends State<fable0001> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: _isPlaying ? _playAudio : _playAudio,
+                    onPressed: _isPlaying ? _pauseAudio : _playAudio,
                     child: Text(buttonLabels['play']!),
                   ),
                   ElevatedButton(
@@ -209,7 +216,7 @@ class _FablePageState extends State<fable0001> {
                     child: Text(buttonLabels['rewind']!),
                   ),
                   ElevatedButton(
-                    onPressed: _isPlaying ? _pauseAudio : _pauseAudio,
+                    onPressed: _isPlaying ? _pauseAudio : _playAudio,
                     child: Text(buttonLabels['pause']!),
                   ),
                   ElevatedButton(
@@ -228,8 +235,7 @@ class _FablePageState extends State<fable0001> {
               ElevatedButton(
                 onPressed: _changeLanguage,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      Color.fromRGBO(175, 172, 255, 1), // Background color
+                  backgroundColor: Color.fromRGBO(175, 172, 255, 1),
                   textStyle: TextStyle(fontSize: 18),
                 ),
                 child: Text('เปลี่ยนภาษา'),
@@ -276,32 +282,15 @@ class _FablePageState extends State<fable0001> {
               ElevatedButton(
                 onPressed: _submitComment,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      Color.fromRGBO(175, 172, 255, 1), // Background color
+                  backgroundColor: Color.fromRGBO(175, 172, 255, 1),
                   textStyle: TextStyle(fontSize: 18),
                 ),
                 child: Text(
                     _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
               ),
               SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
-                    : 'Vocabulary from this story',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 10),
-              Text(
-                _storyLanguage == 'th'
-                    ? 'โจทย์: กรุณาเขียนคำแปลของคำศัพท์ต่อไปนี้ใน 3 บรรทัด:'
-                    : 'Question: Please write the translation of the following words in 3 lines:',
-                style: TextStyle(fontSize: 16),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 20),
 
-              // White background box for user input
+              // Vocabulary section with a border
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -309,24 +298,34 @@ class _FablePageState extends State<fable0001> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey),
                 ),
-                child: TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _storyLanguage == 'th'
-                        ? 'พิมพ์คำแปลที่นี่...'
-                        : 'Type the translation here...',
-                    contentPadding: EdgeInsets.all(16),
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _storyLanguage == 'th'
+                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
+                          : 'Vocabulary from this story',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._vocabularies.map((vocab) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            vocab,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )),
+                  ],
                 ),
               ),
               SizedBox(height: 20),
-              SizedBox(height: 20),
+
+              // Quiz button
               ElevatedButton(
                 onPressed: _showQuiz,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      Color.fromRGBO(175, 172, 255, 1), // Background color
+                  backgroundColor: Color.fromRGBO(175, 172, 255, 1),
                   textStyle: TextStyle(fontSize: 18),
                 ),
                 child: Text(buttonLabels['quiz']!),
