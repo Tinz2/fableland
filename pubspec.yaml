@@ -35,14 +35,18 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
+  #cupertino_icons: ^1.0.8
   video_player: ^2.9.1
   webview_flutter: ^4.8.0
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_launcher_icons: ^0.11.0
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -62,7 +66,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/lottie/title.json
-    - assets/h1.jpg
     - assets/sound/86.mp3
     - assets/sound/22.mp3
     - assets/photo/1.jpg
@@ -119,6 +122,7 @@ flutter:
     - assets/sound/en5.mp3
     - assets/sound/en05.mp3
     - assets/sound/en005.mp3
+    - assets/icon/icon.png
  
   # To add assets to your application, add an assets section, like this:
   # assets:
