@@ -377,58 +377,69 @@ class _MyHomePageState extends State<fable4> {
           ),
           SizedBox(height: 10),
           SizedBox(
-            height: 400, // ปรับความสูงของ GridView ที่สองให้เท่ากับอันแรก
+            height: 450, // ปรับความสูงของ GridView ที่สองให้เท่ากับอันแรก
             child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10.0,
-                mainAxisSpacing: 10.0,
-                childAspectRatio: 1.1, // ปรับอัตราส่วนของ Card
-              ),
-              itemCount: items3.length,
-              itemBuilder: (context, index) {
-                final item = items3[index];
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => webviewscreen(url: item['url']!),
-                      ),
-                    );
-                  },
-                  child: SizedBox(
-                    height: 200,
-                    width: 200,
-                    child: Card(
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(16), // กำหนดมุมมนให้กับ Card
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(
-                            16), // ตัดมุมรูปภาพให้เป็นมุมมน
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Image.asset(
-                              item['image']!,
-                              height: 182.5,
-                              width: 200,
-                              fit: BoxFit.cover,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, // แสดง 2 คอลัมน์ต่อแถว
+                  crossAxisSpacing: 10.0, // ระยะห่างระหว่างคอลัมน์
+                  mainAxisSpacing: 10.0, // ระยะห่างระหว่างแถว
+                  childAspectRatio: 1.1, // ปรับอัตราส่วนของ Card
+                ),
+                itemCount: items3.length,
+                itemBuilder: (context, index) {
+                  final item = items3[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              webviewscreen(url: item['url']!),
+                        ),
+                      );
+                    },
+                    child: SizedBox(
+                      height: 200,
+                      width: 200,
+                      child: Card(
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              16), // กำหนดมุมมนให้กับ Card
+                        ),
+                        child: Card(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                16), // กำหนดมุมมนให้กับ Card
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                                16), // ตัดมุมรูปภาพให้เป็นมุมมน
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment
+                                  .stretch, // ขยายให้เต็ม Card
+                              children: [
+                                AspectRatio(
+                                  aspectRatio: 1.1, // ปรับสัดส่วนรูปภาพให้พอดี
+                                  child: Image.asset(
+                                    item['image']!,
+                                    height: 100,
+                                    width: 100,
+                                    fit: BoxFit.cover, // ให้ภาพขยายเต็ม Card
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              },
-            ),
-          ),
+                  );
+                }),
+          )
         ]),
       ),
     );

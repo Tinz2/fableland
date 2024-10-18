@@ -26,16 +26,17 @@ class _HomePageState extends State<home> {
       'route': '/fable3',
     },
     {
-      'text': 'นิทานอีสป หมาจิ้งจอกตกบ่อ',
+      'text': 'นิทานหมาจิ้งจอกตกบ่อ',
       'image': 'assets/photo/9.jpg',
       'route': '/fable4',
     },
   ];
+
   final List<Map<String, String>> items2 = [
     {
       'text': '101 เรื่องเอก นิทานอีสป',
       'image': 'assets/photo/logo1.jpg',
-      'url': 'https://online.fliphtml5.com/pbor/myhp/#p=1',
+      'url': 'https://online.fliphtml5.com/mofx/zyqh/',
     },
     {
       'text': 'เทคนิคการอ่านหนังสือ',
@@ -54,6 +55,7 @@ class _HomePageState extends State<home> {
           'https://www.taradhealth.com/info/5-%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%87%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B9%86-%E0%B8%96%E0%B8%99%E0%B8%AD%E0%B8%A1%E0%B8%AA%E0%B8%B2%E0%B8%A2%E0%B8%95%E0%B8%B2%E0%B8%88%E0%B8%B2%E0%B8%81/',
     },
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,13 +90,14 @@ class _HomePageState extends State<home> {
             ),
             SizedBox(height: 10),
             SizedBox(
-              height: 320, // กาหนดความสูงของ GridView
+              height: 365, // กำหนดความสูงของ GridView
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, // แสดง 2 คอลัมน์ต่อแถว
                   crossAxisSpacing: 20.0, // ระยะห่างระหว่างคอลัมน์
                   mainAxisSpacing: 10.0, // ระยะห่างระหว่างแถว
-                  childAspectRatio: 1.4,
+                  childAspectRatio:
+                      1.3, // ปรับอัตราส่วนของ Card เพื่อให้พอดีกับข้อความ
                 ),
                 itemCount: items.length, // จำนวนรายการใน GridView
                 itemBuilder: (context, index) {
@@ -114,26 +117,29 @@ class _HomePageState extends State<home> {
                       ),
                       color: const Color.fromARGB(
                           255, 173, 252, 248), // สีพื้นหลังของการ์ด
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(
-                            16), // ตัดมุมรูปภาพให้เป็นมุมมน
-
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              item['image']!, // แสดงรูปภาพจาก assets
-                              height: 100,
-                              width: 200,
-                              fit: BoxFit.cover,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.circular(16), // มุมมนของรูปภาพ
+                              child: Image.asset(
+                                item['image']!, // แสดงรูปภาพจาก assets
+                                fit: BoxFit.cover,
+                                width: double.infinity, // ทำให้รูปพอดีกับ Card
+                              ),
                             ),
-                            SizedBox(height: 10),
-                            Text(
-                              item['text']!, // แสดงข้อความ
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(
+                                8.0), // เพิ่ม padding ให้ข้อความ
+                            child: Text(
+                              item['text']!,
                               style: TextStyle(fontSize: 16),
+                              textAlign: TextAlign.center, // จัดให้อยู่ตรงกลาง
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   );
@@ -154,12 +160,12 @@ class _HomePageState extends State<home> {
               ),
             ),
             SizedBox(
-              height: 400, // ปรับความสูงของ GridView ที่สองให้เท่ากับอันแรก
-              child: GridView.builder(
+            height: 450, // ปรับความสูงของ GridView ที่สองให้เท่ากับอันแรก
+            child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10.0,
-                  mainAxisSpacing: 10.0,
+                  crossAxisCount: 2, // แสดง 2 คอลัมน์ต่อแถว
+                  crossAxisSpacing: 10.0, // ระยะห่างระหว่างคอลัมน์
+                  mainAxisSpacing: 10.0, // ระยะห่างระหว่างแถว
                   childAspectRatio: 1.1, // ปรับอัตราส่วนของ Card
                 ),
                 itemCount: items2.length,
@@ -185,28 +191,38 @@ class _HomePageState extends State<home> {
                           borderRadius: BorderRadius.circular(
                               16), // กำหนดมุมมนให้กับ Card
                         ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                              16), // ตัดมุมรูปภาพให้เป็นมุมมน
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Image.asset(
-                                item['image']!,
-                                height: 182.5,
-                                width: 200,
-                                fit: BoxFit.cover,
-                              ),
-                            ],
+                        child: Card(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                16), // กำหนดมุมมนให้กับ Card
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                                16), // ตัดมุมรูปภาพให้เป็นมุมมน
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment
+                                  .stretch, // ขยายให้เต็ม Card
+                              children: [
+                                AspectRatio(
+                                  aspectRatio: 1.1, // ปรับสัดส่วนรูปภาพให้พอดี
+                                  child: Image.asset(
+                                    item['image']!,
+                                    height: 100,
+                                    width: 100,
+                                    fit: BoxFit.cover, // ให้ภาพขยายเต็ม Card
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                   );
-                },
-              ),
-            ),
+                }),
+          )
           ],
         ),
       ),
