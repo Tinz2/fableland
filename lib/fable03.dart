@@ -1,6 +1,8 @@
+import 'package:fableland_application/quiz03.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'contact.dart'; // เพิ่มการนำเข้า ContactUs
+import 'quiz03.dart';
 
 class fable003 extends StatefulWidget {
   const fable003({Key? key}) : super(key: key);
@@ -322,10 +324,16 @@ class _FablePageState extends State<fable003> {
               SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: _showQuiz,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            quiz03()), // เปลี่ยนไปยัง quiz1.dart
+                  );
+                },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      Color.fromRGBO(175, 172, 255, 1), // Background color
+                  backgroundColor: Color.fromRGBO(175, 172, 255, 1),
                   textStyle: TextStyle(fontSize: 18),
                 ),
                 child: Text(buttonLabels['quiz']!),

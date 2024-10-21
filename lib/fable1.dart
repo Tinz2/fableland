@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'contact.dart';
+import 'quiz1.dart'; // นำเข้า quiz1.dart
 
 class fable01 extends StatefulWidget {
   const fable01({Key? key}) : super(key: key);
@@ -10,9 +11,9 @@ class fable01 extends StatefulWidget {
 }
 
 class _FablePageState extends State<fable01> {
-  String _storyLanguage = 'th'; // 'th' for Thai, 'en' for English
+  String _storyLanguage = 'th'; // 'th' สำหรับภาษาไทย, 'en' สำหรับภาษาอังกฤษ
   String _comment = '';
-  String? _selectedAnimal; // For Radio
+  String? _selectedAnimal; // สำหรับ Radio
   final AudioPlayer _audioPlayer = AudioPlayer();
   bool _isPlaying = false;
 
@@ -24,14 +25,13 @@ class _FablePageState extends State<fable01> {
   final List<Map<String, String>> _quizOptions = [
     {'value': 'crocodiles', 'label': 'จระเข้'},
     {'value': 'river', 'label': 'แม่น้ำ'},
-    {'value': 'species', 'label': 'สายพันธ์ุ'},
+    {'value': 'species', 'label': 'สายพันธุ์'},
   ];
 
-  // คำศัพท์ที่ได้จากเรื่องนี้
   final List<String> _vocabularies = [
     'Crocodile จระเข้',
-    'Crocodile จระเข้',
-    'Crocodile จระเข้',
+    'River แม่น้ำ',
+    'Species สายพันธุ์',
   ];
 
   void _submitComment() {
@@ -40,53 +40,6 @@ class _FablePageState extends State<fable01> {
         : 'Thank you for your attention';
     _showDialog(
         _storyLanguage == 'th' ? 'ขอบคุณ!' : 'Thank You!', thankYouMessage);
-  }
-
-  void _showQuiz() {
-    String question = _storyLanguage == 'th'
-        ? 'crocodiles แปลว่าอะไร?'
-        : 'What does crocodiles mean?';
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(_storyLanguage == 'th' ? 'แบบทดสอบ' : 'Quiz'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(question),
-              ..._quizOptions.map((option) => RadioListTile<String>(
-                    title: Text(option['label']!),
-                    value: option['value']!,
-                    groupValue: _selectedAnimal,
-                    onChanged: (value) {
-                      setState(() {
-                        _selectedAnimal = value;
-                      });
-                    },
-                  )),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                String message = _selectedAnimal == 'crocodiles'
-                    ? (_storyLanguage == 'th' ? "ถูกนะครับ" : "Correct!")
-                    : (_storyLanguage == 'th' ? "ผิดนะครับ" : "Incorrect!");
-                Navigator.of(context).pop(); // Close dialog
-                _showResult(message); // Show result
-              },
-              child:
-                  Text(_storyLanguage == 'th' ? 'ส่งคำตอบ' : 'Submit Answer'),
-            ),
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text(_storyLanguage == 'th' ? 'ยกเลิก' : 'Cancel'),
-            ),
-          ],
-        );
-      },
-    );
   }
 
   void _showResult(String message) {
@@ -113,7 +66,7 @@ class _FablePageState extends State<fable01> {
 
   void _changeLanguage() {
     setState(() {
-      _storyLanguage = _storyLanguage == 'th' ? 'en' : 'th'; // Toggle language
+      _storyLanguage = _storyLanguage == 'th' ? 'en' : 'th'; // สลับภาษา
     });
   }
 
@@ -324,7 +277,14 @@ class _FablePageState extends State<fable01> {
 
               // Quiz button
               ElevatedButton(
-                onPressed: _showQuiz,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            quiz1()), // เปลี่ยนไปยัง quiz1.dart
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color.fromRGBO(175, 172, 255, 1),
                   textStyle: TextStyle(fontSize: 18),

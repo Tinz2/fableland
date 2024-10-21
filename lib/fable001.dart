@@ -1,6 +1,8 @@
+import 'package:fableland_application/quiz001.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'contact.dart';
+import 'quiz001.dart';
 
 class fable0001 extends StatefulWidget {
   const fable0001({Key? key}) : super(key: key);
@@ -323,7 +325,14 @@ class _FablePageState extends State<fable0001> {
 
               // Quiz button
               ElevatedButton(
-                onPressed: _showQuiz,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            quiz001()), // เปลี่ยนไปยัง quiz1.dart
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color.fromRGBO(175, 172, 255, 1),
                   textStyle: TextStyle(fontSize: 18),
