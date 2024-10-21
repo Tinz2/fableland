@@ -28,6 +28,11 @@ class _FablePageState extends State<fable0004> {
     {'value': 'apple', 'label': 'Apple แอปเปิ้ล'},
     {'value': 'apple', 'label': 'Apple แอปเปิ้ล'},
   ];
+  final List<String> _vocabularies = [
+    'apples แปลว่า แอปเปิ้ล',
+    'stepmother  แปลว่า แม่เลี้ยง',
+    'kill  แปลว่า ฆ่า',
+  ];
 
   void _submitComment() {
     String thankYouMessage = _storyLanguage == 'th'
@@ -304,10 +309,10 @@ class _FablePageState extends State<fable0004> {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 10),
-                    ..._quizOptions.map((vocab) => Padding(
+                    ..._vocabularies.map((vocab) => Padding(
                           padding: const EdgeInsets.symmetric(vertical: 4.0),
                           child: Text(
-                            vocab['label']!,
+                            vocab,
                             style: TextStyle(fontSize: 16),
                           ),
                         )),

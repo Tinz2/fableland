@@ -123,25 +123,25 @@ class _MyHomePageState extends State<fable4> {
   final List<Map<String, String>> items3 = [
     //เปลี่ยนรูปลิงก์คำแนะนำเพิ่มเติม
     {
-      'text': '101 เรื่องเอก นิทานอีสป',
-      'image': 'assets/photo/logo1.jpg',
-      'url': 'https://online.fliphtml5.com/mofx/zyqh/#p=2',
+      'text': 'เทคนิคการจำ',
+      'image': 'assets/photo/logo5.jpg',
+      'url': 'https://www.ignitethailand.org/content/5026/ignite',
     },
     {
-      'text': 'เทคนิคการอ่านหนังสือ',
-      'image': 'assets/photo/logo2.png',
-      'url': 'http://www.kalyanamitra.org/th/Aesop_list.php',
+      'text': 'เทคนิคการฝึกสมอง',
+      'image': 'assets/photo/logo6.jpg',
+      'url': 'https://swimmingkidsthailand.com/articles-tips/7-tips-to-boost-your-baby-brain-development/',
     },
     {
-      'text': 'การนอนหลับ',
-      'image': 'assets/photo/logo3.JPG',
+      'text': 'การดูแลสุขภาพ',
+      'image': 'assets/photo/logo7.jpg',
       'url':
-          'https://www.se-ed.com/product-search/นิทาน.aspx?keyword=นิทาน&search=default',
+          'https://www.saithongherb.com/content/5670/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B9%E0%B9%81%E0%B8%A5%E0%B8%AA%E0%B8%B8%E0%B8%82%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%A3%E0%B8%A7%E0%B8%A1',
     },
     {
-      'text': 'การถนอมสายตา',
-      'image': 'assets/photo/logo4.JPG',
-      'url': 'http://bookworldpublishing.lnwshop.com/',
+      'text': 'การสมาธิ',
+      'image': 'assets/photo/logo8.jpg',
+      'url': 'https://wealthmeup.com/22-06-09-millimove/',
     },
   ];
   @override

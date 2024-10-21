@@ -31,9 +31,9 @@ class _FablePageState extends State<fable0001> {
 
   // คำศัพท์ที่ได้จากเรื่องนี้
   final List<String> _vocabularies = [
-    'Ocean มหาสมุทร',
-    'Ocean มหาสมุทร',
-    'Ocean มหาสมุทร',
+    'ocean แปลว่า มหาสมุทร',
+    'mermaid แปลว่า นางเงือก',
+    'ship แปลว่า เรือ',
   ];
 
   void _submitComment() {

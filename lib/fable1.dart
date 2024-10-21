@@ -29,9 +29,9 @@ class _FablePageState extends State<fable01> {
   ];
 
   final List<String> _vocabularies = [
-    'Crocodile จระเข้',
-    'River แม่น้ำ',
-    'Species สายพันธุ์',
+    'Crocodile แปลว่า จระเข้',
+    'River  แปลว่า แม่น้ำ',
+    'Species  แปลว่า สายพันธุ์',
   ];
 
   void _submitComment() {

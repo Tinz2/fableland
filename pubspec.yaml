@@ -87,10 +87,14 @@ flutter:
     - assets/photo/p2.jpg
     - assets/photo/p3.jpg
     - assets/photo/p4.jpg
-    - assets/photo/logo1.jpg
+    - assets/photo/logo1.png
     - assets/photo/logo2.png
     - assets/photo/logo3.jpg
     - assets/photo/logo4.jpg
+    - assets/photo/logo5.jpg
+    - assets/photo/logo6.jpg
+    - assets/photo/logo7.jpg
+    - assets/photo/logo8.jpg
     - assets/photo/logo.png
     - assets/sound/th1.mp3
     - assets/sound/th01.mp3

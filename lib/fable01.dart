@@ -29,9 +29,9 @@ class _FablePageState extends State<fable001> {
   ];
 
   final List<String> _vocabularies = [
-    'Rabbit กระต่าย ',
-    'Rabbit กระต่าย',
-    'Rabbit กระต่าย',
+    'rabbit แปลว่า กระต่าย',
+    'tortoise  แปลว่า เต่า',
+    'walk  แปลว่า เดิน',
   ];
 
   void _submitComment() {
