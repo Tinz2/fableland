@@ -28,7 +28,7 @@ class _HomePageState extends State<home> {
     {
       'text': 'นิทานหมาจิ้งจอกตกบ่อ',
       'image': 'assets/photo/9.jpg',
-      'route': '/fable4',
+      'route': '/fable04',
     },
   ];
 
