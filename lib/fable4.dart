@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'contact.dart'; // เพิ่มการนำเข้า ContactUs
+import 'quiz4.dart';
 
 class fable04 extends StatefulWidget {
   const fable04({Key? key}) : super(key: key);
@@ -316,10 +317,16 @@ class _FablePageState extends State<fable04> {
               SizedBox(height: 20),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: _showQuiz,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            quiz4()), // เปลี่ยนไปยัง quiz1.dart
+                  );
+                },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      Color.fromRGBO(175, 172, 255, 1), // Background color
+                  backgroundColor: Color.fromRGBO(175, 172, 255, 1),
                   textStyle: TextStyle(fontSize: 18),
                 ),
                 child: Text(buttonLabels['quiz']!),
