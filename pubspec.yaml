@@ -65,7 +65,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/lottie/title.json
+    - assets/lottie/logo.json
     - assets/sound/86.mp3
     - assets/sound/22.mp3
     - assets/photo/1.jpg

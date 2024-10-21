@@ -77,7 +77,7 @@ class _WaitScreenState extends State<WaitScreen> {
   }
 
   void _startAnimation() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(seconds: 5));
     Navigator.pushReplacementNamed(context, '/menu');
   }
 
@@ -90,13 +90,13 @@ class _WaitScreenState extends State<WaitScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Lottie.asset(
-              'assets/lottie/title.json',
+              'assets/lottie/logo.json',
               width: 200,
               height: 200,
               fit: BoxFit.cover,
             ),
             Text(
-              'INITIAL Donkdjfojhojhsdfh',
+              '',
               style: TextStyle(
                 fontSize: 24,
                 color: Colors.white,
