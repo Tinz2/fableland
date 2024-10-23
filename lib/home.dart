@@ -59,7 +59,7 @@ class _HomePageState extends State<home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+    backgroundColor: Color(0xFFB3E4FF),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

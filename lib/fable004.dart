@@ -160,7 +160,7 @@ class _FablePageState extends State<fable0004> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(175, 172, 255, 1),
+       backgroundColor: Color(0xFFB3E4FF),
         title:
             Text('นิทานสโนว์ไวท์กับคนแคระทั้งเจ็ด'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [

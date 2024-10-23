@@ -84,7 +84,7 @@ class _WaitScreenState extends State<WaitScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: const Color(0xFFB3E4FF),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

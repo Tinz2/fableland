@@ -8,7 +8,17 @@ class fable01 extends StatefulWidget {
 
   @override
   _FablePageState createState() => _FablePageState();
-}
+} @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        fontFamily: 'TCS4GiveTonKhao', // ตั้งค่าเป็นชื่อฟอนต์ที่คุณกำหนดใน pubspec.yaml
+      ),
+      home: fable01(),
+    );
+  }
+
 
 class _FablePageState extends State<fable01> {
   String _storyLanguage = 'th'; // 'th' สำหรับภาษาไทย, 'en' สำหรับภาษาอังกฤษ
@@ -137,7 +147,7 @@ class _FablePageState extends State<fable01> {
           ),
         ],
       ),
-      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+      backgroundColor: Color(0xFFB3E4FF),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

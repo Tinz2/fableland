@@ -113,7 +113,7 @@ class _QuizPageState extends State<quiz1> {
           backgroundColor: Color.fromRGBO(175, 172, 255, 1),
         ),
         body: Container(
-          color: const Color.fromARGB(255, 173, 252, 248),
+          color: const Color(0xFFB3E4FF),
           padding: const EdgeInsets.all(16.0),
           child: Center(
             child: Column(

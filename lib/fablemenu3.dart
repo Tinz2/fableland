@@ -70,7 +70,7 @@ class _MyHomePageState extends State<fable3> {
 //ส่วนออกแบบหนา้จอ
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+     backgroundColor: Color(0xFFB3E4FF),
       body: SingleChildScrollView(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

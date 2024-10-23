@@ -174,7 +174,7 @@ class _FablePageState extends State<fable004> {
           ),
         ],
       ),
-      backgroundColor: Color.fromRGBO(179, 228, 255, 100),
+     backgroundColor: Color(0xFFB3E4FF),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
