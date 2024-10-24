@@ -3,12 +3,12 @@ import 'package:audioplayers/audioplayers.dart';
 import 'contact.dart';
 import 'quiz1.dart'; // นำเข้า quiz1.dart
 
-class fable01 extends StatefulWidget {
-  const fable01({Key? key}) : super(key: key);
+void main() {
+  runApp(MyApp());
+}
 
+class MyApp extends StatelessWidget {
   @override
-  _FablePageState createState() => _FablePageState();
-} @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
@@ -18,7 +18,14 @@ class fable01 extends StatefulWidget {
       home: fable01(),
     );
   }
+}
 
+class fable01 extends StatefulWidget {
+  const fable01({Key? key}) : super(key: key);
+
+  @override
+  _FablePageState createState() => _FablePageState();
+}
 
 class _FablePageState extends State<fable01> {
   String _storyLanguage = 'th'; // 'th' สำหรับภาษาไทย, 'en' สำหรับภาษาอังกฤษ
@@ -28,9 +35,9 @@ class _FablePageState extends State<fable01> {
   bool _isPlaying = false;
 
   final String _storyTh =
-      'ในแม่น้ำสายหนึ่งมีจระเข้ชุกชุมถึงสามสายพันธุ์ด้วยกัน จึงทำให้ไม่มีใครกล้ามาจับปลา มีเพียงตาอยู่คนเดียวเท่านั้นที่คลุกคลีกับจระเข้และจับปลามาขายได้ เมื่อชาวบ้านเดือดร้อนที่ใช้แม่น้ำหล่อเลี้ยงชีวิตไม่ได้ เรื่องนี้จึงร้อนถึงหูพระราชา ตาอยู่จึงได้บอกกับพระราชาไปว่า ได้เลี้ยงจระเข้ตัวหนึ่งตั้งแต่ยังเล็กมันจึงไม่ทำร้าย ส่วนจระเข้ตัวอื่นถ้ามันกินอิ่มมันก็จะไม่ทำร้ายคนพระราชาจึงได้มีพระราชโองการสั่งให้เสมียนไปนับจำนวนจระเข้เพื่อที่จะได้นำอาหารไปเลี้ยงพวกมันได้อย่างทั่วถึง เสมียนทั้งสามคนก็พยายามนับจระเข้ที่อยู่ทั้งบนบกและในน้ำ สุดท้ายก็นับจระเข้ได้คนละหนึ่งพันตัว รวมทั้งหมดมีจระเข้ถึงสามพันตัว และพระราชาก็ได้สั่งให้เลี้ยงอาหารจระเข้จนอิ่มและไม่ออกมาทำร้ายชาวบ้าน และหากินในแม่น้ำแห่งนี้ได้อย่างมีความสุข นิทานเรื่องนี้เป็นตำนานหรือนิทานพื้นบ้านของจังหวัดสุพรรณบุรี จนกลายมาเป็นชื่อตำบลจระเข้สามพันจนถึงทุกวันนี้'; // เนื้อหา Thai story
+      'ในแม่น้ำสายหนึ่งมีจระเข้ชุกชุมถึงสามสายพันธุ์ด้วยกัน จึงทำให้ไม่มีใครกล้ามาจับปลา มีเพียงตาอยู่คนเดียวเท่านั้นที่คลุกคลีกับจระเข้และจับปลามาขายได้ เมื่อชาวบ้านเดือดร้อนที่ใช้แม่น้ำหล่อเลี้ยงชีวิตไม่ได้ เรื่องนี้จึงร้อนถึงหูพระราชา ตาอยู่จึงได้บอกกับพระราชาไปว่า ได้เลี้ยงจระเข้ตัวหนึ่งตั้งแต่ยังเล็กมันจึงไม่ทำร้าย ส่วนจระเข้ตัวอื่นถ้ามันกินอิ่มมันก็จะไม่ทำร้ายคนพระราชาจึงได้มีพระราชโองการสั่งให้เสมียนไปนับจำนวนจระเข้เพื่อที่จะได้นำอาหารไปเลี้ยงพวกมันได้อย่างทั่วถึง เสมียนทั้งสามคนก็พยายามนับจระเข้ที่อยู่ทั้งบนบกและในน้ำ สุดท้ายก็นับจระเข้ได้คนละหนึ่งพันตัว รวมทั้งหมดมีจระเข้ถึงสามพันตัว และพระราชาก็ได้สั่งให้เลี้ยงอาหารจระเข้จนอิ่มและไม่ออกมาทำร้ายชาวบ้าน และหากินในแม่น้ำแห่งนี้ได้อย่างมีความสุข นิทานเรื่องนี้เป็นตำนานหรือนิทานพื้นบ้านของจังหวัดสุพรรณบุรี จนกลายมาเป็นชื่อตำบลจระเข้สามพันจนถึงทุกวันนี้'; // เนื้อหา Thai story (ย่อ)
   final String _storyEn =
-      'In a certain river, there lived a thriving population of crocodiles of three different species, making it unsafe for anyone to catch fish. Only a man named Ta Yu dared to mingle with the crocodiles and catch fish to sell. When the villagers could no longer rely on the river for their livelihood, the matter reached the ears of the king. Ta Yu told the king that he had raised one crocodile since it was small, so it would not harm him. As for the other crocodiles, he explained, as long as they were well-fed, they would not attack people.The king then issued a royal decree for officials to count the number of crocodiles so that food could be provided for them adequately. The three officials tried to count the crocodiles both on land and in the water. In the end, they counted a thousand crocodiles each, totaling three thousand crocodiles. The king ordered that food be given to the crocodiles until they were full, so they would not harm the villagers and could live happily in the river.This tale is a legend or folktale from Suphan Buri Province, which is how the area got its name, "Chao Chae Sam Pan," which translates to "Three Thousand Crocodiles," and the name has remained to this day'; // English story
+      'In a certain river, there lived a thriving population of crocodiles of three different species, making it unsafe for anyone to catch fish. Only a man named Ta Yu dared to mingle with the crocodiles and catch fish to sell. When the villagers could no longer rely on the river for their livelihood, the matter reached the ears of the king. Ta Yu told the king that he had raised one crocodile since it was small, so it would not harm him. As for the other crocodiles, he explained, as long as they were well-fed, they would not attack people.The king then issued a royal decree for officials to count the number of crocodiles so that food could be provided for them adequately. The three officials tried to count the crocodiles both on land and in the water. In the end, they counted a thousand crocodiles each, totaling three thousand crocodiles. The king ordered that food be given to the crocodiles until they were full, so they would not harm the villagers and could live happily in the river.This tale is a legend or folktale from Suphan Buri Province, which is how the area got its name, "Chao Chae Sam Pan," which translates to "Three Thousand Crocodiles,'; // English story (ย่อ)
 
   final List<Map<String, String>> _quizOptions = [
     {'value': 'crocodiles', 'label': 'จระเข้'},
@@ -118,8 +125,8 @@ class _FablePageState extends State<fable01> {
       _isPlaying = true;
     });
   }
-  
-@override
+
+  @override
   void dispose() {
     _audioPlayer.stop(); // หยุดเสียงเมื่อ widget ถูกปิด
     _audioPlayer.dispose(); // ปล่อยทรัพยากร
@@ -250,64 +257,26 @@ class _FablePageState extends State<fable01> {
                   _comment = value;
                 },
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               ElevatedButton(
                 onPressed: _submitComment,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-                  textStyle: TextStyle(fontSize: 18),
-                ),
-                child: Text(
-                    _storyLanguage == 'th' ? 'ส่งข้อคิด' : 'Submit Thoughts'),
+                child: Text(_storyLanguage == 'th'
+                    ? 'ส่งข้อคิด'
+                    : 'Submit Comment'),
               ),
-              SizedBox(height: 10),
 
-              // Vocabulary section with a border
-              Container(
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _storyLanguage == 'th'
-                          ? 'คำศัพท์ที่ได้จากนิทานเรื่องนี้'
-                          : 'Vocabulary from this story',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 10),
-                    ..._vocabularies.map((vocab) => Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          child: Text(
-                            vocab,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        )),
-                  ],
-                ),
-              ),
+              // Test Vocabulary
               SizedBox(height: 20),
-
-              // Quiz button
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            quiz1()), // เปลี่ยนไปยัง quiz1.dart
+                    MaterialPageRoute(builder: (context) => quiz1()),
                   );
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(175, 172, 255, 1),
-                  textStyle: TextStyle(fontSize: 18),
-                ),
                 child: Text(buttonLabels['quiz']!),
               ),
+              SizedBox(height: 20),
             ],
           ),
         ),

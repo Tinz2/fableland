@@ -167,7 +167,7 @@ TextEditingController _searchController = TextEditingController();
               SizedBox(height: 20),
               // ใส่ ListView.builder ตรงนี้
               SizedBox(
-                height: 320, // กำหนดความสูงให้กับ ListView เพื่อไม่ให้บีบตัว
+                height: 250, // กำหนดความสูงให้กับ ListView เพื่อไม่ให้บีบตัว
                 child: ListView.builder(
                   itemCount: _filteredPlaces.length,
                   itemBuilder: (context, index) {
