@@ -34,7 +34,8 @@ class _MyHomePageState extends State<fable1> {
   void _intialstate() {
     setState(() {});
   }
-
+TextEditingController _searchController = TextEditingController();
+  List<Map<String, dynamic>> _filteredPlaces = [];
   List<Map<String, dynamic>> places = [
     {
       'name': 'นิทาน จระเข้สามพัน',
@@ -66,12 +67,54 @@ class _MyHomePageState extends State<fable1> {
       'route': '/fable5',
     },
   ];
+void filterPlaces() {
+    setState(() {
+      _filteredPlaces = places
+          .where((place) => place['name']
+              .toLowerCase()
+              .contains(_searchController.text.toLowerCase()))
+          .toList();
+    });
+  }
 
+  void initState() {
+    super.initState();
+    _filteredPlaces = places;
+    _searchController.addListener(() {
+      filterPlaces();
+    });
+  }
   @override
 //ส่วนออกแบบหนา้จอ
   Widget build(BuildContext context) {
     return Scaffold(
-     backgroundColor: Color(0xFFB3E4FF),
+       appBar: AppBar(
+         automaticallyImplyLeading: false, // This will remove the back arrow
+         backgroundColor: Color(0xFFAFAFFF), // Original app bar color
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(20),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _searchController,
+              style:
+                  TextStyle(color: const Color.fromARGB(255, 0, 0, 0)), // เปลี่ยนสีตัวหนังสือที่พิมพ์
+              decoration: InputDecoration(
+                hintText: 'พิมพ์เพื่อค้นหา...',
+                hintStyle: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)), // เปลี่ยนสี hintText
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: const Color.fromARGB(255, 0, 0, 0),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: const Color.fromARGB(255, 0, 0, 0)),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+      backgroundColor: Color(0xFFB3E4FF),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -126,9 +169,9 @@ class _MyHomePageState extends State<fable1> {
             SizedBox(
               height: 300, // กำหนดความสูงให้กับ ListView เพื่อไม่ให้บีบตัว
               child: ListView.builder(
-                itemCount: places.length,
+                itemCount: _filteredPlaces.length,
                 itemBuilder: (context, index) {
-                  final place = places[index];
+                  final place = _filteredPlaces[index];
                   return Card(
                     color: const Color.fromARGB(
                         255, 173, 252, 248), // สีพื้นหลังของ Card
@@ -172,6 +215,53 @@ class _MyHomePageState extends State<fable1> {
           ],
         ),
       ),
+    );
+  }
+}
+class CustomSearchDelegate extends SearchDelegate {
+  final TextEditingController searchController;
+  CustomSearchDelegate(this.searchController);
+  @override
+  List<Widget> buildActions(BuildContext context) {
+// ปุ่ มสําหรับล้างข้อความการค้นหา
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          query = ''; // ล้างการค้นหา
+        },
+      ),
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+// ปุ่ มย้อนกลับ
+    return IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        close(context, null); // ปิ ดการค้นหา
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+// ผลลัพธ์การค้นหา (สามารถปรับปรุงได้ตามที่ต้องการ)
+    return ListTile(
+      title: Text('ผลลัพธ์การค้นหา: $query'),
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+// ข้อเสนอแนะในการค้นหา (สามารถปรับปรุงได้ตามที่ต้องการ)
+    return ListView(
+      children: [
+        ListTile(
+          title: Text('ค้นหา: $query'),
+        ),
+      ],
     );
   }
 }

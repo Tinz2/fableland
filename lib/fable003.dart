@@ -147,6 +147,13 @@ class _FablePageState extends State<fable0003> {
     _isPlaying = true;
   }
 
+@override
+  void dispose() {
+    _audioPlayer.stop(); // หยุดเสียงเมื่อ widget ถูกปิด
+    _audioPlayer.dispose(); // ปล่อยทรัพยากร
+    super.dispose();
+  }
+  
   @override
   Widget build(BuildContext context) {
     String displayedStory = _storyLanguage == 'th' ? _storyTh : _storyEn;
