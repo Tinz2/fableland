@@ -9,7 +9,7 @@ class ContactUs extends StatelessWidget {
         backgroundColor: Color.fromRGBO(175, 172, 255, 1),
       ),
       body: Container(
-        color: Color.fromRGBO(58, 241, 248, 1), // ตั้งค่าสีฟ้า
+        color: Color(0xFFB3E4FF), // ตั้งค่าสีฟ้า
         padding: EdgeInsets.all(16.0),
         child: Center(
           child: Container(

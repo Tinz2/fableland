@@ -146,6 +146,13 @@ class _FablePageState extends State<fable0004> {
     _isPlaying = true;
   }
 
+@override
+  void dispose() {
+    _audioPlayer.stop(); // หยุดเสียงเมื่อ widget ถูกปิด
+    _audioPlayer.dispose(); // ปล่อยทรัพยากร
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     String displayedStory = _storyLanguage == 'th' ? _storyTh : _storyEn;
@@ -160,7 +167,7 @@ class _FablePageState extends State<fable0004> {
 
     return Scaffold(
       appBar: AppBar(
-       backgroundColor: Color(0xFFB3E4FF),
+       backgroundColor: Color.fromRGBO(175, 172, 255, 1),
         title:
             Text('นิทานสโนว์ไวท์กับคนแคระทั้งเจ็ด'), // แสดงชื่อเรื่องแทนโลโก้
         actions: [

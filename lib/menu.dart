@@ -65,7 +65,7 @@ class _MyHomePageState extends State<menu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(175, 172, 255, 100),
+        backgroundColor: Color(0xFFAFAFFF),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ClipOval(

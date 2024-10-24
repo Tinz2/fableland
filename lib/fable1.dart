@@ -118,6 +118,13 @@ class _FablePageState extends State<fable01> {
       _isPlaying = true;
     });
   }
+  
+@override
+  void dispose() {
+    _audioPlayer.stop(); // หยุดเสียงเมื่อ widget ถูกปิด
+    _audioPlayer.dispose(); // ปล่อยทรัพยากร
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
